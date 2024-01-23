@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+<<<<<<< HEAD
       <None Remove="art1.png" />
     </ItemGroup>
 
