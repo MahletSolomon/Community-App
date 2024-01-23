@@ -13,11 +13,11 @@
        </Grid.OpacityMask>
        <Border x:Name="Border1" CornerRadius="15" Background="#E2E2E2"/>
        
-       <Image Source="C:\Users\abiym\RiderProjects\CommunityApp\MainProject\art2.png" 
+       <Image Source="/Images/art2.png" 
               Width="187" 
               HorizontalAlignment="Right" 
               VerticalAlignment="Top"/>
-       <Image Source="C:\Users\abiym\RiderProjects\CommunityApp\MainProject\art1.png"
+       <Image Source="/Images/art1.png"
               Width="700" 
               HorizontalAlignment="Left" 
               VerticalAlignment="Bottom"/>
