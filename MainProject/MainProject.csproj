@@ -8,7 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-<<<<<<< HEAD
       <None Remove="art1.png" />
     </ItemGroup>
 
@@ -20,9 +19,7 @@
       <Resource Include="Images\art2.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
-=======
       <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
->>>>>>> AuthenticationBranch
     </ItemGroup>
 
 </Project>
