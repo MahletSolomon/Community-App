@@ -16,7 +16,7 @@
 
        <Border Background="White" CornerRadius="15 0  0 15">
            <Border.Effect>
-               <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#D1D5FE"/>
+               <DropShadowEffect ShadowDepth="4" BlurRadius="35" Color="#D1D5FE" Opacity="0.5"/>
            </Border.Effect>
            <Grid>
                <Grid.RowDefinitions>
@@ -29,7 +29,8 @@
                    ItemContainerStyle="{StaticResource ListBoxItemStyle1}" 
                    Style="{StaticResource ListBoxStyle1}" 
                    ItemsSource="{Binding PageNavModels}" 
-                   SelectedItem="{Binding SelectedItem}">
+                   SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
+                   >
                    <ListBox.ItemTemplate>
                        <DataTemplate>
                            <Grid >

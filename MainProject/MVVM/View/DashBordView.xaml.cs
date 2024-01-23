@@ -7,6 +7,5 @@ public partial class DashBordView : UserControl
     public DashBordView()
     {
         InitializeComponent();
-        MyListBox.SelectedIndex = 0;
     }
 }

@@ -5,8 +5,56 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MainProject.MVVM.View"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Button Content="Home"></Button>
-    </Grid>
+             d:DesignHeight="720" d:DesignWidth="1240">
+    <Border Background="#E2E2E2" CornerRadius=" 0 15 15 0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="160"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!-- Start of side panel -->
+            <Border Padding="10" 
+                    Background="#F3F3F3"
+                    CornerRadius="0 15 15 0 ">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="4" BlurRadius="35" Color="#D1D5FE" Opacity="0.5"/>
+                </Border.Effect>
+                <!-- Side panel -->
+                <StackPanel>
+                  
+                    
+                    <ListBox SelectedIndex="0"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             ItemsSource="{Binding PageNavModel}"
+                             ItemContainerStyle="{StaticResource ListBoxItemStyle2}" >
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="13 0">
+                                    <Image 
+                                        Source="{Binding ImageSource}" 
+                                        Width="35" 
+                                        Height="35" 
+                                        HorizontalAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    
+                    <Label Content="Community" 
+                           Foreground="#747687"
+                           FontSize="16"
+                           Margin="4 0 0 0"
+                           FontWeight="Medium"/>
+                </StackPanel>
+            </Border>
+
+        </Grid>
+    </Border>
 </UserControl>

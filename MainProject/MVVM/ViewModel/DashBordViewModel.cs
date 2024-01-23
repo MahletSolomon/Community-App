@@ -10,29 +10,29 @@ namespace MainProject.MVVM.ViewModel;
 public class DashBordViewModel:ViewModelBase
 {
     public NavigationStore DashNavigationStore { get; set; }
+    public ViewModelBase CurrentViewModel => DashNavigationStore.CurrentViewModel;
+
     public ObservableCollection<PageNavModel> PageNavModels { set; get; }
     private PageNavModel _PageNavModel;
-    public ViewModelBase CurrentViewModel => DashNavigationStore.CurrentViewModel;
 
     public PageNavModel SelectedItem
     {
         set
         {
             _PageNavModel = value;
-            showMe();
+            Navigate();
         }
         get
         {
             return _PageNavModel;
         }
     }
-    private void showMe()
+    private void Navigate()
     {
         string navigateTo = SelectedItem.Name;
         DashBordNavigationCommand bordNavigationCommand =
             new DashBordNavigationCommand(navigateTo, DashNavigationStore);
         bordNavigationCommand.Execute();
-        // MessageBox.Show(_PageNavModel.Name);
     }
     public DashBordViewModel(LoginModel loginModel,NavigationStore navigationStore)
     {
