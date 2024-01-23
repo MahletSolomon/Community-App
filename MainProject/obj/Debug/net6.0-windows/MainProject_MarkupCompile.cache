@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\App.xaml
-11407045341
+14-1917448983
 
-3-1233169557
+331075507587
 194618410957
-MainWindow.xaml;
+Componets\BindablePasswordBox.xaml;Componets\IconButton.xaml;MainWindow.xaml;MVVM\View\AccountView.xaml;MVVM\View\DashBordView.xaml;MVVM\View\HomeView.xaml;MVVM\View\LoginView.xaml;MVVM\View\SearchView.xaml;MVVM\View\SettingView.xaml;MVVM\View\SignUpView.xaml;MVVM\View\UploadPictureView.xaml;Styles\Buttons.xaml;Styles\ItemBox.xaml;Styles\TextBox.xaml;
 
 False
 

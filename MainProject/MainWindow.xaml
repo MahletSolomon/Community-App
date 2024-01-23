@@ -4,9 +4,46 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainProject"
+        xmlns:view="clr-namespace:MainProject.MVVM.View"
+        xmlns:viewModel="clr-namespace:MainProject.MVVM.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
-    <Grid>
-
-    </Grid>
+        Title="MainWindow"
+        Height="720"
+        Width="1280"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="False">
+   <Grid   MouseDown="UIElement_OnMouseDown">
+       <ContentControl Content="{Binding CurrentViewModel}">
+           <ContentControl.Resources>
+               
+               <DataTemplate DataType="{x:Type viewModel:UploadPictureViewModel}">
+                   <view:UploadPictureView/>
+               </DataTemplate>
+               <DataTemplate DataType="{x:Type viewModel:SignUpViewModel}">
+                   <view:SignUpView/>
+               </DataTemplate>
+               <DataTemplate DataType="{x:Type viewModel:LoginViewModel}">
+                   <view:LoginView/>
+               </DataTemplate >
+               <DataTemplate DataType="{x:Type viewModel:DashBordViewModel}">
+                   <view:DashBordView/>
+               </DataTemplate >
+               <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                   <view:HomeView/>
+               </DataTemplate >
+               <DataTemplate DataType="{x:Type viewModel:SearchViewModel}">
+                   <view:SearchView/>
+               </DataTemplate >
+               <DataTemplate DataType="{x:Type viewModel:AccountViewModel}">
+                   <view:AccountView/>
+               </DataTemplate >
+               <DataTemplate DataType="{x:Type viewModel:SettingViewModel}">
+                   <view:SettingView/>
+               </DataTemplate >
+           </ContentControl.Resources>
+       </ContentControl >
+       
+   </Grid>
 </Window>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MainProject.MVVM.ViewModel;
 
 namespace MainProject
 {
@@ -24,5 +25,12 @@ namespace MainProject
         {
             InitializeComponent();
         }
+
+        private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
+
+       
     }
 }
