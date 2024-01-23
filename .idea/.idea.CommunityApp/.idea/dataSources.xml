@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="@mssql-161558-0.cloudclusters.net" uuid="9520bc81-39fb-48e9-8897-2f688601e3fd">
+      <driver-ref>sqlserver.jb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
+      <jdbc-url>Server=mssql-161558-0.cloudclusters.net,10019</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="Trust Server Certificate" value="true" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>

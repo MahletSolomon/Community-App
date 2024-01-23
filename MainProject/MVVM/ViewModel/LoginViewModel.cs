@@ -25,6 +25,8 @@ public class LoginViewModel:ViewModelBase
     }
     public LoginViewModel(NavigationStore navigationStore)
     {
+        Password = "";
+        Username = "";
         NavigateSignupCommand =
             new NavigateCommand<SignUpViewModel>(
                 new NavigationService<SignUpViewModel>(navigationStore, () => new SignUpViewModel(navigationStore)));

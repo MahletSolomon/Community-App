@@ -44,6 +44,7 @@ C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\M
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\SearchView.baml
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\SettingView.baml
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\Styles\ItemBox.baml
+<<<<<<< HEAD
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\PostFeedView.g.cs
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\PostFeedView.baml
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\PostControl.g.cs

@@ -26,12 +26,12 @@ public class LoginCommand:AsyncCommandBase
             Username = _loginViewModel.Username,
             Password = _loginViewModel.Password
         };
-        await SimulateLoginAsync();
-        _navigationService.Navigate(model);   
+        AuthenticationService authenticationService = new AuthenticationService(model);
+        if (authenticationService.Execute())
+        {
+            _navigationService.Navigate(model);
+        }
     }
-    private async Task SimulateLoginAsync()
-    {
-        await Task.Delay(0000); // 5000 milliseconds (5 seconds)
-    }
+   
     
 }
