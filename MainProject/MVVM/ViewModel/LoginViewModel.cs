@@ -12,8 +12,8 @@ public class LoginViewModel:ViewModelBase
 {
     public ICommand NavigateSignupCommand { get; }
     public ICommand LoginCommand { get; }
-    private string _password;
     public string Username { get; set; }
+    private string _password;
 
     public string Password
     {

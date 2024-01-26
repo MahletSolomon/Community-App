@@ -13,7 +13,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
-        AllowsTransparency="False">
+        AllowsTransparency="True">
    <Grid   MouseDown="UIElement_OnMouseDown">
        <ContentControl Content="{Binding CurrentViewModel}">
            <ContentControl.Resources>

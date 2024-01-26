@@ -15,7 +15,9 @@
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
-                        
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#8382A2"></Setter>
+                        </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
@@ -35,6 +37,12 @@
                         </Trigger>
                        
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -64,6 +72,9 @@
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#8382A2"></Setter>
+                        </Trigger>
                         <Trigger Property="IsPressed" Value="true">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
@@ -85,11 +96,15 @@
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                         </Trigger>
-                        <!--<Trigger Property="IsPressed" Value="true">
-                            <Setter Property="BorderBrush"  Value="#5753D7"/>
-                        </Trigger>-->
+                       
 
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

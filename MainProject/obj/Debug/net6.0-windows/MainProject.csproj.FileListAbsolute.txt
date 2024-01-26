@@ -47,8 +47,6 @@ C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\S
 <<<<<<< HEAD
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\PostFeedView.g.cs
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\PostFeedView.baml
-C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\PostControl.g.cs
-C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\PostControl.baml
 =======
 C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\MainProject.exe
 C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\MainProject.deps.json
@@ -161,3 +159,14 @@ C:\Users\abiym\Documents\GitHub\CommunityApp\MainProject\obj\Debug\net6.0-window
 C:\Users\abiym\Documents\GitHub\CommunityApp\MainProject\obj\Debug\net6.0-windows\MainProject.pdb
 C:\Users\abiym\Documents\GitHub\CommunityApp\MainProject\obj\Debug\net6.0-windows\MainProject.genruntimeconfig.cache
 C:\Users\abiym\Documents\GitHub\CommunityApp\MainProject\obj\Debug\net6.0-windows\ref\MainProject.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MainProject.csproj.CopyComplete
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\Firebase.Storage.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\Microsoft.Expression.Interactions.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\System.Windows.Interactivity.dll

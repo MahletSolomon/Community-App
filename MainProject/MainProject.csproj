@@ -19,7 +19,15 @@
       <Resource Include="Images\art2.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
+      <PackageReference Include="Expression.Interaction" Version="3.0.40218" />
+      <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
       <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+      <None Remove="Images\ProfilePicture.jpg" />
+      <Resource Include="Images\ProfilePicture.jpg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\ProfilePicture.png" />
+      <Resource Include="Images\ProfilePicture.png" />
     </ItemGroup>
 
 </Project>

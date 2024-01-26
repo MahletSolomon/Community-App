@@ -55,7 +55,7 @@
                              VerticalAlignment="Center" 
                              ItemContainerStyle="{StaticResource ListBoxItemStyle3}" 
                              Style="{StaticResource ListBoxStyle1}" 
-                             ItemsSource="{Binding CommunityCards}" 
+                             ItemsSource="{Binding CommunityCardModels}" 
                              SelectedItem="{Binding SelectedItem,Mode=OneWayToSource}"
                     >
                         <ListBox.ItemTemplate>
@@ -69,7 +69,7 @@
                                     
                                     <Image 
                                         Margin="0 2 5 0" 
-                                        Source="{Binding ImageSource}" 
+                                        Source="{Binding PictureUrl}" 
                                         Grid.Column="0" 
                                         Width="34" 
                                         Height="34" 
