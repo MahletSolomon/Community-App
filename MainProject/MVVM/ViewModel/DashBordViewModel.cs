@@ -11,6 +11,7 @@ public class DashBordViewModel:ViewModelBase
 {
     public NavigationStore DashNavigationStore { get; set; }
     public ViewModelBase CurrentViewModel => DashNavigationStore.CurrentViewModel;
+    private LoginModel _LoginModel;
 
     public ObservableCollection<PageNavModel> PageNavModels { set; get; }
     private PageNavModel _PageNavModel;
@@ -30,11 +31,37 @@ public class DashBordViewModel:ViewModelBase
     private void Navigate()
     {
         string navigateTo = SelectedItem.Name;
-        DashBordNavigationCommand bordNavigationCommand =
-            new DashBordNavigationCommand(navigateTo, DashNavigationStore);
+        DashBordNavigationCommand bordNavigationCommand = new DashBordNavigationCommand(navigateTo, DashNavigationStore,_LoginModel);
         bordNavigationCommand.Execute();
     }
+
+    private UserInformationModel _userInformationModel;
+    public string ProfilePicture { set; get; }
+    public string ProfileName { set; get; }
+
     public DashBordViewModel(LoginModel loginModel,NavigationStore navigationStore)
+    {
+        _LoginModel = loginModel;
+        RetrieveInformation();
+        DefineViewNavigationIcons();
+        DashNavigationStore = new NavigationStore();
+        DashNavigationStore.CurrentViewModel = new HomeViewModel(loginModel);
+        DashNavigationStore.CurrentViewModelChange += OnCurrentViewModelChange;
+    }
+    private void OnCurrentViewModelChange()
+    {
+        OnPropertyChanged(nameof(CurrentViewModel));
+    }
+
+    private void RetrieveInformation()
+    {
+        RetrieveUserInformationService retrieveUserInformationService = new RetrieveUserInformationService(_LoginModel.ID);
+        _userInformationModel = retrieveUserInformationService.GetInformation();
+        ProfilePicture = _userInformationModel.ProfilePictureUrl;
+        ProfileName = _userInformationModel.FirstName + " " + _userInformationModel.LastName;
+    }
+
+    private void DefineViewNavigationIcons()
     {
         PageNavModels = new ObservableCollection<PageNavModel>();
         PageNavModels.Add(new PageNavModel()
@@ -61,13 +88,6 @@ public class DashBordViewModel:ViewModelBase
             ImageSource = "C:/Users/abiym/RiderProjects/CommunityApp/MainProject/Image/Icon/Setting.png"
 
         });
-        DashNavigationStore = new NavigationStore();
-        DashNavigationStore.CurrentViewModel = new HomeViewModel();
-        DashNavigationStore.CurrentViewModelChange += OnCurrentViewModelChange;
-    }
-    private void OnCurrentViewModelChange()
-    {
-        OnPropertyChanged(nameof(CurrentViewModel));
     }
 }
 

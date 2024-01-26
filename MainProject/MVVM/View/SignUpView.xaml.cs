@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace MainProject.MVVM.View;
@@ -10,7 +11,9 @@ public partial class SignUpView : UserControl
     {
         InitializeComponent();
     }
-    private void PasswordBox_OnPasswordChanged(object sender, RoutedEventArgs e)
+ 
+
+    private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
     {
         PasswordBox passwordBox = (PasswordBox)sender;
 
@@ -18,5 +21,9 @@ public partial class SignUpView : UserControl
             passwordBox.Background = Brushes.Transparent;
         else
             passwordBox.Background = Brushes.White;
+
+        if (this.DataContext != null)
+        { ((dynamic)this.DataContext).Password = ((PasswordBox)sender).Password; }
+        
     }
 }

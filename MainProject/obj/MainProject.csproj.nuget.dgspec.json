@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\abiym\\Documents\\GitHub\\CommunityApp\\MainProject\\MainProject.csproj": {}
+    "C:\\Users\\abiym\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\abiym\\Documents\\GitHub\\CommunityApp\\MainProject\\MainProject.csproj": {
+    "C:\\Users\\abiym\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abiym\\Documents\\GitHub\\CommunityApp\\MainProject\\MainProject.csproj",
+        "projectUniqueName": "C:\\Users\\abiym\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj",
         "projectName": "MainProject",
-        "projectPath": "C:\\Users\\abiym\\Documents\\GitHub\\CommunityApp\\MainProject\\MainProject.csproj",
+        "projectPath": "C:\\Users\\abiym\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj",
         "packagesPath": "C:\\Users\\abiym\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abiym\\Documents\\GitHub\\CommunityApp\\MainProject\\obj\\",
+        "outputPath": "C:\\Users\\abiym\\RiderProjects\\CommunityApp\\MainProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\abiym\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
+            "Expression.Interaction": {
+              "target": "Package",
+              "version": "[3.0.40218, )"
+            },
+            "FirebaseStorage.net": {
+              "target": "Package",
+              "version": "[1.0.3, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.6, )"

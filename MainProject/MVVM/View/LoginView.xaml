@@ -36,11 +36,11 @@
                         Style="{StaticResource TextBoxStyle}"
                         Tag="Username"
                         Text="{Binding Username}"
-                        FontSize="14"
-               />
+                        FontSize="14"/>
                <customControls:BindablePasswordBox
-                 Password="{Binding Password}"
-                   />
+                   UserControlMargin="23 8"
+                   UserControlTag="Password"
+                 Password="{Binding Password}"/>
                <Button FontWeight="SemiBold" 
                        Style="{StaticResource Button-Edge}" 
                        FontSize="16" 
@@ -48,13 +48,12 @@
                        VerticalAlignment="Center" 
                        Margin="23 8"
                        Command="{Binding LoginCommand}"
-
                        Padding="36 16"/>
                
                <Grid Margin="0 20">
                    <Grid.ColumnDefinitions>
                        <ColumnDefinition/>
-                       <ColumnDefinition Width="30"/>
+                       <ColumnDefinition Width="38"/>
                        <ColumnDefinition/>
                    </Grid.ColumnDefinitions>
                    <Rectangle Margin="23 0 0 0"  Fill="#CEBFEF" Height="5" RadiusX="2" RadiusY="2"/>

@@ -13,7 +13,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
-            <ScrollViewer Grid.Column="0">
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
                 <ItemsControl ItemsSource="{Binding Posts}" Background="Transparent"  MaxWidth="525" >
                     <ItemsControl.ItemTemplate >
                         <DataTemplate>

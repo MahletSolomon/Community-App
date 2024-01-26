@@ -5,7 +5,7 @@ using WpfApp1.Stores;
 namespace WpfApp1.Services;
 
 public class NavigationService<TViewModel>
-    where TViewModel : ViewModelBase
+    where TViewModel : ViewModelBase 
 
 {
     private readonly NavigationStore _navigationStore;

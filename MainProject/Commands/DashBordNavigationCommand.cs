@@ -1,4 +1,5 @@
-﻿using MainProject.MVVM.ViewModel;
+﻿using MainProject.MVVM.Model;
+using MainProject.MVVM.ViewModel;
 using WpfApp1.Stores;
 
 namespace WpfApp1.Commands;
@@ -7,11 +8,13 @@ public class DashBordNavigationCommand
 {
     private string _navigateTo;
     private NavigationStore _navigationStore;
+    private LoginModel _loginModel;
 
-    public DashBordNavigationCommand(string navigateTo,NavigationStore navigationStore)
+    public DashBordNavigationCommand(string navigateTo,NavigationStore navigationStore,LoginModel loginModel)
     {
         _navigateTo = navigateTo;
         _navigationStore = navigationStore;
+        _loginModel = loginModel;
     }
 
     public void Execute()
@@ -19,7 +22,7 @@ public class DashBordNavigationCommand
         switch (_navigateTo)
         {
             case "Home":
-                _navigationStore.CurrentViewModel = new HomeViewModel();
+                _navigationStore.CurrentViewModel = new HomeViewModel(_loginModel);
                 break;
             case "Search":
                 _navigationStore.CurrentViewModel = new SearchViewModel();
@@ -33,7 +36,7 @@ public class DashBordNavigationCommand
                 _navigationStore.CurrentViewModel = new SettingViewModel();
                 break;
             default:
-                _navigationStore.CurrentViewModel = new HomeViewModel();
+                _navigationStore.CurrentViewModel = new HomeViewModel(_loginModel);
                 break;
         }
     }

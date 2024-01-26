@@ -56,7 +56,33 @@
                        </DataTemplate>
                    </ListBox.ItemTemplate>
                </ListBox>
-               
+               <!-- Start Logged User -->
+               <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="0 11">
+                   <Grid.ColumnDefinitions>
+                       <ColumnDefinition Width="50"></ColumnDefinition>
+                       <ColumnDefinition></ColumnDefinition>
+                   </Grid.ColumnDefinitions>
+                           
+                   <Image 
+                       Margin="0 0 5 0" 
+                       Source="{Binding ProfilePicture}"
+                       Grid.Column="0" 
+                       Width="34" 
+                       Height="34" 
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Center">
+                       <Image.Clip>
+                           <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
+                       </Image.Clip>
+                   </Image>
+                   <Label  Content="{Binding ProfileName}" 
+                           Foreground="#727EA8" FontSize="14" 
+                           FontWeight="Medium"
+                           Grid.Column="1" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Center"/>
+               </Grid>
+               <!-- End Logged User -->
            </Grid>
        </Border>
     </Grid>

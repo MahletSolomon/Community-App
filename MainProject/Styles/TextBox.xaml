@@ -15,24 +15,64 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="12" Padding="3 0">
-                        <Grid>
-                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-                            <Label x:Name="WaterMarkerLabel" 
-                                   Content="{TemplateBinding Tag}"
-                                   VerticalAlignment="Center"
-                                   Padding="19 16"
-                                   Foreground="Black "
-                                   Opacity="0.4"
-                                   FontSize="{TemplateBinding FontSize}"
-                                   Visibility="Collapsed"
-                            />
-                        </Grid>
-                    </Border>
+                  <StackPanel>
+                      <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="12" Padding="3 0">
+                          <Grid>
+                              <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                              <Label x:Name="WaterMarkerLabel" 
+                                     Content="{TemplateBinding Tag}"
+                                     VerticalAlignment="Center"
+                                     Padding="19 16"
+                                     Foreground="Black "
+                                     Opacity="0.4"
+                                     FontSize="{TemplateBinding FontSize}"
+                                     Visibility="Collapsed"
+                              />
+                          </Grid>
+                      </Border>
+                      <ItemsControl Margin="8 2 0 0" ItemsSource="{TemplateBinding Validation.Errors}">
+                          <ItemsControl.ItemTemplate>
+                              <DataTemplate>
+                                  <Grid>
+                                      <Grid.ColumnDefinitions>
+                                          <ColumnDefinition Width="20"/>
+                                          <ColumnDefinition/>
+                                      </Grid.ColumnDefinitions>
+                                      <Rectangle Width="6" Height="6" Fill="Aquamarine" RadiusX="4" RadiusY="4" Opacity="0.6"/>
+                                      <TextBlock Grid.Column="1" Margin="0 2" Text="{Binding ErrorContent}" Foreground="#898989" FontSize="14"/>
+                                  </Grid>
+                              </DataTemplate>
+                          </ItemsControl.ItemTemplate>
+                      </ItemsControl>
+                  </StackPanel>
+                 
                     <ControlTemplate.Triggers>
+                     
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <!-- <Setter Property="BorderBrush" Value="Red"/> -->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                            To="#9C58AD" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                                
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                            To="#C4B8E7" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
-                                <Condition Property="Text" Value=""></Condition>
+                                <Condition Property="Text" Value=""/>
                             </MultiTrigger.Conditions>
                             <Setter Property="Visibility" TargetName="WaterMarkerLabel" Value="Visible"/>
                         </MultiTrigger>
@@ -58,8 +98,15 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
-    
+    <!-- End -->
+    <!-- start -->
     <Style TargetType="PasswordBox" x:Key="PasswordBoxStyle">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="Foreground" Value="Black"/>
@@ -74,22 +121,59 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="PasswordBox">
-                    <Grid>
-                        <Label x:Name="WaterMarkerLabel" 
-                               Content="{TemplateBinding Tag}"
-                               VerticalAlignment="Center"
-                               Padding="19 16"
-                               FontSize="{TemplateBinding FontSize}"
-                               Foreground="Black "
-                               Opacity="0.4"
-                        />
-                        <Border  Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="12" Padding="3 0">
-                        </Border>
-                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
-
-                    </Grid>
+                   <StackPanel>
+                       <Grid>
+                           <Label x:Name="WaterMarkerLabel" 
+                                  Content="{TemplateBinding Tag}"
+                                  VerticalAlignment="Center"
+                                  Padding="19 16"
+                                  FontSize="{TemplateBinding FontSize}"
+                                  Foreground="Black "
+                                  Opacity="0.4"
+                           />
+                           <Border  Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="12" Padding="3 0">
+                           </Border>
+                           <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                       </Grid>
+                       <ItemsControl Margin="8 2 0 0" ItemsSource="{TemplateBinding Validation.Errors}">
+                           <ItemsControl.ItemTemplate>
+                               <DataTemplate>
+                                   <Grid>
+                                       <Grid.ColumnDefinitions>
+                                           <ColumnDefinition Width="20"/>
+                                           <ColumnDefinition/>
+                                       </Grid.ColumnDefinitions>
+                                       <Rectangle Width="6" Height="6" Fill="Aquamarine" RadiusX="4" RadiusY="4" Opacity="0.6"/>
+                                       <TextBlock Grid.Column="1" Margin="0 2" Text="{Binding ErrorContent}" Foreground="#898989" FontSize="14"/>
+                                   </Grid>
+                               </DataTemplate>
+                           </ItemsControl.ItemTemplate>
+                       </ItemsControl>
+                   </StackPanel>
                     <ControlTemplate.Triggers>
                       
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                            To="#9C58AD" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                                
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                            To="#C4B8E7" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        
                         <Trigger Property="IsKeyboardFocused" Value="true">
                             
                             <Trigger.EnterActions>
@@ -107,13 +191,20 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
-                            <!-- <Setter Property="BorderThickness"  Value="2"/> -->
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <AdornedElementPlaceholder x:Name="adornerPlaceholder"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
-    
+    <!-- End -->
+
     
 </ResourceDictionary>

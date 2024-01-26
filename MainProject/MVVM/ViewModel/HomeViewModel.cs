@@ -1,19 +1,58 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows;
 using MainProject.MVVM.Model;
+using WpfApp1.Services;
 
 namespace MainProject.MVVM.ViewModel;
 
 public class HomeViewModel:ViewModelBase
 {
     public ViewModelBase PostViewModel { get; }
-
+    
     public ObservableCollection<PageNavModel> PageNavModel { set; get; }
-    public ObservableCollection<PageNavModel> CommunityCards { set; get; }
+    public ObservableCollection<CommunityCardModel> CommunityCardModels { set; get; }
+
+    private CommunityCardModel _selectedItem;
+
+    public CommunityCardModel SelectedItem
+    {
+        set
+        {
+            _selectedItem = value;
+            OnChange();
+        }
+        get
+        {
+            return _selectedItem;
+        }
+    }
 
     
-    public HomeViewModel()
+    public HomeViewModel(LoginModel loginModel)
+    {
+
+        CommunityCardModels = new ObservableCollection<CommunityCardModel>();
+        
+        RetrieveCommunityInformationService retrieveCommunityInformationService =
+            new RetrieveCommunityInformationService(CommunityCardModels, loginModel.ID);
+        retrieveCommunityInformationService.Execute();
+        DefineViewNavigationIcons();
+        
+        PostViewModel = CommunityCardModels.Count>0 ? new PostFeedViewModel(CommunityCardModels[0]) : new PostFeedViewModel();
+
+            
+        
+    }
+
+    void OnChange()
+    {
+        
+    }
+
+    private void DefineViewNavigationIcons ()
     {
         PageNavModel = new ObservableCollection<PageNavModel>();
+        
         PageNavModel.Add(new PageNavModel()
         {
             Name = "Community",
@@ -24,14 +63,6 @@ public class HomeViewModel:ViewModelBase
             Name = "Message",
             ImageSource = "C:/Users/abiym/RiderProjects/CommunityApp/MainProject/Image/Icon/Message.png"
         });
-        CommunityCards = new ObservableCollection<PageNavModel>()
-        {
-            new PageNavModel(){Name = "Dog lovers",ImageSource = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"},
-            new PageNavModel(){Name = "Nathan",ImageSource = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"},
-            new PageNavModel(){Name = "Dog lovers",ImageSource = "https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*"},
-            
-        };
-        
-        PostViewModel = new PostFeedViewModel();
+
     }
 }

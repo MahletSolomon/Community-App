@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using MainProject.MVVM.Model;
@@ -11,11 +12,9 @@ namespace WpfApp1.Services;
 public class AuthenticationService : ConnectionBaseService
 {
     private LoginModel _loginModel;
-    private Dictionary<string, string> dictionary;
-
+    private string result;
     public AuthenticationService(LoginModel loginModel)
     {
-        dictionary = new Dictionary<string, string>();
         _loginModel = loginModel;
         try
         {
@@ -23,36 +22,37 @@ public class AuthenticationService : ConnectionBaseService
             {
                 connection.Open();
 
-                SqlCommand cmd = new SqlCommand("select * from Users", connection);
-
-    //                DataTable dt = new DataTable();
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                using (SqlCommand command = new SqlCommand("SELECT dbo.CheckUserCredentials(@inputUsername, @inputPassword)", connection))
                 {
-                    string userName = reader["userUserName"].ToString();
-                    string password = reader["userPassword"].ToString();
-                    dictionary[userName] = password;
+                    command.Parameters.AddWithValue("@inputUsername", _loginModel.Username);
+                    command.Parameters.AddWithValue("@inputPassword", _loginModel.Password);
+
+                    // ExecuteScalar is used for scalar functions that return a single value
+                    result = Convert.ToString(command.ExecuteScalar());
                 }
 
+
+               
             }
         }
         catch (Exception ex)
         {
-            MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+           Debug.WriteLine($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
     public bool Execute()
     {
-        if (dictionary.ContainsKey(_loginModel.Username))
+
+        if (result != "")
         {
-            if (dictionary[_loginModel.Username] == _loginModel.Password)
-            {
-                return true;
-            }
+            return true;
         }
-            MessageBox.Show("Username not found");
-            return false;
+        return false;
+    }
+
+    public string GetID()
+    {
+        return result;
     }
 }

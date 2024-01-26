@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
@@ -56,6 +57,28 @@ public partial class BindablePasswordBox : UserControl
     {
         InitializeComponent();
     }
+    public static readonly DependencyProperty UserControlMarginProperty =
+        DependencyProperty.Register("UserControlMargin", typeof(Thickness), typeof(BindablePasswordBox));
+
+    public Thickness UserControlMargin
+    {
+        get { return (Thickness)GetValue(UserControlMarginProperty); }
+        set { SetValue(UserControlMarginProperty, value); }
+    }
+    public static readonly DependencyProperty UserControlTagProperty =
+        DependencyProperty.Register("UserControlTag", typeof(string), typeof(BindablePasswordBox));
+
+    public string UserControlTag
+    {
+        get { return (string)GetValue(UserControlTagProperty); }
+        set { SetValue(UserControlTagProperty, value); }
+    }
+    
+    
+
+
+  
+    
 
 }
 

@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.ViewModel;
 using WpfApp1.Services;
@@ -29,7 +30,12 @@ public class LoginCommand:AsyncCommandBase
         AuthenticationService authenticationService = new AuthenticationService(model);
         if (authenticationService.Execute())
         {
+            model.ID = authenticationService.GetID();
             _navigationService.Navigate(model);
+        }
+        else
+        {
+            MessageBox.Show("Can not Login");
         }
     }
    
