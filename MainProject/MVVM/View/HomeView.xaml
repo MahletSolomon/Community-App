@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:MainProject.MVVM.View"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1240">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Border Background="#E2E2E2" CornerRadius=" 0 15 15 0">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -13,16 +16,21 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <!-- Start of side panel -->
-            <Border Padding="10" 
+            <Border  Padding="10" 
                     Background="#F3F3F3"
                     CornerRadius="0 15 15 0 ">
                 <Border.Effect>
                     <DropShadowEffect ShadowDepth="4" BlurRadius="35" Color="#D1D5FE" Opacity="0.5"/>
                 </Border.Effect>
                 <!-- Side panel -->
-                <StackPanel>
-                  
-                    
+                <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+        
+           
+<StackPanel>
                     <ListBox SelectedIndex="0"
                              Background="Transparent"
                              BorderThickness="0"
@@ -47,8 +55,14 @@
                            Foreground="#747687"
                            FontSize="16"
                            Margin="10 2 0 0"
+                           
                            FontWeight="Medium"/>
-                    
+                    <TextBlock Text="Join community"
+                               Opacity="0.6" 
+                               Margin="20 4"
+                               Visibility="{Binding NoCommunity,Converter={StaticResource BooleanToVisibilityConverter}}"
+                               FontSize="14"/>
+
                     <ListBox SelectedIndex="0" Name="MyListBox"
                              BorderThickness="0"  
                              Background="Transparent"
@@ -90,9 +104,28 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
-            </Border>
-            <ContentControl Grid.Column="1" Content="{Binding PostViewModel}"/>
-
+            <Button Grid.Row="1"
+                    Content="Create" 
+                    Panel.ZIndex="2"
+                    Style="{StaticResource Button-Fill}"
+                    Foreground="White" 
+                    Background="#7471F9"  
+                    Margin="10 0"
+                    FontSize="16" 
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Stretch" 
+                    Height="40" 
+                    Command="{Binding OpenCommunityWindowCommand}"/>        
         </Grid>
     </Border>
+    <ContentControl Grid.Column="1" Content="{Binding PostViewModel}"/>
+    
+            </Grid>
+            </Border>
+            
+
+    
 </UserControl>
+
+
+

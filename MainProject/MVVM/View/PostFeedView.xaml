@@ -76,10 +76,179 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>    
             </ScrollViewer>
-            <ToggleButton Grid.Column="1" Content=">" HorizontalAlignment="Right" Margin="5" Padding="5" Command="{Binding ShowInfoPanel}" ></ToggleButton>
-            <Grid Grid.Column="1 " Name="InfoPanel" Visibility="Collapsed" Background="#A483EA" MinWidth="100">
-                
+            
+            
+<Grid Grid.Column="1" Width="Auto">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Button x:Name="btn"
+            Grid.Column="0"
+            BorderBrush="Transparent"
+            BorderThickness="0"
+            Foreground="White"
+            Background="#7877CE"
+            Style="{StaticResource Button-Fill}"
+            Padding="10"
+            HorizontalContentAlignment="Left"
+            Width="11" 
+            Height="62" 
+            Content="&gt; Value"
+            FontSize="14"
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Right" 
+            Margin="0" 
+            Click="ToggleButton_Checked"></Button>
+    
+    <!--Information panel-->
+    <Border Grid.Column="1" 
+            CornerRadius="15"
+            Padding="17 54 17 0 "
+            Panel.ZIndex="1" 
+            Name="InfoPanel" 
+            Visibility="Visible" 
+            Background="#7877CE" >
+       <Grid>
+           <Grid.RowDefinitions>
+               <RowDefinition></RowDefinition>
+               <RowDefinition Height="100"></RowDefinition>
+           </Grid.RowDefinitions>
+           <StackPanel 
+            Width="230"
+            MinWidth="200">
+        
+            <Grid Grid.Row="0" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Image 
+                    Margin="0 0 5 0" 
+                    Source="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQgByBT5IiAT_a2x9pUVb4VMoOrlzHH7Jrzj-HB5jzHlR4lNLMS"
+                    Grid.Column="0" 
+                    Width="34" 
+                    Height="34" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center">
+                    <Image.Clip>
+                        <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
+                    </Image.Clip>
+                </Image>
+                <Label  Content="Dog lovers" 
+                    Foreground="white" 
+                    FontWeight="Medium"
+                    FontSize="15" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Center"/>
             </Grid>
+        <TextBlock Grid.Row="1"
+                   Text="Welcome to DogLovers – the paw-some group where canine enthusiasts from around the globe unite in their shared love for man's best friend! "
+                   Foreground="#F4F4FB"
+                   Background="Transparent"
+                   FontSize="14"
+                   TextWrapping="Wrap"
+                   Margin="0 10"
+                   Padding="5"/>
+        <Grid Grid.Row="2"  VerticalAlignment="Center" Margin="30 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+           
+                <Label Grid.Column="0" 
+                       Background="Transparent"
+                       Foreground="White">
+                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" LineHeight="26">
+                        <Run Text="103"  FontSize="16" FontWeight="SemiBold"/>
+                        <LineBreak />
+                        <Run Text="Members"   FontSize="15" />
+                    </TextBlock>
+                </Label>
+                <Label Grid.Column="1"
+                       Margin="20 0 0 0"
+                       Background="Transparent"
+                       Foreground="White">
+                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" LineHeight="26">
+                        <Run Text="125"  FontSize="16" FontWeight="SemiBold"/>
+                        <LineBreak />
+                        <Run Text="Posts" FontSize="15" />
+                    </TextBlock>
+                </Label>
+        </Grid>
+        <StackPanel Grid.Row="3">
+            <Label 
+                Content="Owner"
+                FontSize="15"
+               Foreground="White"
+               HorizontalAlignment="Left"
+               Padding="10"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Image 
+                    Margin="0 0 5 0" 
+                    Source="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQgByBT5IiAT_a2x9pUVb4VMoOrlzHH7Jrzj-HB5jzHlR4lNLMS"
+                    Grid.Column="0" 
+                    Width="34" 
+                    Height="34" 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Center">
+                    <Image.Clip>
+                        <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
+                    </Image.Clip>
+                </Image>
+                <Label  Content="Dog lovers" 
+                        FontWeight="Medium"
+                        Foreground="#F7FFEE"
+                        FontSize="15" 
+                        Grid.Column="1" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Center"/>
+            </Grid>
+            <Label Margin="0 10" Grid.Column="1"
+                   Background="Transparent"
+                   Foreground="White">
+                <TextBlock LineHeight="23">
+                    <Run Text="Date"  FontSize="15" />
+                    <LineBreak />
+                    <Run Text="January 11 2024"  FontSize="14" Foreground="#F7FFEE"/>
+                </TextBlock>
+            </Label>
+
+        </StackPanel>
+        
+            <Button Grid.Row="4"
+                    Content="New Post" 
+                    FontSize="15"
+                    Style="{StaticResource Button-Fill}"
+                    FontWeight="Medium"
+                    VerticalAlignment="Top"
+                    Foreground="White" 
+                    Margin="0 10"
+                    Padding="16 10"
+                    Command="{Binding OpenWindowCommand}"/>
+
+           
+    </StackPanel>
+           <Button Grid.Row="1" 
+               Content="Leave"
+               FontSize="15"
+               FontWeight="SemiBold"
+               Style="{StaticResource Button-Fill}"
+               VerticalAlignment="Bottom"
+               Foreground="White"
+               Padding="16 10"
+               Margin="0 10"
+               Command="{Binding LeaveCommunity}"/>
+       </Grid>
+    </Border>
+
+</Grid>
             
         </Grid>
     </Grid>

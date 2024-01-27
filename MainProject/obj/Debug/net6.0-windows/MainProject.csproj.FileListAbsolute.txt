@@ -170,3 +170,7 @@ C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\F
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\Microsoft.Expression.Interactions.dll
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\System.Windows.Interactivity.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\NewPostWindow.g.cs
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\NewPostWindow.baml
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\NewCommunityWindow.g.cs
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\NewCommunityWindow.baml

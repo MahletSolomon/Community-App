@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using MainProject.MVVM.Model;
@@ -16,6 +17,11 @@ public class AuthenticationService : ConnectionBaseService
     public AuthenticationService(LoginModel loginModel)
     {
         _loginModel = loginModel;
+       
+    }
+
+    public async Task Execute()
+    {
         try
         {
             using (SqlConnection connection = new SqlConnection(ConnectionString))
@@ -37,20 +43,19 @@ public class AuthenticationService : ConnectionBaseService
         }
         catch (Exception ex)
         {
-           Debug.WriteLine($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            Debug.WriteLine($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+        
     }
 
-    public bool Execute()
+    public bool GetResult()
     {
-
         if (result != "")
         {
             return true;
         }
         return false;
     }
-
     public string GetID()
     {
         return result;

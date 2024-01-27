@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using System.Windows.Input;
 using MainProject.MVVM.Model;
 using TestingWPF.MVVM.View_Model;
@@ -12,6 +13,7 @@ public class SignUpViewModel:ViewModelValidationBase
 {
     public ICommand NavigateLoginCommand { get; }
     public ICommand NavigateUploadPictureCommand { get; }
+    private Timer _usernameTimer;
     
     private string _username;
     public string Username
@@ -25,10 +27,11 @@ public class SignUpViewModel:ViewModelValidationBase
             {
                 AddError(nameof(Username),"Must be more than 4 letters");
             }
-            if (_username=="abiyaddis")
-            {
-                AddError(nameof(Username),$"Username {_username} is taken");
-            }
+            _usernameTimer?.Dispose();
+
+            // Start a new timer with a 2-second delay
+            _usernameTimer = new Timer(CheckUsername, null, 500, Timeout.Infinite);
+
 
             OnPropertyChanged();
         }
@@ -74,6 +77,11 @@ public class SignUpViewModel:ViewModelValidationBase
         set
         {
             _email = value;
+            ClearErrors(nameof(Email));
+            if (!IsEmail(_email) && _email!="")
+            {
+                AddError(nameof(Email),"Email Format");
+            }
             OnPropertyChanged();
         }
     }
@@ -136,5 +144,22 @@ public class SignUpViewModel:ViewModelValidationBase
             
             UploadPictureViewModel>(navigationStore,(parameter)=>new UploadPictureViewModel(parameter,navigationStore)));
     }
+    private void CheckUsername(object state)
+    {
+        // This method will be called after a 2-second delay
+        CheckUsernameAvailability checkUsernameAvailability = new CheckUsernameAvailability(_username);
     
+        if (!_usernameTimer.Change(Timeout.Infinite, Timeout.Infinite))
+        {
+            // Timer was disposed, indicating that user typed again within 2 seconds
+            return;
+        }
+
+        if (!checkUsernameAvailability.GetResult())
+        {
+            AddError(nameof(Username), $"Username {_username} is taken");
+        }
+
+        OnPropertyChanged();
+    }
 }

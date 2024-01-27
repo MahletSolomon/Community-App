@@ -8,7 +8,7 @@ public class Post
     public string ProfileName { get; set; }
     public string ProfilePicture { get; set; }
 
-    public Post(string caption, string date, string imagePath, string profileName, string profilePicture)
+    public Post(string caption=null,  string imagePath=null,string date=null, string profileName=null, string profilePicture=null)
     {
         Caption = caption;
         Date = date;

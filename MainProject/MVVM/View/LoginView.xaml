@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MainProject.MVVM.View"
              xmlns:customControls="clr-namespace:MainProject.Custom_Controls"
+             xmlns:converters="clr-namespace:TestingWPF.Converters"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1240">
+    <UserControl.Resources>
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <Grid>
          <Grid.OpacityMask>
            <VisualBrush Visual="{Binding ElementName=Border1}" />
@@ -22,11 +26,17 @@
               HorizontalAlignment="Left" 
               VerticalAlignment="Bottom"/>
        
-       <Border Margin="10" Padding="0 10" CornerRadius="21"  Background="White"  MaxWidth="422" VerticalAlignment="Center">
+       <Border Margin="10" Padding="0 10" 
+               CornerRadius="21"  
+               Background="White"  
+               Visibility="{Binding IsLoading,Converter={StaticResource InverseBooleanToVisibilityConverter},UpdateSourceTrigger=PropertyChanged}"
+               MaxWidth="422" 
+               VerticalAlignment="Center">
            <Border.Effect>
                <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#D1D5FE"/>
            </Border.Effect>
-           <StackPanel   VerticalAlignment="Center">
+           <StackPanel 
+               VerticalAlignment="Center">
                <StackPanel >
                    <Label Foreground="#C7B5EE" Padding="23 18 0 0" FontWeight="SemiBold" Content="Welcome" FontSize="36"/>
                    <Label Foreground="#A483EA" Padding="23 0 0 12" FontWeight="SemiBold" Content="back!" FontSize="36"/>
@@ -35,7 +45,7 @@
                         Margin="23 8"
                         Style="{StaticResource TextBoxStyle}"
                         Tag="Username"
-                        Text="{Binding Username}"
+                        Text="{Binding Username,UpdateSourceTrigger=PropertyChanged}"
                         FontSize="14"/>
                <customControls:BindablePasswordBox
                    UserControlMargin="23 8"

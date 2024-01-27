@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.ViewModel;
@@ -21,22 +22,32 @@ public class LoginCommand:AsyncCommandBase
   
     protected override async Task ExecuteAsync(object parameter)
     {
-        
+        _loginViewModel.IsLoading = true;
         LoginModel model = new LoginModel()
         {
             Username = _loginViewModel.Username,
             Password = _loginViewModel.Password
         };
         AuthenticationService authenticationService = new AuthenticationService(model);
-        if (authenticationService.Execute())
+        try
+        {
+            await authenticationService.Execute();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+        if (false)
         {
             model.ID = authenticationService.GetID();
             _navigationService.Navigate(model);
         }
         else
         {
-            MessageBox.Show("Can not Login");
+            _loginViewModel.WrongCredential();
         }
+        // _loginViewModel.IsLoading = false; 
+
     }
    
     
