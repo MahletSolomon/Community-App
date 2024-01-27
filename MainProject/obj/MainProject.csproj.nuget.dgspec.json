@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[1.0.3, )"
             },
+            "LoadingSpinner.WPF": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
               "version": "[4.8.6, )"

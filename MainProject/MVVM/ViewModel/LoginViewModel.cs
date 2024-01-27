@@ -61,6 +61,7 @@ public class LoginViewModel:ViewModelValidationBase
 
     public void WrongCredential()
     {
+        ClearErrors(nameof(Username));
         AddError(nameof(Username),"Wrong Credential");
     }
 }

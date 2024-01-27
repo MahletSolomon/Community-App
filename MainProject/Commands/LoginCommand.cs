@@ -12,43 +12,55 @@ public class LoginCommand:AsyncCommandBase
 {
     private LoginViewModel _loginViewModel;
     private ParameterNavigationService<LoginModel,DashBordViewModel> _navigationService;
-    
 
+    private AuthenticationService authenticationService;
     public LoginCommand(LoginViewModel loginViewModel,ParameterNavigationService<LoginModel,DashBordViewModel> navigationService)
     {
     _loginViewModel = loginViewModel;
     _navigationService = navigationService;
+     authenticationService = new AuthenticationService();
+
     }
   
     protected override async Task ExecuteAsync(object parameter)
     {
         _loginViewModel.IsLoading = true;
+        await Task.Delay(100); // Adjust the delay time as needed
+
         LoginModel model = new LoginModel()
         {
             Username = _loginViewModel.Username,
             Password = _loginViewModel.Password
         };
-        AuthenticationService authenticationService = new AuthenticationService(model);
+
+
         try
         {
-            await authenticationService.Execute();
+            await Task.Run(async () =>
+            {
+                await authenticationService.Execute(model);
+                model.ID = authenticationService.GetID();
+            });
+            if (authenticationService.GetResult())
+            {
+               _navigationService.Navigate(model);
+            }
+            else
+            {
+                _loginViewModel.WrongCredential();
+            }
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
         }
-        if (false)
+        finally
         {
-            model.ID = authenticationService.GetID();
-            _navigationService.Navigate(model);
+            // Set IsLoading back to false after loading completes or if an exception occurs
+            _loginViewModel.IsLoading = false;
         }
-        else
-        {
-            _loginViewModel.WrongCredential();
-        }
-        // _loginViewModel.IsLoading = false; 
-
     }
+
    
     
 }

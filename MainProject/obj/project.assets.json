@@ -26,6 +26,18 @@
           "lib/netstandard1.1/Firebase.Storage.dll": {}
         }
       },
+      "LoadingSpinner.WPF/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/LoadingSpinnerControl.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/LoadingSpinnerControl.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App.WPF"
+        ]
+      },
       "Microsoft.CSharp/4.0.1": {
         "type": "package",
         "dependencies": {
@@ -1581,6 +1593,18 @@
         "firebasestorage.net.1.0.3.nupkg.sha512",
         "firebasestorage.net.nuspec",
         "lib/netstandard1.1/Firebase.Storage.dll"
+      ]
+    },
+    "LoadingSpinner.WPF/1.0.0": {
+      "sha512": "szXy14LPJMKOG51LfOP4nLx9CtqsODA52LzUHHN+N8WXTIxu99289aTZMHRywomsVPiOtA4RKgWqPm/uffOUmw==",
+      "type": "package",
+      "path": "loadingspinner.wpf/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netcoreapp3.1/LoadingSpinnerControl.dll",
+        "loadingspinner.wpf.1.0.0.nupkg.sha512",
+        "loadingspinner.wpf.nuspec"
       ]
     },
     "Microsoft.CSharp/4.0.1": {
@@ -5385,6 +5409,7 @@
     "net6.0-windows7.0": [
       "Expression.Interaction >= 3.0.40218",
       "FirebaseStorage.net >= 1.0.3",
+      "LoadingSpinner.WPF >= 1.0.0",
       "System.Data.SqlClient >= 4.8.6"
     ]
   },
@@ -5434,6 +5459,10 @@
           "FirebaseStorage.net": {
             "target": "Package",
             "version": "[1.0.3, )"
+          },
+          "LoadingSpinner.WPF": {
+            "target": "Package",
+            "version": "[1.0.0, )"
           },
           "System.Data.SqlClient": {
             "target": "Package",

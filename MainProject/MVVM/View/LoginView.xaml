@@ -6,10 +6,12 @@
              xmlns:local="clr-namespace:MainProject.MVVM.View"
              xmlns:customControls="clr-namespace:MainProject.Custom_Controls"
              xmlns:converters="clr-namespace:TestingWPF.Converters"
+             xmlns:loadingSpinnerControl="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1240">
     <UserControl.Resources>
         <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid>
          <Grid.OpacityMask>
@@ -26,12 +28,14 @@
               HorizontalAlignment="Left" 
               VerticalAlignment="Bottom"/>
        
-       <Border Margin="10" Padding="0 10" 
-               CornerRadius="21"  
-               Background="White"  
-               Visibility="{Binding IsLoading,Converter={StaticResource InverseBooleanToVisibilityConverter},UpdateSourceTrigger=PropertyChanged}"
-               MaxWidth="422" 
-               VerticalAlignment="Center">
+     <Grid>
+         <loadingSpinnerControl:LoadingSpinner Thickness="5" Color="#A483EA" Diameter="100" IsLoading="{Binding IsLoading}"/>
+         <Border Margin="10" Padding="0 10" 
+                 CornerRadius="21"  
+                 Background="White"  
+                 Visibility="{Binding IsLoading,Converter={StaticResource InverseBooleanToVisibilityConverter},UpdateSourceTrigger=PropertyChanged}"
+                 MaxWidth="422" 
+                 VerticalAlignment="Center">
            <Border.Effect>
                <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#D1D5FE"/>
            </Border.Effect>
@@ -99,6 +103,7 @@
               </Grid>
            </StackPanel>
        </Border>
+     </Grid>
        
     </Grid>
 </UserControl>

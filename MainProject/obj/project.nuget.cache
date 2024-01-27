@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Xzw3nzrmB+oory9ffJkPKnvDwq6GFMkXs35X0IhHtuYg5PjHXnCqCoecUia3GWbTazBwShaByYH0uTBV76MhGw==",
+  "dgSpecHash": "P9rDclHhXgzZzckACG91gVbWoUTu1HbWlPrVq2AGKs8DaM3psp4pIKi1Bz/v2H3DG/6BdaObhJ1ZTSW1JZ+7WQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\abiym\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abiym\\.nuget\\packages\\expression.interaction\\3.0.40218\\expression.interaction.3.0.40218.nupkg.sha512",
     "C:\\Users\\abiym\\.nuget\\packages\\firebasestorage.net\\1.0.3\\firebasestorage.net.1.0.3.nupkg.sha512",
+    "C:\\Users\\abiym\\.nuget\\packages\\loadingspinner.wpf\\1.0.0\\loadingspinner.wpf.1.0.0.nupkg.sha512",
     "C:\\Users\\abiym\\.nuget\\packages\\microsoft.csharp\\4.0.1\\microsoft.csharp.4.0.1.nupkg.sha512",
     "C:\\Users\\abiym\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\abiym\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

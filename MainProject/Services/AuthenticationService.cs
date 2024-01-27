@@ -14,13 +14,12 @@ public class AuthenticationService : ConnectionBaseService
 {
     private LoginModel _loginModel;
     private string result;
-    public AuthenticationService(LoginModel loginModel)
+    public AuthenticationService()
     {
-        _loginModel = loginModel;
        
     }
 
-    public async Task Execute()
+    public async Task Execute(LoginModel loginModel)
     {
         try
         {
@@ -30,8 +29,8 @@ public class AuthenticationService : ConnectionBaseService
 
                 using (SqlCommand command = new SqlCommand("SELECT dbo.CheckUserCredentials(@inputUsername, @inputPassword)", connection))
                 {
-                    command.Parameters.AddWithValue("@inputUsername", _loginModel.Username);
-                    command.Parameters.AddWithValue("@inputPassword", _loginModel.Password);
+                    command.Parameters.AddWithValue("@inputUsername", loginModel.Username);
+                    command.Parameters.AddWithValue("@inputPassword", loginModel.Password);
 
                     // ExecuteScalar is used for scalar functions that return a single value
                     result = Convert.ToString(command.ExecuteScalar());
