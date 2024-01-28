@@ -63,6 +63,7 @@
                        Margin="23 8"
                        Command="{Binding LoginCommand}"
                        Padding="36 16"/>
+               <Button Style="{StaticResource Button-Like}"></Button>
                
                <Grid Margin="0 20">
                    <Grid.ColumnDefinitions>

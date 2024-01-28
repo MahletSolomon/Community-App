@@ -59,7 +59,8 @@
                            FontWeight="Medium"/>
                     <TextBlock Text="Join community"
                                Opacity="0.6" 
-                               Margin="20 4"
+                               Margin="15 4"
+                               Foreground="#66687A"
                                Visibility="{Binding NoCommunity,Converter={StaticResource BooleanToVisibilityConverter}}"
                                FontSize="14"/>
 
@@ -110,7 +111,6 @@
                     Style="{StaticResource Button-Fill}"
                     Foreground="White" 
                     Background="#7471F9"  
-                    Margin="10 0"
                     FontSize="16" 
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Stretch" 

@@ -29,6 +29,18 @@
       </Resource>
       <None Remove="Images\ProfilePicture.png" />
       <Resource Include="Images\ProfilePicture.png" />
+      <None Remove="Images\heart1.png" />
+      <Resource Include="Images\heart1.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\heart2.png" />
+      <Resource Include="Images\heart2.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Providers\" />
     </ItemGroup>
 
 </Project>

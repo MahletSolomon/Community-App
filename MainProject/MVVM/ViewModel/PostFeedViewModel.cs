@@ -10,11 +10,10 @@ namespace MainProject.MVVM.ViewModel;
 public class PostFeedViewModel:ViewModelBase
 {
     public ObservableCollection<Post> Posts { get; }
+    public CommunityCardModel communityCardModel { set; get; }
     private ICommand ShowInfoPanel { get; }
     public string GetPicture {  get; set; }
     
-
-
     public NewPostWindow NewPostWindow { get; set; }
     
     public ICommand OpenWindowCommand { get; set; }
@@ -22,8 +21,11 @@ public class PostFeedViewModel:ViewModelBase
  
     public ICommand LeaveCommunity {  get; set; }
     public string Caption { get; set; }
+    
+   
     public PostFeedViewModel(CommunityCardModel communityCardModel)
     {
+        this.communityCardModel = communityCardModel;
         NewPostWindow = new NewPostWindow();
         NewPostWindow.DataContext = this;
         OpenWindowCommand = new NewWindowCommand(NewPostWindow, this);
@@ -34,6 +36,7 @@ public class PostFeedViewModel:ViewModelBase
 
     public PostFeedViewModel()
     {
+        this.communityCardModel = new CommunityCardModel() { Name = "letssss goo" };
         NewPostWindow = new NewPostWindow();
         NewPostWindow.DataContext = this;
         Posts = new ObservableCollection<Post>();

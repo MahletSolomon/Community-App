@@ -228,5 +228,20 @@
     <!-- End of BUTTON-ICON-GOOGLE -->
     
     <!-- End of BUTTON-ICON -->
-  
+    <Style TargetType="Button" x:Key="Button-Like">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                       <Grid>
+                           <Image Width="26" Height="26" Source="/Images/heart1.png"/>
+                           <Image Width="26" Height="26" Source="/Images/heart2.png"/>
+                       </Grid>
+                    <ControlTemplate.Triggers>
+                       
+                       
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>
