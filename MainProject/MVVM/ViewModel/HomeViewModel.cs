@@ -19,6 +19,8 @@ public class HomeViewModel:ViewModelBase
     public string CommunityName { get; set; }
     public string CommunityDescription { get; set; }
     public string CommunityPicture { get; set; }
+    
+    public LoginModel loginModel;
 
     public NewCommunityWindow NewCommunityWindow { get; set; }
     public ICommand CreateCommunity { get; set; }
@@ -62,13 +64,14 @@ public class HomeViewModel:ViewModelBase
         HomeNavigationStore = new NavigationStore();
         CommunityCardModels = new ObservableCollection<CommunityCardModel>();
         NewCommunityWindow = new NewCommunityWindow();
+        this.loginModel = loginModel;
 
         RetrieveCommunityInformationService retrieveCommunityInformationService =
             new RetrieveCommunityInformationService(CommunityCardModels, loginModel.ID);
         retrieveCommunityInformationService.Execute();
         DefineViewNavigationIcons();
         _noCommunity = CommunityCardModels.Count>0 ?false:true;
-        HomeNavigationStore.CurrentViewModel = CommunityCardModels.Count>0 ? new PostFeedViewModel(CommunityCardModels[0]) : new PostFeedViewModel();
+        HomeNavigationStore.CurrentViewModel = CommunityCardModels.Count>0 ? new PostFeedViewModel(CommunityCardModels[0], this.loginModel) : new PostFeedViewModel(this.loginModel);
         HomeNavigationStore.CurrentViewModelChange += OnCurrentViewModelChange;
         
         //M
@@ -80,7 +83,7 @@ public class HomeViewModel:ViewModelBase
     void OnChange(string communityId)
     {
         CommunityCardModel communityCardModel = CommunityCardModels.FirstOrDefault(CommunityCardModel => CommunityCardModel.ID == communityId);
-        HomeNavigationStore.CurrentViewModel = new PostFeedViewModel(communityCardModel);
+        HomeNavigationStore.CurrentViewModel = new PostFeedViewModel(communityCardModel, loginModel);
     }
     private void OnCurrentViewModelChange()
     {

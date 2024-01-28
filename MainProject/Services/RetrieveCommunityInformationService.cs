@@ -33,6 +33,8 @@ public class RetrieveCommunityInformationService:ConnectionBaseService
                     {
                         while (reader.Read())
                         {
+                            string firstName = reader["userFirstName"].ToString();
+                            string lastName = reader["userLastName"].ToString();
                             _communityCardModels.Add(new CommunityCardModel()
                             {
                                 ID = reader["communityID"].ToString(),
@@ -40,6 +42,8 @@ public class RetrieveCommunityInformationService:ConnectionBaseService
                                 OwnerID = reader["communityOwnerID"].ToString(),
                                 Description = reader["communityDescription"].ToString(),
                                 PictureUrl = reader["communityProfilePictureURL"].ToString(),
+                                OwnerPictureUrl = reader["userProfilePicture"].ToString(),
+                                OwnerName = firstName + " " + lastName,
                                 MemberTotal = Convert.ToInt32(reader["communityMemberTotal"]),
                                 PostTotal = Convert.ToInt32(reader["communityPostTotal"]),
                                 CreatedDate = reader["communityCreatedDate"].ToString()
@@ -47,6 +51,7 @@ public class RetrieveCommunityInformationService:ConnectionBaseService
                         }
                     }
                 }
+
             }
         }
         catch (Exception ex)

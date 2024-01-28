@@ -175,3 +175,4 @@ C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\M
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\NewCommunityWindow.g.cs
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\NewCommunityWindow.baml
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\bin\Debug\net6.0-windows\LoadingSpinnerControl.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\Styles\ToggleButton.baml

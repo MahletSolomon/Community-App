@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\App.xaml
 18-456349964
 
-621845709537
+64-1716086208
 2001428265861
 Componets\BindablePasswordBox.xaml;Componets\IconButton.xaml;MainWindow.xaml;MVVM\View\AccountView.xaml;MVVM\View\DashBordView.xaml;MVVM\View\HomeView.xaml;MVVM\View\LoginView.xaml;MVVM\View\NewCommunityWindow.xaml;MVVM\View\NewPostWindow.xaml;MVVM\View\PostFeedView.xaml;MVVM\View\SearchView.xaml;MVVM\View\SettingView.xaml;MVVM\View\SignUpView.xaml;MVVM\View\UploadPictureView.xaml;Styles\Buttons.xaml;Styles\ItemBox.xaml;Styles\TextBox.xaml;Styles\ToggleButton.xaml;
 
-True
+False
 

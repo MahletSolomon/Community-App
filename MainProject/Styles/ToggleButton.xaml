@@ -6,13 +6,22 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Grid>
-                        <Image x:Name="MyImage" Width="26" Height="26" Source="\Images\heart1.png" />
+                        <Image x:Name="MyImage" Width="26" Height="26" Source="/Images/heart1.png"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="MyImage" Property="Source" Value="\Images\heart2.png"/>
+                            <Setter TargetName="MyImage" Property="Source" Value="/Images/heart2.png"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Button" x:Key="Button-Comment">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Image Source="/Images/comment.png" Width="26" Height="26" Stretch="Uniform"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

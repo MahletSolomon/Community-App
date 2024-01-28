@@ -14,7 +14,7 @@ public class CommunityCardModel
     public int MemberTotal { get; set; }
     public int PostTotal { get; set; }
     public string CreatedDate { get; set; }
-    public ObservableCollection<Post> Posts { get; set; }
+    public ObservableCollection<PostModel> Posts { get; set; }
 
 
 }

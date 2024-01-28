@@ -31,7 +31,7 @@ public class DashBordViewModel:ViewModelBase
     private void Navigate()
     {
         string navigateTo = SelectedItem.Name;
-        DashBordNavigationCommand bordNavigationCommand = new DashBordNavigationCommand(navigateTo, DashNavigationStore,_LoginModel);
+        DashBordNavigationCommand bordNavigationCommand = new DashBordNavigationCommand(navigateTo, DashNavigationStore,_LoginModel,_userInformationModel);
         bordNavigationCommand.Execute();
     }
 

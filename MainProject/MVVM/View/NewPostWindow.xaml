@@ -24,7 +24,7 @@
 
             <Label HorizontalAlignment="Left" 
                    VerticalAlignment="Center"
-                   Content="Create Post" 
+                   Content="Create PostModel" 
                    Foreground="#A483EA" 
                    FontSize="30"
                    FontWeight="SemiBold"
@@ -63,7 +63,7 @@
                         HorizontalAlignment="Left"
                         Padding="20 5"
                         Margin="20 0"/>-->
-                    <Button Content="Post"
+                    <Button Content="PostModel"
                             
                             Height="40"
                             FontSize="20" 

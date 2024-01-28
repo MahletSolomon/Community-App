@@ -12,7 +12,7 @@
     <Border Background="#E2E2E2" CornerRadius=" 0 15 15 0">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="170"/>
+                <ColumnDefinition Width="Auto" MaxWidth="250"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <!-- Start of side panel -->

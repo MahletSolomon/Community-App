@@ -6,7 +6,24 @@
              xmlns:local="clr-namespace:MainProject.MVVM.View"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Button Content="Account"></Button>
+    <Grid Background="Azure">
+        <ItemsControl ItemsSource="{Binding PostModels}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding PostCaption}"/>
+                            <Grid Width="200" Height="200">
+                                <Grid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=Border1}" />
+                                </Grid.OpacityMask>
+                                <Border x:Name="Border1"  Width="200" Height="200" CornerRadius="4"  ClipToBounds="True" BorderBrush="Aqua" BorderThickness="1"/>
+                                <Image VerticalAlignment="Stretch"  Source="https://gdb.rferl.org/CD79E0A8-7C79-4C61-A183-B13C8C7E2873_cx0_cy6_cw0_w1080_h608.jpg"/>
+                                <Rectangle Fill="Black"></Rectangle>
+
+                            </Grid>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </UserControl>

@@ -2,6 +2,7 @@
 using MainProject.MVVM.Model;
 using MainProject.MVVM.View;
 using MainProject.MVVM.ViewModel;
+using WpfApp1.Services;
 
 namespace WpfApp1.Commands;
 
@@ -10,12 +11,14 @@ public class NewPostCommand : CommandBase
         
     PostFeedViewModel PostFeedViewModel;
     Window window;
-    public NewPostCommand( NewPostWindow window, PostFeedViewModel viewModel) 
+    public LoginModel LoginModel;
+    public NewPostService NewPostService; 
+    public NewPostCommand( NewPostWindow window, NewPostService newPostService) 
     {
-        PostFeedViewModel = viewModel;
         this.window = window;
         PostFeedViewModel.Caption = "";
         PostFeedViewModel.GetPicture = "";
+        NewPostService = newPostService;
 
     }
 
@@ -23,10 +26,12 @@ public class NewPostCommand : CommandBase
     public override void Execute(object parameter)
     {
         //MessageBox.Show(PostFeedViewModel.Caption);
-        var newPost = new Post(PostFeedViewModel.Caption, "C:\\Users\\hp\\Downloads\\CommunityApp-c8a35b3e0a1fb6b659bf4e3f5aab677d86684835\\CommunityApp-c8a35b3e0a1fb6b659bf4e3f5aab677d86684835\\MainProject\\MVVM\\Images\\leaf.jpg");
+        
+        var newPost = new PostModel();
         PostFeedViewModel.Posts.Add(newPost);
         PostFeedViewModel.Caption = string.Empty;
         PostFeedViewModel.GetPicture = string.Empty;
+        NewPostService.Execute();
         window.Hide();
         //window.ClosingRequestedsted?.Invoke();
 
