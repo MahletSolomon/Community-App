@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainProject.MVVM.View" xmlns:viewmodel="clr-namespace:MainProject.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:PostFeedViewModel}"
         mc:Ignorable="d"
-        Title="NewPostWindow" Height="500" Width="500"
+        SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
-        AllowsTransparency="True"
->
+        AllowsTransparency="True">
 
-  <Border CornerRadius="20"  Margin="30" BorderBrush="White" Padding="5" Background="White">
+  <Border CornerRadius="20"  Margin="30" BorderThickness="0" Padding="5" Background="White">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#D1D5FE"/>
             </Border.Effect>
@@ -24,7 +23,7 @@
 
             <Label HorizontalAlignment="Left" 
                    VerticalAlignment="Center"
-                   Content="Create PostModel" 
+                   Content="Create Post" 
                    Foreground="#A483EA" 
                    FontSize="30"
                    FontWeight="SemiBold"
@@ -38,8 +37,6 @@
                         Width="160"
                         Height="100"
                         FontSize="50" 
-                        
-                        Margin="0 0"
                         VerticalContentAlignment="Center"
                         Style="{StaticResource Button-Fill}"
                         Command="{Binding GetPicture}"
@@ -49,6 +46,7 @@
                          Text="{Binding Caption, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
+                         Width="300"
                          Height="120"
                          HorizontalAlignment="Stretch"
                          BorderThickness="3"
@@ -63,7 +61,7 @@
                         HorizontalAlignment="Left"
                         Padding="20 5"
                         Margin="20 0"/>-->
-                    <Button Content="PostModel"
+                    <Button Content="Post"
                             
                             Height="40"
                             FontSize="20" 

@@ -13,6 +13,8 @@ namespace MainProject.MVVM.ViewModel;
 public class HomeViewModel:ViewModelBase
 {
     public NavigationStore HomeNavigationStore { get; set; }
+    public bool IsLoading { get; set; }
+    
 
     public ViewModelBase PostViewModel => HomeNavigationStore.CurrentViewModel;
     private bool _noCommunity;
@@ -58,20 +60,21 @@ public class HomeViewModel:ViewModelBase
         }
     }
 
+    private UserInformationModel _userInformationModel;
     
-    public HomeViewModel(LoginModel loginModel)
+    public HomeViewModel(LoginModel loginModel,UserInformationModel userInformationModel)
     {
         HomeNavigationStore = new NavigationStore();
         CommunityCardModels = new ObservableCollection<CommunityCardModel>();
         NewCommunityWindow = new NewCommunityWindow();
+        _userInformationModel = userInformationModel;
         this.loginModel = loginModel;
 
-        RetrieveCommunityInformationService retrieveCommunityInformationService =
-            new RetrieveCommunityInformationService(CommunityCardModels, loginModel.ID);
+        RetrieveCommunityInformationService retrieveCommunityInformationService = new RetrieveCommunityInformationService(CommunityCardModels, loginModel.ID,this);
         retrieveCommunityInformationService.Execute();
         DefineViewNavigationIcons();
         _noCommunity = CommunityCardModels.Count>0 ?false:true;
-        HomeNavigationStore.CurrentViewModel = CommunityCardModels.Count>0 ? new PostFeedViewModel(CommunityCardModels[0], this.loginModel) : new PostFeedViewModel(this.loginModel);
+        HomeNavigationStore.CurrentViewModel = CommunityCardModels.Count>0 ? new PostFeedViewModel(CommunityCardModels[0], this.loginModel,_userInformationModel) : new PostFeedViewModel(this.loginModel);
         HomeNavigationStore.CurrentViewModelChange += OnCurrentViewModelChange;
         
         //M
@@ -80,10 +83,10 @@ public class HomeViewModel:ViewModelBase
         CreateCommunity = new CreateCommunityCommand(NewCommunityWindow, this);
     }
 
-    void OnChange(string communityId)
+    void OnChange(int communityId)
     {
         CommunityCardModel communityCardModel = CommunityCardModels.FirstOrDefault(CommunityCardModel => CommunityCardModel.ID == communityId);
-        HomeNavigationStore.CurrentViewModel = new PostFeedViewModel(communityCardModel, loginModel);
+        HomeNavigationStore.CurrentViewModel = new PostFeedViewModel(communityCardModel, loginModel,_userInformationModel);
     }
     private void OnCurrentViewModelChange()
     {

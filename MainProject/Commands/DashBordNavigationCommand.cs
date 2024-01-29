@@ -23,7 +23,7 @@ public class DashBordNavigationCommand
         switch (_navigateTo)
         {
             case "Home":
-                _navigationStore.CurrentViewModel = new HomeViewModel(_loginModel);
+                _navigationStore.CurrentViewModel = new HomeViewModel(_loginModel,_userInformationModel);
                 break;
             case "Search":
                 _navigationStore.CurrentViewModel = new SearchViewModel();
@@ -37,7 +37,7 @@ public class DashBordNavigationCommand
                 _navigationStore.CurrentViewModel = new SettingViewModel();
                 break;
             default:
-                _navigationStore.CurrentViewModel = new HomeViewModel(_loginModel);
+                _navigationStore.CurrentViewModel = new HomeViewModel(_loginModel,_userInformationModel);
                 break;
         }
     }

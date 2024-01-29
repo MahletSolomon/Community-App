@@ -10,7 +10,7 @@ namespace MainProject.MVVM.ViewModel;
 
 public class PostFeedViewModel:ViewModelBase
 {
-    public ObservableCollection<PostModel> Posts { get; }
+    public ObservableCollection<PostModel> Posts { get; set; }
     public CommunityCardModel communityCardModel { set; get; }
     private ICommand ShowInfoPanel { get; }
     public string GetPicture {  get; set; }
@@ -20,30 +20,39 @@ public class PostFeedViewModel:ViewModelBase
     
     public ICommand OpenWindowCommand { get; set; }
     public ICommand NewPostCommand  {  get; set; }
- 
-    public ICommand LeaveCommunity {  get; set; }
     
+    public ICommand LeaveCommunity {  get; set; }
+    private RetrieveCommunityPostService _retrieveCommunityPostService;
+    public UserInformationModel _userInformationModel;
     
    
-    public PostFeedViewModel(CommunityCardModel communityCardModel, LoginModel loginModel)
+    public PostFeedViewModel(CommunityCardModel communityCardModel, LoginModel loginModel,UserInformationModel userInformationModel)
     {
+        Posts = new ObservableCollection<PostModel>();
         this.communityCardModel = communityCardModel;
         NewPostWindow = new NewPostWindow();
-        NewPostWindow.DataContext = this;
+        _userInformationModel = userInformationModel;
+        // NewPostWindow.DataContext = this;
         OpenWindowCommand = new NewWindowCommand(NewPostWindow, this);
         NewPostCommand = new NewPostCommand(NewPostWindow, new NewPostService(this,loginModel));
-        Posts = new ObservableCollection<PostModel>();
+        _retrieveCommunityPostService = new RetrieveCommunityPostService(Posts,communityCardModel.ID);
+        RetrieveCommunityPost();
 
     }
 
     public PostFeedViewModel(LoginModel loginModel)
     {
-        this.communityCardModel = new CommunityCardModel() { Name = "letssss goo" };
         NewPostWindow = new NewPostWindow();
+        this.communityCardModel = communityCardModel;
         NewPostWindow.DataContext = this;
         Posts = new ObservableCollection<PostModel>();
         OpenWindowCommand = new NewWindowCommand(NewPostWindow, this);
         NewPostCommand = new NewPostCommand(NewPostWindow, new NewPostService(this,loginModel));
     }
-    
+
+    void RetrieveCommunityPost()
+    {
+        _retrieveCommunityPostService.Execute();
+    }
+
 }

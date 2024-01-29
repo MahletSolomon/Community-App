@@ -7,6 +7,8 @@ public class PostModel
     public string PostID { get; set; }
     public string PostCaption { get; set; }
     public string PostDate { get; set; }
+    public string PostBy { get; set; }
+    public int PostCommunity { get; set; }
     public string PostImagePath { get; set; }
     public string UserProfileName { get; set; }
     public string UserProfilePicture { get; set; }

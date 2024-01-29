@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using MainProject.MVVM.Model;
 using WpfApp1.Commands;
@@ -41,12 +42,12 @@ public class DashBordViewModel:ViewModelBase
 
     public DashBordViewModel(LoginModel loginModel,NavigationStore navigationStore)
     {
-        _LoginModel = loginModel;
-        RetrieveInformation();
-        DefineViewNavigationIcons();
-        DashNavigationStore = new NavigationStore();
-        DashNavigationStore.CurrentViewModel = new HomeViewModel(loginModel);
-        DashNavigationStore.CurrentViewModelChange += OnCurrentViewModelChange;
+            _LoginModel = loginModel;
+            RetrieveInformation();
+            DefineViewNavigationIcons();
+            DashNavigationStore = new NavigationStore();
+            DashNavigationStore.CurrentViewModel = new HomeViewModel(loginModel,_userInformationModel);
+            DashNavigationStore.CurrentViewModelChange += OnCurrentViewModelChange;
     }
     private void OnCurrentViewModelChange()
     {

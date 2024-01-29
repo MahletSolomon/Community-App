@@ -4,7 +4,7 @@ namespace MainProject.MVVM.Model;
 
 public class CommunityCardModel
 {
-    public string ID { get; set; }
+    public int ID { get; set; }
     public string Name { get; set; }
     public string OwnerID { get; set; }
     public string OwnerPictureUrl { get; set; }

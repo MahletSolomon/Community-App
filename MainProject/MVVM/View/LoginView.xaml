@@ -11,7 +11,6 @@
              d:DesignHeight="720" d:DesignWidth="1240">
     <UserControl.Resources>
         <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
-        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Grid>
          <Grid.OpacityMask>
@@ -29,7 +28,7 @@
               VerticalAlignment="Bottom"/>
        
      <Grid>
-         <loadingSpinnerControl:LoadingSpinner Thickness="5" Color="#A483EA" Diameter="100" IsLoading="{Binding IsLoading}"/>
+         <loadingSpinnerControl:LoadingSpinner Thickness="6" Color="#A483EA" Diameter="100" IsLoading="{Binding IsLoading}"/>
          <Border Margin="10" Padding="0 10" 
                  CornerRadius="21"  
                  Background="White"  

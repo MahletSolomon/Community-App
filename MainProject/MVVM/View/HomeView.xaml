@@ -4,13 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MainProject.MVVM.View"
+             xmlns:loadingSpinnerControl="clr-namespace:LoadingSpinnerControl;assembly=LoadingSpinnerControl"
+             xmlns:converters="clr-namespace:TestingWPF.Converters"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1240">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
     </UserControl.Resources>
     <Border Background="#E2E2E2" CornerRadius=" 0 15 15 0">
         <Grid>
+            <loadingSpinnerControl:LoadingSpinner Thickness="8" Color="#74889A" Diameter="100" IsLoading="{Binding IsLoading}"/>
+            <Grid Visibility="{Binding IsLoading,Converter={StaticResource InverseBooleanToVisibilityConverter},UpdateSourceTrigger=PropertyChanged}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MaxWidth="250"/>
                 <ColumnDefinition/>
@@ -121,7 +126,8 @@
     <ContentControl Grid.Column="1" Content="{Binding PostViewModel}"/>
     
             </Grid>
-            </Border>
+        </Grid>
+    </Border>
             
 
     

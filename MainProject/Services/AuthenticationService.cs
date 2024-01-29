@@ -42,7 +42,7 @@ public class AuthenticationService : ConnectionBaseService
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         
     }

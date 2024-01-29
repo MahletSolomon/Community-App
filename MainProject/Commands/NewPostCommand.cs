@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Threading.Tasks;
+using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.View;
 using MainProject.MVVM.ViewModel;
@@ -6,36 +7,28 @@ using WpfApp1.Services;
 
 namespace WpfApp1.Commands;
 
-public class NewPostCommand : CommandBase
+public class NewPostCommand : AsyncCommandBase
 {
         
     PostFeedViewModel PostFeedViewModel;
     Window window;
     public LoginModel LoginModel;
-    public NewPostService NewPostService; 
+    public NewPostService _newPostService; 
     public NewPostCommand( NewPostWindow window, NewPostService newPostService) 
     {
         this.window = window;
-        PostFeedViewModel.Caption = "";
-        PostFeedViewModel.GetPicture = "";
-        NewPostService = newPostService;
+        _newPostService = newPostService;
 
     }
 
 
-    public override void Execute(object parameter)
+
+    protected  override async Task ExecuteAsync(object parameter)
     {
-        //MessageBox.Show(PostFeedViewModel.Caption);
         
-        var newPost = new PostModel();
-        PostFeedViewModel.Posts.Add(newPost);
-        PostFeedViewModel.Caption = string.Empty;
-        PostFeedViewModel.GetPicture = string.Empty;
-        NewPostService.Execute();
+        //MessageBox.Show(PostFeedViewModel.Caption);
+        await _newPostService.Execute();
         window.Hide();
         //window.ClosingRequestedsted?.Invoke();
-
-
-
     }
 }

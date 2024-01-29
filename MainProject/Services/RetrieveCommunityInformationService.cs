@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using System.Windows;
 using MainProject.MVVM.Model;
+using MainProject.MVVM.ViewModel;
 
 namespace WpfApp1.Services;
 
@@ -10,14 +12,31 @@ public class RetrieveCommunityInformationService:ConnectionBaseService
 {
     private ObservableCollection<CommunityCardModel> _communityCardModels;
     public string _userID;
-    public RetrieveCommunityInformationService(ObservableCollection<CommunityCardModel> CommunityCardModels,string UserID)
+    private HomeViewModel _homeViewModel;
+    public RetrieveCommunityInformationService(ObservableCollection<CommunityCardModel> CommunityCardModels,string UserID,HomeViewModel homeViewModel)
     {
         _communityCardModels = CommunityCardModels;
         _userID = UserID;
+        _homeViewModel = homeViewModel;
+    }
+    
+    public async void Execute()
+    {
+        _homeViewModel.IsLoading = true;
+        try
+        {
+            await RunQuery();
 
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+        }
+
+        _homeViewModel.IsLoading = false;
     }
 
-    public void Execute()
+    private async Task RunQuery()
     {
         try
         {
@@ -37,7 +56,7 @@ public class RetrieveCommunityInformationService:ConnectionBaseService
                             string lastName = reader["userLastName"].ToString();
                             _communityCardModels.Add(new CommunityCardModel()
                             {
-                                ID = reader["communityID"].ToString(),
+                                ID = int.Parse(reader["communityID"].ToString()),
                                 Name = reader["communityName"].ToString(),
                                 OwnerID = reader["communityOwnerID"].ToString(),
                                 Description = reader["communityDescription"].ToString(),

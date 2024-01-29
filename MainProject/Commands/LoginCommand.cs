@@ -25,7 +25,7 @@ public class LoginCommand:AsyncCommandBase
     protected override async Task ExecuteAsync(object parameter)
     {
         _loginViewModel.IsLoading = true;
-        await Task.Delay(100); // Adjust the delay time as needed
+        await Task.Delay(100); 
 
         LoginModel model = new LoginModel()
         {
@@ -52,7 +52,7 @@ public class LoginCommand:AsyncCommandBase
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            MessageBox.Show(e.Message);
         }
         finally
         {
