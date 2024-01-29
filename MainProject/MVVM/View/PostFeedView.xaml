@@ -67,8 +67,14 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel  Orientation="Horizontal" Margin="8 0">
                                             <ToggleButton Name="LikeButton"
-                                                          Style="{StaticResource Button-Like}"/>
-                                            <TextBlock VerticalAlignment="Center" Margin="5 0" Grid.Column="1" Text="{Binding TotalLike}" 
+                                                          Style="{StaticResource Button-Like}"
+                                                          IsChecked="{Binding IsLiked}"
+                                                          CommandParameter="{Binding}"
+                                                          Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.LikedCommand}"
+                                                          />
+                                            <TextBlock VerticalAlignment="Center" 
+                                                       Margin="5 0" Grid.Column="1" 
+                                                       Text="{Binding TotalLike}" 
                                                        FontSize="14" 
                                                        Foreground="Gray" />
                                             <Button Name="CommentButton"
