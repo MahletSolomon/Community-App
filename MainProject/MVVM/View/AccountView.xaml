@@ -13,15 +13,15 @@
             <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
         <Grid>
-            <ListBox ItemsSource="{Binding PostModels}">
+            <ListBox ItemsSource="{Binding PostModels}" Width="400">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"/>
+                        <WrapPanel Orientation="Horizontal" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Image Width="100" Height="100" Source="{Binding UserProfilePicture}"/>
+                        <Image Width="100" Height="100" Source="{Binding PostImagePath}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

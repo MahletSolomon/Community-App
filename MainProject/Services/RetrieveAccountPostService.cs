@@ -43,7 +43,6 @@ public class RetrieveAccountPostService:ConnectionBaseService
                                 PostDate = reader["postDate"].ToString(),
                                 TotalLike = int.Parse(reader["postLike"].ToString()),
                                 TotalComment = int.Parse(reader["postComment"].ToString()),
-                                UserProfileName = reader["userUserName"].ToString(),
                                 UserProfilePicture = reader["userProfilePicture"].ToString(),
                             });
                            

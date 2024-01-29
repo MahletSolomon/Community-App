@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hp\\Documents\\c#\\Comm\\MainProject\\MainProject.csproj": {}
+    "C:\\Users\\YEABSIRA\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hp\\Documents\\c#\\Comm\\MainProject\\MainProject.csproj": {
+    "C:\\Users\\YEABSIRA\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hp\\Documents\\c#\\Comm\\MainProject\\MainProject.csproj",
+        "projectUniqueName": "C:\\Users\\YEABSIRA\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj",
         "projectName": "MainProject",
-        "projectPath": "C:\\Users\\hp\\Documents\\c#\\Comm\\MainProject\\MainProject.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hp\\Documents\\c#\\Comm\\MainProject\\obj\\",
+        "projectPath": "C:\\Users\\YEABSIRA\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj",
+        "packagesPath": "C:\\Users\\YEABSIRA\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\YEABSIRA\\RiderProjects\\CommunityApp\\MainProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\YEABSIRA\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,7 +76,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
