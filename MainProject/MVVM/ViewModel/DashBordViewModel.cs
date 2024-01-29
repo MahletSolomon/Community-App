@@ -68,25 +68,25 @@ public class DashBordViewModel:ViewModelBase
         PageNavModels.Add(new PageNavModel()
         {
             Name = "Home",
-            ImageSource = "C:/Users/abiym/RiderProjects/CommunityApp/MainProject/Image/Icon/Home.png"
+            ImageSource = "/Images/Home.png"
         });
         PageNavModels.Add(new PageNavModel()
         {
             Name = "Search",
-            ImageSource = "C:/Users/abiym/RiderProjects/CommunityApp/MainProject/Image/Icon/Search.png"
+            ImageSource = "/Images/Search.png"
 
 
         });
         PageNavModels.Add(new PageNavModel()
         {
             Name = "Account",
-            ImageSource = "C:/Users/abiym/RiderProjects/CommunityApp/MainProject/Image/Icon/Account.png"
+            ImageSource = "/Images/Account.png"
 
         });
         PageNavModels.Add(new PageNavModel()
         {
             Name = "Setting",
-            ImageSource = "C:/Users/abiym/RiderProjects/CommunityApp/MainProject/Image/Icon/Setting.png"
+            ImageSource = "/Images/Setting.png"
 
         });
     }

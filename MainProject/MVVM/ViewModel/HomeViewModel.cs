@@ -100,12 +100,12 @@ public class HomeViewModel:ViewModelBase
         PageNavModel.Add(new PageNavModel()
         {
             Name = "Community",
-            ImageSource = "C:/Users/abiym/RiderProjects/CommunityApp/MainProject/Image/Icon/Community.png"
+            ImageSource = "/Images/Community.png"
         });
         PageNavModel.Add(new PageNavModel()
         {
             Name = "Message",
-            ImageSource = "C:/Users/abiym/RiderProjects/CommunityApp/MainProject/Image/Icon/Message.png"
+            ImageSource = "/Images/Message.png"
         });
 
     }
