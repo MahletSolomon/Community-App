@@ -135,7 +135,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Image Margin="0 2 5 0" Source="C:\Users\abiym\RiderProjects\CommunityApp\MainProject\Image\Icon\meta.png" Grid.Column="0" Width="23" Height="23"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Image Margin="0 2 5 0" Source="/Images/meta.png" Grid.Column="0" Width="23" Height="23"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
                             <ContentPresenter Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         </Grid>
                     </Border>
@@ -192,7 +192,7 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Image Margin="0 2 5 0" Source="C:\Users\abiym\RiderProjects\CommunityApp\MainProject\Image\Icon\google.png" Grid.Column="0" Width="23" Height="23"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <Image Margin="0 2 5 0" Source="/Images/google.png" Grid.Column="0" Width="23" Height="23"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
                             <ContentPresenter Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                         </Grid>
                     </Border>
