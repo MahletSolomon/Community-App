@@ -20,21 +20,22 @@ public class PostFeedViewModel:ViewModelBase
     
     public ICommand OpenWindowCommand { get; set; }
     public ICommand NewPostCommand  {  get; set; }
+    public ICommand LeaveCommunityCommand  {  get; set; }
     
-    public ICommand LeaveCommunity {  get; set; }
     private RetrieveCommunityPostService _retrieveCommunityPostService;
     public UserInformationModel _userInformationModel;
     
    
     public PostFeedViewModel(CommunityCardModel communityCardModel, LoginModel loginModel,UserInformationModel userInformationModel)
     {
-        Posts = new ObservableCollection<PostModel>();
-        this.communityCardModel = communityCardModel;
         NewPostWindow = new NewPostWindow();
-        _userInformationModel = userInformationModel;
-        // NewPostWindow.DataContext = this;
+        Posts = new ObservableCollection<PostModel>();
         OpenWindowCommand = new NewWindowCommand(NewPostWindow, this);
         NewPostCommand = new NewPostCommand(NewPostWindow, new NewPostService(this,loginModel));
+        LeaveCommunityCommand = new LeaveCommunityCommand(new LeaveCommunityService(loginModel.ID,communityCardModel.ID));
+        this.communityCardModel = communityCardModel;
+        _userInformationModel = userInformationModel;
+        // NewPostWindow.DataContext = this;
         _retrieveCommunityPostService = new RetrieveCommunityPostService(Posts,communityCardModel.ID);
         RetrieveCommunityPost();
 

@@ -12,6 +12,8 @@ public class PostModel
     public string PostImagePath { get; set; }
     public string UserProfileName { get; set; }
     public string UserProfilePicture { get; set; }
+    public bool IsLiked { get; set; }
+    
     
     public int TotalLike { get; set; }
     public int TotalComment { get; set; }

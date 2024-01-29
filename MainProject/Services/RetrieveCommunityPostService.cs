@@ -43,9 +43,10 @@ public class RetrieveCommunityPostService:ConnectionBaseService
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.GetCommunityOwnerInfo(@CommunityID)", connection))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.GetPostInCommunityInfo(@CommunityID,@UserID)", connection))
                 {
                     command.Parameters.AddWithValue("@CommunityID", _communityID);
+                    command.Parameters.AddWithValue("@UserID", "AbiyMera73");
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -53,6 +54,9 @@ public class RetrieveCommunityPostService:ConnectionBaseService
                         {
                             string firstName = reader["userFirstName"].ToString();
                             string lastName = reader["userLastName"].ToString();
+                            int IsLikedInt = int.Parse(reader["IsLiked"].ToString());
+                            bool IsLiked = IsLikedInt == 1 ? true:false;
+
                             _post.Add(new PostModel()
                             {
                                 PostCaption =  reader["postDescription"].ToString(),
@@ -62,10 +66,11 @@ public class RetrieveCommunityPostService:ConnectionBaseService
                                 TotalLike = int.Parse(reader["postLike"].ToString()),
                                 TotalComment = int.Parse(reader["postComment"].ToString()),
                                 UserProfilePicture =  reader["userProfilePicture"].ToString(),
-                                UserProfileName =  firstName + " " + lastName
+                                UserProfileName =  firstName + " " + lastName,
+                                IsLiked = IsLiked
                             });
-
                         }
+
                     }
                 }
 
