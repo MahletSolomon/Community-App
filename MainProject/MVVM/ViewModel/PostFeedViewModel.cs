@@ -20,6 +20,8 @@ public class PostFeedViewModel:ViewModelBase
     
     public ICommand OpenWindowCommand { get; set; }
     public ICommand NewPostCommand  {  get; set; }
+    public ICommand LikedCommand { set; get; }
+    public ICommand CommandCommand { set; get; }
     
     public ICommand LeaveCommunity {  get; set; }
     private RetrieveCommunityPostService _retrieveCommunityPostService;
@@ -36,6 +38,7 @@ public class PostFeedViewModel:ViewModelBase
         OpenWindowCommand = new NewWindowCommand(NewPostWindow, this);
         NewPostCommand = new NewPostCommand(NewPostWindow, new NewPostService(this,loginModel));
         _retrieveCommunityPostService = new RetrieveCommunityPostService(Posts,communityCardModel.ID);
+        LikedCommand = new LikedCommand(new LikeService(this));
         RetrieveCommunityPost();
 
     }

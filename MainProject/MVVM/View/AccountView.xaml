@@ -7,23 +7,75 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="Azure">
-        <ItemsControl ItemsSource="{Binding PostModels}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding PostCaption}"/>
-                            <Grid Width="200" Height="200">
-                                <Grid.OpacityMask>
-                                    <VisualBrush Visual="{Binding ElementName=Border1}" />
-                                </Grid.OpacityMask>
-                                <Border x:Name="Border1"  Width="200" Height="200" CornerRadius="4"  ClipToBounds="True" BorderBrush="Aqua" BorderThickness="1"/>
-                                <Image VerticalAlignment="Stretch"  Source="https://gdb.rferl.org/CD79E0A8-7C79-4C61-A183-B13C8C7E2873_cx0_cy6_cw0_w1080_h608.jpg"/>
-                                <Rectangle Fill="Black"></Rectangle>
+        <Grid Background="Azure">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <ListBox ItemsSource="{Binding PostModels}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Image Width="100" Height="100" Source="{Binding UserProfilePicture}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-                            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Background=" #7877CE">
+            <StackPanel>
+                <Border Width="100" Height="100" CornerRadius="50"
+                        BorderBrush="Black" BorderThickness="0"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+                    <Image Source="{Binding userInformationModel.ProfilePictureUrl}"
+                           Stretch="UniformToFill">
+                        <Image.Clip>
+                            <EllipseGeometry Center="50,50" RadiusX="49" RadiusY="49"/>
+                        </Image.Clip>
+                     </Image>
+                    
+                </Border>
+                <StackPanel>
+                    
+                    <Label Content="{Binding UserName}"
+                           HorizontalAlignment="Center" FontSize="21" Foreground="White"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Content="{Binding userInformationModel.FirstName }"
+                               FontSize="20"  Foreground="White"
+                               />
+                        <Label Content="{Binding userInformationModel.LastName}"
+                               FontSize="20" 
+                               FontWeight="Heavy"
+                               Foreground="White"
+                               />
                     </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                   
+
+                </StackPanel>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"></RowDefinition>
+                        <RowDefinition Height="20*"></RowDefinition>
+                        <RowDefinition Height="60*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="Community In" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White"/>
+                    <Label Grid.Column="1" Content="Community Created" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White"/>
+                    <Label Grid.Row="1" Content="5" HorizontalAlignment="Center" Foreground="White"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="5" HorizontalAlignment="Center" Foreground="White"/>
+                </Grid>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
     </Grid>
 </UserControl>

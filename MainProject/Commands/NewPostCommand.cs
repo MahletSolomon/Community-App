@@ -12,7 +12,7 @@ public class NewPostCommand : AsyncCommandBase
         
     PostFeedViewModel PostFeedViewModel;
     Window window;
-    public LoginModel LoginModel;
+    
     public NewPostService _newPostService; 
     public NewPostCommand( NewPostWindow window, NewPostService newPostService) 
     {
