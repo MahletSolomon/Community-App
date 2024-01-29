@@ -265,7 +265,7 @@
                Foreground="White"
                Padding="16 10"
                Margin="0 10"
-               Command="{Binding LeaveCommunity}"/>
+               Command="{Binding LeaveCommunityCommand}"/>
        </Grid>
     </Border>
 

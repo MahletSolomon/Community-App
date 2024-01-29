@@ -33,6 +33,7 @@ public class PostModel:INotifyPropertyChanged
     }
 
     
+    
 
     public PostModel()
     {
