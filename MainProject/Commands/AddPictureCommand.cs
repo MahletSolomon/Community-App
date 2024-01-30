@@ -14,9 +14,11 @@ public class AddPictureCommand:AsyncCommandBase
 {
     private UploadPictureViewModel _UploadPictureViewModel  { set; get; }
     private UserInformationModel _userInformationModel;
+    private UploadProfilePictureService uploadProfilePictureService;
 
     public AddPictureCommand(UploadPictureViewModel uploadPictureView,UserInformationModel userInformationModel)
     {
+         uploadProfilePictureService = new UploadProfilePictureService(_userInformationModel.Username);
         _UploadPictureViewModel = uploadPictureView;
         _userInformationModel = userInformationModel;
 
@@ -30,8 +32,7 @@ public class AddPictureCommand:AsyncCommandBase
        {
            filePath = openFileDialog.FileName;
            
-           UploadProfilePictureService uploadProfilePictureService = new UploadProfilePictureService(filePath);
-          await uploadProfilePictureService.Post();
+          await uploadProfilePictureService.Post(filePath);
           string url=uploadProfilePictureService.GetUrl();
           _UploadPictureViewModel.ProfileUrl = url;
           _userInformationModel.ProfilePictureUrl = url;

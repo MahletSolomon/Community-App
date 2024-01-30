@@ -12,7 +12,7 @@ public class DashBordViewModel:ViewModelBase
 {
     public NavigationStore DashNavigationStore { get; set; }
     public ViewModelBase CurrentViewModel => DashNavigationStore.CurrentViewModel;
-    private LoginModel _LoginModel;
+    private LoginModel _loginModel;
 
     public ObservableCollection<PageNavModel> PageNavModels { set; get; }
     private PageNavModel _PageNavModel;
@@ -32,7 +32,7 @@ public class DashBordViewModel:ViewModelBase
     private void Navigate()
     {
         string navigateTo = SelectedItem.Name;
-        DashBordNavigationCommand bordNavigationCommand = new DashBordNavigationCommand(navigateTo, DashNavigationStore,_LoginModel,_userInformationModel);
+        DashBordNavigationCommand bordNavigationCommand = new DashBordNavigationCommand(navigateTo, DashNavigationStore,_loginModel,_userInformationModel,this);
         bordNavigationCommand.Execute();
     }
 
@@ -42,12 +42,17 @@ public class DashBordViewModel:ViewModelBase
 
     public DashBordViewModel(LoginModel loginModel,NavigationStore navigationStore)
     {
-            _LoginModel = loginModel;
+            _loginModel = loginModel;
             RetrieveInformation();
             DefineViewNavigationIcons();
             DashNavigationStore = new NavigationStore();
-            DashNavigationStore.CurrentViewModel = new HomeViewModel(loginModel,_userInformationModel);
+            DashNavigationStore.CurrentViewModel = new HomeViewModel(loginModel,_userInformationModel,this);
             DashNavigationStore.CurrentViewModelChange += OnCurrentViewModelChange;
+    }
+
+    public void Refresh()
+    {
+        DashNavigationStore.CurrentViewModel = new HomeViewModel(_loginModel,_userInformationModel,this);
     }
     private void OnCurrentViewModelChange()
     {
@@ -56,7 +61,7 @@ public class DashBordViewModel:ViewModelBase
 
     private void RetrieveInformation()
     {
-        RetrieveUserInformationService retrieveUserInformationService = new RetrieveUserInformationService(_LoginModel.ID);
+        RetrieveUserInformationService retrieveUserInformationService = new RetrieveUserInformationService(_loginModel.ID);
         _userInformationModel = retrieveUserInformationService.GetInformation();
         ProfilePicture = _userInformationModel.ProfilePictureUrl;
         ProfileName = _userInformationModel.FirstName + " " + _userInformationModel.LastName;

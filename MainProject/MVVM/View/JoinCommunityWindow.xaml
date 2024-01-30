@@ -1,0 +1,68 @@
+﻿<Window x:Class="MainProject.MVVM.View.JoinCommunityWindow"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MainProject.MVVM.View" xmlns:viewmodel="clr-namespace:MainProject.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DashBordViewModel}"
+        mc:Ignorable="d"
+        Title="NewCommunityWindow" Height="350" Width="600"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border CornerRadius="10"  Margin="30" BorderBrush="White" Padding="5" Background="White">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#333333" Opacity="0.4"/>
+        </Border.Effect>
+        <Grid   VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin=" 05">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+           <DockPanel Margin="0 5">
+               <TextBlock Text="{Binding CommunityCardModel.Name}" DockPanel.Dock="Bottom"  Margin="0 4 0 0" FontSize="16" Foreground="#252878" Opacity="0.8"  FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+               <Image 
+                   DockPanel.Dock="Bottom"
+                   Source="{Binding CommunityCardModel.PictureUrl}"
+                   Grid.Column="0" 
+                   Width="80" 
+                   Height="80" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Bottom">
+                   <Image.Clip>
+                       <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
+                   </Image.Clip>
+               </Image>
+
+           </DockPanel>
+            <Grid Grid.Row="1" VerticalAlignment="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Margin="30 0" HorizontalAlignment="Left" VerticalAlignment="Top" TextAlignment="Center" LineHeight="20" Foreground="#748493" >
+                    <Run Text="{Binding CommunityCardModel.PostTotal}"  FontSize="18" FontWeight="SemiBold"/>
+                    <LineBreak />
+                    <Run Text="Posts" FontSize="16" />
+                </TextBlock> 
+                <TextBlock Grid.Column="0" Margin="30 0" HorizontalAlignment="Right" VerticalAlignment="Top" TextAlignment="Center" LineHeight="20" Foreground="#748493" >
+                    <Run Text="{Binding CommunityCardModel.MemberTotal}"  FontSize="18" FontWeight="SemiBold"/>
+                    <LineBreak />
+                    <Run Text="Member" FontSize="16" />
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button  VerticalAlignment="Bottom" Content="Back" Padding="8" Margin="5" Style="{StaticResource Button-Fill}" Click="ButtonBase_OnClick"/>
+                <Button Grid.Column="1"  VerticalAlignment="Bottom" Content="Join" Padding="8" Margin="5" Style="{StaticResource Button-Edge}" Command="{Binding JoinCommunityCommand}"/>
+            </Grid>
+        </Grid>
+        
+     </Border>
+    
+</Window>

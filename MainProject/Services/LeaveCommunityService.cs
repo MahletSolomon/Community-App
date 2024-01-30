@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
+using MainProject.MVVM.ViewModel;
 
 namespace WpfApp1.Services;
 
@@ -9,10 +10,12 @@ public class LeaveCommunityService:ConnectionBaseService
 {
     private string _userID;
     private int _communityID;
-    public LeaveCommunityService(string userID,int communityId)
+    private HomeViewModel _homeViewModel;
+    public LeaveCommunityService(string userID,int communityId,HomeViewModel homeViewModel)
     {
         _userID = userID;
         _communityID = communityId;
+        _homeViewModel = homeViewModel;
     }
 
     public void Execute()
@@ -30,6 +33,7 @@ public class LeaveCommunityService:ConnectionBaseService
                         command.Parameters.AddWithValue("@userID", _userID);
                         command.Parameters.AddWithValue("@communityID", _communityID);
                         command.ExecuteNonQuery();
+                        _homeViewModel.DashBordViewModel.Refresh();
                     }
                     catch (Exception e)
                     {

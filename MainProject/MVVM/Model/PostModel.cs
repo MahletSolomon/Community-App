@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -10,7 +11,7 @@ public class PostModel:INotifyPropertyChanged
     public event PropertyChangedEventHandler? PropertyChanged;
     public string PostID { get; set; }
     public string PostCaption { get; set; }
-    public string PostDate { get; set; }
+    public DateTime PostDate { get; set; }
     public string PostBy { get; set; }
     public int PostCommunity { get; set; }
     public string PostImagePath { get; set; }

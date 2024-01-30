@@ -5,9 +5,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MainProject.MVVM.View"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Button Content="Search"></Button>
-
-    </Grid>
+             d:DesignHeight="720" d:DesignWidth="1090">
+   <Border Background="#F3F3F3" CornerRadius=" 0 15 15 0" Padding="50 12">
+       <StackPanel>
+           <TextBox Style="{StaticResource TextBoxStyle}"  Padding="16"  Tag="Search" Text="{Binding SearchValue,UpdateSourceTrigger=PropertyChanged}"/>
+           <TextBlock Text="Result" Opacity="0.6" Margin="6 10"/>
+           <ItemsControl Margin="10 5" Background="Transparent" BorderThickness="0" ItemsSource="{Binding CommunityCardModels}">
+               <ItemsControl.ItemTemplate>
+                   <DataTemplate>
+                      <Button HorizontalAlignment="Stretch" Style="{StaticResource Button-Search}" Margin="0 0 0 10" 
+                              Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.SelectSearchItemCommand}"
+                              CommandParameter="{Binding}">
+                          <Grid   VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin=" 05">
+                              <Grid.ColumnDefinitions>
+                                  <ColumnDefinition Width="40"/>
+                                  <ColumnDefinition />
+                                  <ColumnDefinition Width="100"/>
+                              </Grid.ColumnDefinitions>
+                              <Image 
+                                  Source="{Binding PictureUrl}"
+                                  Grid.Column="0" 
+                                  Width="40" 
+                                  Height="40" 
+                                  HorizontalAlignment="Right" 
+                                  VerticalAlignment="Center">
+                                  <Image.Clip>
+                                      <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
+                                  </Image.Clip>
+                              </Image>
+                              <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                  <TextBlock Text="{Binding Name}" Margin="15 0 0 0" FontSize="14" Foreground="#252878" Opacity="0.8"  FontWeight="SemiBold"/>
+                                  <TextBlock Text="{Binding MemberTotal,StringFormat={}{0} Members }" Margin="15 5 0 0" FontSize="12" Foreground="#748493" Opacity="0.8"/>
+                              </StackPanel>
+                              <TextBlock Grid.Column="2" Text="January 2 2022" HorizontalAlignment="Center" VerticalAlignment="Bottom" Opacity="0.6"/>
+                          </Grid>
+                      </Button>
+                   </DataTemplate>
+               </ItemsControl.ItemTemplate>
+           </ItemsControl>
+       </StackPanel>
+   </Border>
 </UserControl>

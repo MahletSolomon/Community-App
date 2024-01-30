@@ -13,7 +13,7 @@ public class RetrieveCommunityInformationService:ConnectionBaseService
     private ObservableCollection<CommunityCardModel> _communityCardModels;
     public string _userID;
     private HomeViewModel _homeViewModel;
-    public RetrieveCommunityInformationService(ObservableCollection<CommunityCardModel> CommunityCardModels,string UserID,HomeViewModel homeViewModel)
+    public RetrieveCommunityInformationService(ObservableCollection<CommunityCardModel> CommunityCardModels,string UserID,HomeViewModel homeViewModel=null)
     {
         _communityCardModels = CommunityCardModels;
         _userID = UserID;
@@ -63,9 +63,9 @@ public class RetrieveCommunityInformationService:ConnectionBaseService
                                 PictureUrl = reader["communityProfilePictureURL"].ToString(),
                                 OwnerPictureUrl = reader["userProfilePicture"].ToString(),
                                 OwnerName = firstName + " " + lastName,
-                                MemberTotal = Convert.ToInt32(reader["communityMemberTotal"]),
-                                PostTotal = Convert.ToInt32(reader["communityPostTotal"]),
-                                CreatedDate = reader["communityCreatedDate"].ToString()
+                                MemberTotal = reader["communityMemberTotal"].ToString(),
+                                PostTotal = reader["communityPostTotal"].ToString(),
+                                CreatedDate = DateTime.Parse(reader["communityCreatedDate"].ToString())
                             });
                         }
                     }

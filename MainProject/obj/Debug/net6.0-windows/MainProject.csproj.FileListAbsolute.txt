@@ -241,3 +241,5 @@ C:\Users\hp\Documents\c#\Comm\MainProject\bin\Debug\net6.0-windows\MainProject.d
 C:\Users\hp\Documents\c#\Comm\MainProject\bin\Debug\net6.0-windows\MainProject.pdb
 C:\Users\hp\Documents\c#\Comm\MainProject\obj\Debug\net6.0-windows\MainProject.genruntimeconfig.cache
 C:\Users\hp\Documents\c#\Comm\MainProject\obj\Debug\net6.0-windows\ref\MainProject.dll
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\JoinCommunityWindow.g.cs
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\JoinCommunityWindow.baml

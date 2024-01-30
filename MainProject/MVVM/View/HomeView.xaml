@@ -120,7 +120,7 @@
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Stretch" 
                     Height="40" 
-                    Command="{Binding OpenCommunityWindowCommand}"/>        
+                    Command="{Binding OpenCreateCommunityCommand}"/>        
         </Grid>
     </Border>
     <ContentControl Grid.Column="1" Content="{Binding PostViewModel}"/>

@@ -7,15 +7,17 @@
              xmlns:componets="clr-namespace:MainProject.Componets"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1240">
-    <Grid>
+    
+   <Border Background="#E2E2E2" CornerRadius="0 15 15 0 ">
+        <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
-            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
-                <ItemsControl ItemsSource="{Binding Posts}" Background="Transparent"  MaxWidth="525" >
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden" >
+                <ItemsControl ItemsSource="{Binding Posts}" Background="Transparent" MaxWidth="565">
                     <ItemsControl.ItemTemplate >
                         <DataTemplate>
                             <Border  CornerRadius="15" Margin="0,10,0,10" Background="White" >
@@ -67,6 +69,7 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel  Orientation="Horizontal" Margin="8 0">
                                             <ToggleButton Name="LikeButton"
+                                                          Cursor="Hand"
                                                           Style="{StaticResource Button-Like}"
                                                           IsChecked="{Binding IsLiked}"
                                                           CommandParameter="{Binding}"
@@ -78,14 +81,14 @@
                                                        FontSize="14" 
                                                        Foreground="Gray" />
                                             <Button Name="CommentButton"
-                                                    Style="{StaticResource Button-Comment}" Visibility="Visible"/>
+                                                    Style="{StaticResource Button-Comment}" Cursor="Hand" Visibility="Visible"/>
                                             <TextBlock VerticalAlignment="Center" Margin="5 0" Grid.Column="1" Text="{Binding TotalComment}"
                                                        FontSize="14"
                                                        Foreground="Gray" />
                                         </StackPanel>
                                         
                                         <TextBlock Grid.Column="1" 
-                                                   Text="{Binding PostDate}" 
+                                                   Text="{Binding PostDate,StringFormat={}{0:MMMM dd yyyy}}" 
                                                    HorizontalAlignment="Right" 
                                                    FontSize="14" 
                                                    Foreground="Gray"/>
@@ -134,7 +137,7 @@
        <Grid>
            <Grid.RowDefinitions>
                <RowDefinition></RowDefinition>
-               <RowDefinition Height="100"></RowDefinition>
+               <RowDefinition Height="60"></RowDefinition>
            </Grid.RowDefinitions>
            <StackPanel 
             Width="230"
@@ -238,22 +241,32 @@
                 <TextBlock LineHeight="23">
                     <Run Text="Date"  FontSize="15" />
                     <LineBreak />
-                    <Run Text="{Binding communityCardModel.CreatedDate}"  FontSize="14" Foreground="#F7FFEE"/>
+                    <Run Text="{Binding communityCardModel.CreatedDate,  StringFormat={}{0:MMMM dd yyyy}}"  FontSize="14" Foreground="#F7FFEE"/>
                 </TextBlock>
             </Label>
 
         </StackPanel>
         
-            <Button Grid.Row="4"
-                    Content="New PostModel" 
-                    FontSize="15"
-                    Style="{StaticResource Button-Fill}"
-                    FontWeight="Medium"
-                    VerticalAlignment="Top"
-                    Foreground="White" 
-                    Margin="0 10"
-                    Padding="16 10"
-                    Command="{Binding OpenWindowCommand}"/>
+        <Button Grid.Row="4"
+                Content="Post" 
+                FontSize="15"
+                Style="{StaticResource Button-Icon-Plus}"
+                FontWeight="Medium"
+                VerticalAlignment="Top"
+                Foreground="White" 
+                Margin="0 10 0 5"
+                Padding="4 4"
+                Command="{Binding OpenWindowCommand}"/> 
+        <Button Grid.Row="4"
+                Content="Refresh" 
+                FontSize="15"
+                Style="{StaticResource Button-Icon-Refresh}"
+                FontWeight="Medium"
+                VerticalAlignment="Top"
+                Foreground="White" 
+                Margin="0 5"
+                Padding="4 4"
+                Command="{Binding RefreshCommand}"/>
         
            </StackPanel>
            <Button Grid.Row="1" 
@@ -273,4 +286,5 @@
             
         </Grid>
     </Grid>
+   </Border>
 </UserControl>

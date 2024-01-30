@@ -44,7 +44,7 @@
                    <Label Foreground="#C7B5EE" Padding="23 18 0 0" FontWeight="SemiBold" Content="Welcome" FontSize="36"/>
                    <Label Foreground="#A483EA" Padding="23 0 0 12" FontWeight="SemiBold" Content="back!" FontSize="36"/>
                </StackPanel>
-               <TextBox Padding=" 16 15"
+               <TextBox Padding="  15"
                         Margin="23 8"
                         Style="{StaticResource TextBoxStyle}"
                         Tag="Username"

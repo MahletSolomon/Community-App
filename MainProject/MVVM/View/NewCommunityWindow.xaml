@@ -35,13 +35,13 @@
                          
                          Tag="Community Name"
                         Padding="15 16"
-                         Text="{Binding CommunityName, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                         Text="{Binding CommunityCardModel.Name, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="12"/>
                     <Label Content="Description:" FontSize="12" Padding="0 10"/>
                 <TextBox Padding=" 16 15"
                         Style="{StaticResource TextBoxStyle}"
                         Height="100"
-                        Text="{Binding CommunityDescription, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                        Text="{Binding CommunityCardModel.Description, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
                         FontSize="12"/>
                 <Button Content="+"
                         Height="80"
@@ -51,7 +51,7 @@
                         VerticalContentAlignment="Center"
                         Style="{StaticResource Button-Fill}"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding CommunityPicture}"/>
+                        Command="{Binding UploadPictureCommand}"/>
                 <Button Content="Create"
                         Height="35"
                         

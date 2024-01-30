@@ -8,13 +8,13 @@
         xmlns:viewModel="clr-namespace:MainProject.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="720"
-        Width="1280"
+        Height="740"
+        Width="1300"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
-   <Grid   MouseDown="UIElement_OnMouseDown">
+   <Grid   MouseDown="UIElement_OnMouseDown" Margin="10">
        <ContentControl Content="{Binding CurrentViewModel}">
            <ContentControl.Resources>
                
