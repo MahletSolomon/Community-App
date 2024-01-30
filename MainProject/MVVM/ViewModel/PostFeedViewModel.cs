@@ -33,6 +33,9 @@ public class PostFeedViewModel:ViewModelBase
     public ICommand UploadPictureCommand { set; get; }
     public ICommand LeaveCommunityCommand  {  get; set; }
     public ICommand RefreshCommand  {  get; set; }
+    public CommentWindow CommentWindow;
+    public CommentViewModel CommentViewModel;
+    public ICommand OpenCommentWindow { get; set; }
     
     
     public UserInformationModel _userInformationModel;

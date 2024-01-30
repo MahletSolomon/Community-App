@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\
+C:\Users\abiym\RiderProjects\CommunityAppCheck\MainProject\obj\Debug\net6.0-windows\
 MainProject
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\abiym\RiderProjects\CommunityApp\MainProject\App.xaml
-191042291625
+C:\Users\abiym\RiderProjects\CommunityAppCheck\MainProject\App.xaml
+20627589234
 
-83617149939
+891704624789
 2001428265861
-Componets\BindablePasswordBox.xaml;Componets\IconButton.xaml;MainWindow.xaml;MVVM\View\AccountView.xaml;MVVM\View\DashBordView.xaml;MVVM\View\HomeView.xaml;MVVM\View\JoinCommunityWindow.xaml;MVVM\View\LoginView.xaml;MVVM\View\NewCommunityWindow.xaml;MVVM\View\NewPostWindow.xaml;MVVM\View\PostFeedView.xaml;MVVM\View\SearchView.xaml;MVVM\View\SettingView.xaml;MVVM\View\SignUpView.xaml;MVVM\View\UploadPictureView.xaml;Styles\Buttons.xaml;Styles\ItemBox.xaml;Styles\TextBox.xaml;Styles\ToggleButton.xaml;
+Componets\BindablePasswordBox.xaml;Componets\IconButton.xaml;MainWindow.xaml;MVVM\View\AccountView.xaml;MVVM\View\CommentWindow.xaml;MVVM\View\DashBordView.xaml;MVVM\View\HomeView.xaml;MVVM\View\JoinCommunityWindow.xaml;MVVM\View\LoginView.xaml;MVVM\View\NewCommunityWindow.xaml;MVVM\View\NewPostWindow.xaml;MVVM\View\PostFeedView.xaml;MVVM\View\SearchView.xaml;MVVM\View\SettingView.xaml;MVVM\View\SignUpView.xaml;MVVM\View\UploadPictureView.xaml;Styles\Buttons.xaml;Styles\ItemBox.xaml;Styles\TextBox.xaml;Styles\ToggleButton.xaml;
 
 False
 
