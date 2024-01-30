@@ -226,22 +226,168 @@
         </Setter>
     </Style>
     <!-- End of BUTTON-ICON-GOOGLE -->
-    
-    <!-- End of BUTTON-ICON -->
-    <Style TargetType="Button" x:Key="Button-Like">
+    <!-- Start of BUTTON-ICON-REFRESH -->
+
+    <Style TargetType="Button" x:Key="Button-Icon-Refresh">
+        <Setter Property="Background" Value="#7877CE"/> 
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="#A483EA"/> 
+        <Setter Property="BorderThickness" Value="0"/> 
+        <Setter Property="BorderBrush" Value="#A483EA"/> 
+
+        <Setter Property="Padding" Value="0"/> 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                       <Grid>
-                           <Image Width="26" Height="26" Source="/Images/heart1.png"/>
-                           <Image Width="26" Height="26" Source="/Images/heart2.png"/>
-                       </Grid>
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="12"
+                            Padding="{TemplateBinding Padding}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="29"/>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Margin="0 2 0 0" Source="/Images/Refresh.png" Grid.Column="0" Width="29" Height="29"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ContentPresenter Grid.Column="1" Margin="5 0 0 0 " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#8886E1" Duration="0:0:0.15" AccelerationRatio="0"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                                
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#7877CE" Duration="0:0:0.15" AccelerationRatio="0"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
                        
-                       
+
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <!-- End of BUTTON-ICON-REFRESH -->  
+    <!-- Start of BUTTON-ICON-PLUS -->
+
+    <Style TargetType="Button" x:Key="Button-Icon-Plus">
+        <Setter Property="Background" Value="#7877CE"/> 
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="#A483EA"/> 
+        <Setter Property="BorderThickness" Value="0"/> 
+        <Setter Property="BorderBrush" Value="#A483EA"/> 
+
+        <Setter Property="Padding" Value="0"/> 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}"
+                            CornerRadius="12"
+                            Padding="{TemplateBinding Padding}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="29"/>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Margin="0 2 0 0" Source="/Images/Plus.png" Grid.Column="0" Width="29" Height="29"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ContentPresenter Grid.Column="1" Margin="5 0 0 0 " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#8886E1" Duration="0:0:0.15" AccelerationRatio="0"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                                
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#7877CE" Duration="0:0:0.15" AccelerationRatio="0"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                       
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End of BUTTON-ICON-GOOGLE -->
+    
+    <!-- End of BUTTON-ICON -->
+    
+      
+    <!-- Start of BUTTON-FILL -->
+    <Style TargetType="Button" x:Key="Button-Search">
+        <Setter Property="Background" Value="#F3F3F3"/> 
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="Black"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="Padding" Value="0"/> 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                   <Grid>
+                       <Border Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}">
+                           <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                       </Border>
+                   </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#8382A2"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="white" Duration="0:0:0.15" AccelerationRatio="0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                                
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#F3F3F3" Duration="0:0:0.1" AccelerationRatio="0.4"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                       
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End of BUTTON-FILL -->
+    
 </ResourceDictionary>

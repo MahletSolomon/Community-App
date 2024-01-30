@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using MainProject.MVVM.Model;
@@ -10,85 +11,83 @@ namespace MainProject.MVVM.ViewModel;
 
 public class PostFeedViewModel:ViewModelBase
 {
-    public ObservableCollection<PostModel> Posts { get; set; }
+    public Dictionary<int, ObservableCollection<PostModel>> _postStorage { set; get; }
+    private ObservableCollection<PostModel> _posts;
+    public ObservableCollection<PostModel> Posts
+    {
+        get => _posts;
+        set
+        {
+            _posts = value;
+            OnPropertyChanged();
+        } }
     public CommunityCardModel communityCardModel { set; get; }
-    
-    public string GetPicture {  get; set; }
-    public string Caption { get; set; }
-    
+
+
+    public LoginModel _LoginModel;
     public NewPostWindow NewPostWindow { get; set; }
-    public CommentWindow CommentWindow { get; set; }
-    
-    private RetrieveCommunityPostService _retrieveCommunityPostService;
-    
-    public UserInformationModel _userInformationModel;
-    public CommentViewModel CommentViewModel { get; set; }
-    
     private ICommand ShowInfoPanel { get; }
-    
-    public ICommand OpenPostWindow { get; set; }
-    public ICommand OpenCommentWindow { get; set; }
-    
+    public ICommand OpenWindowCommand { get; set; }
     public ICommand NewPostCommand  {  get; set; }
     public ICommand LikedCommand { set; get; }
-    
-    public ICommand CommandCommand { set; get; }
+    public ICommand UploadPictureCommand { set; get; }
     public ICommand LeaveCommunityCommand  {  get; set; }
+    public ICommand RefreshCommand  {  get; set; }
     
-    private RetrieveCommunityPostService _retrieveCommunityPostService;
+    
     public UserInformationModel _userInformationModel;
-    public ICommand LeaveCommunity {  get; set; }
-    
-    
-   
-    public PostFeedViewModel(CommunityCardModel communityCardModel, LoginModel loginModel,UserInformationModel userInformationModel)
+
+
+    private string _picture;
+    public string Picture
     {
-        NewPostWindow = new NewPostWindow();
-        Posts = new ObservableCollection<PostModel>();
+        get => _picture;
+        set
+        {
+            _picture = value;
+            OnPropertyChanged();
+        } 
+    }
+
+    public HomeViewModel HomeViewModel;
+    public string Caption { get; set; }
+    public PostFeedViewModel(ObservableCollection<PostModel> posts, LoginModel loginModel,UserInformationModel userInformationModel,HomeViewModel homeViewModel,CommunityCardModel communityCardModel,Dictionary<int, ObservableCollection<PostModel>> PostStorage=null)
+    {
+        _postStorage = PostStorage;
+        Posts = posts;
+        HomeViewModel = homeViewModel;
+        this.communityCardModel = communityCardModel;
+        _userInformationModel = userInformationModel;
+        _LoginModel = loginModel;
+        InitializeWindow();
+        InitializeCommand();
+    }
+
+    private void InitializeCommand()
+    {
         OpenWindowCommand = new NewWindowCommand(NewPostWindow, this);
-        
-        Posts = new ObservableCollection<PostModel>();
-        this.communityCardModel = communityCardModel;
-        NewPostWindow = new NewPostWindow();
-        _userInformationModel = userInformationModel;
-        // NewPostWindow.DataContext = this;
-        
-        CommentWindow = new CommentWindow();
-        CommentViewModel = new CommentViewModel(this);
-        //CommentWindow.DataContext = CommentViewModel;
-        OpenCommentWindow = new OpenCommentCommand(CommentWindow, CommentViewModel);
-        
-        OpenPostWindow = new NewWindowCommand(NewPostWindow, this);
-        NewPostCommand = new NewPostCommand(NewPostWindow, new NewPostService(this,loginModel));
-        LeaveCommunityCommand = new LeaveCommunityCommand(new LeaveCommunityService(loginModel.ID,communityCardModel.ID));
-        this.communityCardModel = communityCardModel;
-        _userInformationModel = userInformationModel;
-        // NewPostWindow.DataContext = this;
-        _retrieveCommunityPostService = new RetrieveCommunityPostService(Posts,communityCardModel.ID);
+        NewPostCommand = new NewPostCommand(NewPostWindow, new NewPostService(this,_LoginModel));
+        LeaveCommunityCommand = new LeaveCommunityCommand(new LeaveCommunityService(_LoginModel.ID,communityCardModel.ID,HomeViewModel));
         LikedCommand = new LikedCommand(new LikeService(this));
-        
-        
-        RetrieveCommunityPost();
+        UploadPictureCommand = new UploadProfilePictureCommand(this);
+        RefreshCommand = new RefreshPostCommand(this);
 
     }
 
-    public PostFeedViewModel(LoginModel loginModel)
+    void InitializeWindow()
     {
         CommentWindow = new CommentWindow();
         CommentViewModel = new CommentViewModel( this);
         CommentWindow.DataContext = CommentViewModel;
         OpenCommentWindow = new OpenCommentCommand(CommentWindow, CommentViewModel);
         NewPostWindow = new NewPostWindow();
-        this.communityCardModel = communityCardModel;
-        NewPostWindow.DataContext = this;
-        Posts = new ObservableCollection<PostModel>();
-        OpenPostWindow = new NewWindowCommand(NewPostWindow, this);
-        NewPostCommand = new NewPostCommand(NewPostWindow, new NewPostService(this,loginModel));
+
     }
 
-    void RetrieveCommunityPost()
+    public PostFeedViewModel()
     {
-        _retrieveCommunityPostService.Execute();
+      
     }
 
+ 
 }

@@ -29,7 +29,7 @@ public class NewPostService:ConnectionBaseService
             PostCaption = _postFeedViewModel.Caption,
             PostBy = _loginModel.ID,
             PostCommunity = _postFeedViewModel.communityCardModel.ID,
-            PostImagePath = "https://miro.medium.com/v2/resize:fit:1400/1*9JOMK49b9bTDEpf4Izv_UA.jpeg",
+            PostImagePath = _postFeedViewModel.Picture,
             UserProfileName = _postFeedViewModel._userInformationModel.FirstName + " " + _postFeedViewModel._userInformationModel.LastName,
             UserProfilePicture =  _postFeedViewModel._userInformationModel.ProfilePictureUrl,
         };

@@ -73,6 +73,14 @@
       <Resource Include="Images\Message.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Resource>
+      <None Remove="Images\Refresh.png" />
+      <Resource Include="Images\Refresh.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Images\Plus.png" />
+      <Resource Include="Images\Plus.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
     <ItemGroup>

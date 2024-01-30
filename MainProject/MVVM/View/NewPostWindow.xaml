@@ -40,7 +40,7 @@
                         FontSize="50" 
                         VerticalContentAlignment="Center"
                         Style="{StaticResource Button-Fill}"
-                        Command="{Binding GetPicture}"
+                        Command="{Binding UploadPictureCommand}"
                         />
                 <TextBox Grid.Row="2" Name="txtCaption"
                          TextWrapping="Wrap"

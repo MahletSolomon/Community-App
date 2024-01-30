@@ -40,7 +40,7 @@ public class RetrieveAccountPostService:ConnectionBaseService
                                 PostID = reader["postID"].ToString(),
                                 PostImagePath = reader["imageURL"].ToString(),
                                 PostCaption = reader["postDescription"].ToString(),
-                                PostDate = reader["postDate"].ToString(),
+                                PostDate = DateTime.Parse(reader["postDate"].ToString()),
                                 TotalLike = int.Parse(reader["postLike"].ToString()),
                                 TotalComment = int.Parse(reader["postComment"].ToString()),
                                 UserProfileName = reader["userUserName"].ToString(),

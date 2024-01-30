@@ -1,30 +1,20 @@
 ﻿using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.ViewModel;
+using MainProject.Services;
 
 namespace WpfApp1.Commands;
 
 public class CreateCommunityCommand : CommandBase
 {
-    HomeViewModel ViewModel;
-    Window Window;
-
-    public CreateCommunityCommand(Window window, HomeViewModel viewModel)
+    private CreateCommunityService _createCommunityService;
+    public CreateCommunityCommand(CreateCommunityService createCommunityService)
     {
-        Window = window;
-        ViewModel = viewModel;
-        ViewModel.CommunityName = "";
-        ViewModel.CommunityPicture = "";
-        ViewModel.CommunityDescription = "";
+        _createCommunityService = createCommunityService;
+        
     }
     public override void Execute(object parameter)
     {
-        
-        var newCommunity = new CommunityCardModel(){Name = "hello",PictureUrl = "/Images/art1.png"};
-        ViewModel.CommunityCardModels.Add(newCommunity);
-        ViewModel.CommunityName = "";
-        ViewModel.CommunityDescription = "";
-        ViewModel.CommunityPicture = "";
-        Window.Hide();
+        _createCommunityService.Execute();
     }
 }

@@ -11,16 +11,19 @@ namespace WpfApp1.Services;
 public class RetrieveCommunityPostService:ConnectionBaseService
 {
      private ObservableCollection<PostModel> _post;
-    public int _communityID;
+     public int _communityID;
+     public string _userID;
     private HomeViewModel _homeViewModel;
-    public RetrieveCommunityPostService(ObservableCollection<PostModel> postModels,int CommunityID)
+    public RetrieveCommunityPostService(string UserID)
     {
-        _post = postModels;
-        _communityID = CommunityID;
+        _userID = UserID;
     }
     
-    public async void Execute()
+    public async void Execute(int CommunityID,ObservableCollection<PostModel> postModels)
     {
+        _communityID = CommunityID;
+        _post = postModels;
+
         // _homeViewModel.IsLoading = true;
         try
         {
@@ -46,7 +49,7 @@ public class RetrieveCommunityPostService:ConnectionBaseService
                 using (SqlCommand command = new SqlCommand("SELECT * FROM dbo.GetPostInCommunityInfo(@CommunityID,@UserID)", connection))
                 {
                     command.Parameters.AddWithValue("@CommunityID", _communityID);
-                    command.Parameters.AddWithValue("@UserID", "AbiyMera73");
+                    command.Parameters.AddWithValue("@UserID", _userID);
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
@@ -62,7 +65,7 @@ public class RetrieveCommunityPostService:ConnectionBaseService
                                 PostCaption =  reader["postDescription"].ToString(),
                                 PostID =  reader["postID"].ToString(),
                                 PostImagePath =  reader["imageURL"].ToString(),
-                                PostDate =  reader["postDate"].ToString(),
+                                PostDate = DateTime.Parse(reader["postDate"].ToString()),
                                 TotalLike = int.Parse(reader["postLike"].ToString()),
                                 TotalComment = int.Parse(reader["postComment"].ToString()),
                                 UserProfilePicture =  reader["userProfilePicture"].ToString(),
