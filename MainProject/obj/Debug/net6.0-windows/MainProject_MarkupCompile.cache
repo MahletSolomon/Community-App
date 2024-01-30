@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\App.xaml
-18-456349964
+201080720973
 
-69-1334511392
+821666527632
 200244878328
-Componets\BindablePasswordBox.xaml;Componets\IconButton.xaml;MainWindow.xaml;MVVM\View\AccountView.xaml;MVVM\View\DashBordView.xaml;MVVM\View\HomeView.xaml;MVVM\View\LoginView.xaml;MVVM\View\NewCommunityWindow.xaml;MVVM\View\NewPostWindow.xaml;MVVM\View\PostFeedView.xaml;MVVM\View\SearchView.xaml;MVVM\View\SettingView.xaml;MVVM\View\SignUpView.xaml;MVVM\View\UploadPictureView.xaml;Styles\Buttons.xaml;Styles\ItemBox.xaml;Styles\TextBox.xaml;Styles\ToggleButton.xaml;
+Componets\BindablePasswordBox.xaml;Componets\IconButton.xaml;MainWindow.xaml;MVVM\View\AccountView.xaml;MVVM\View\CommentWindow.xaml;MVVM\View\DashBordView.xaml;MVVM\View\HomeView.xaml;MVVM\View\LoginView.xaml;MVVM\View\NewCommunityWindow.xaml;MVVM\View\NewPostWindow.xaml;MVVM\View\PostFeedView.xaml;MVVM\View\SearchView.xaml;MVVM\View\SettingView.xaml;MVVM\View\SignUpView.xaml;MVVM\View\UploadPictureView.xaml;MVVM\View\UserPostWindow.xaml;Styles\Buttons.xaml;Styles\ItemBox.xaml;Styles\TextBox.xaml;Styles\ToggleButton.xaml;
 
 False
 

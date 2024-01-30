@@ -4,6 +4,7 @@ FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\Componets\BindablePass
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\Componets\IconButton.xaml;;
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MainWindow.xaml;;
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\AccountView.xaml;;
+FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\CommentWindow.xaml;;
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\DashBordView.xaml;;
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\HomeView.xaml;;
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\LoginView.xaml;;
@@ -14,4 +15,5 @@ FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\SearchView.x
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\SettingView.xaml;;
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\SignUpView.xaml;;
 FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\UploadPictureView.xaml;;
+FC:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\MVVM\View\UserPostWindow.xaml;;
 

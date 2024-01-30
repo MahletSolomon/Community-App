@@ -1,0 +1,59 @@
+﻿<Window x:Class="MainProject.MVVM.View.CommentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MainProject.MVVM.View"
+        mc:Ignorable="d"
+        Title="NewCommunityWindow" Height="500" Width="500"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True">
+    <Border CornerRadius="20" Margin="30" BorderBrush="White" Padding="5" Background="White">
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="#D1D5FE"/>
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+           <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="1" VerticalAlignment="Bottom" >
+                <TextBox Name="senderTB" Padding="10" Margin="10"/>
+                <Button Content="Add" VerticalAlignment="Bottom" Padding="10" Margin="10" Command="{Binding }"/>
+            </StackPanel>
+
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
+                <StackPanel Background="White" CanVerticallyScroll="False">
+                    <ItemsControl ItemsSource="{Binding YourCollection}" Name="MyItemsControl">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="10">
+                                    <Grid>
+                                        <Label Background="Aqua" Content="{Binding sender}" HorizontalAlignment="Left">
+                                            <Label.Style>
+                                                <Style TargetType="Label">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding sender}" Value="{x:Null}">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Label.Style>
+                                        </Label>
+                                      
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer> 
+        </Grid>
+    </Border>
+</Window>

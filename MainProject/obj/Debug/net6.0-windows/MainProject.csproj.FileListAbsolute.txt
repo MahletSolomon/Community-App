@@ -253,3 +253,7 @@ C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-window
 C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\NewCommunityWindow.baml
 C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\NewPostWindow.baml
 C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\PostFeedView.baml
+C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\CommentWindow.g.cs
+C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\CommentWindow.baml
+C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\UserPostWindow.g.cs
+C:\Users\YEABSIRA\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\UserPostWindow.baml

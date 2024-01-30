@@ -13,18 +13,37 @@
             <ColumnDefinition Width="30*"/>
         </Grid.ColumnDefinitions>
         <Grid>
-            <ListBox ItemsSource="{Binding PostModels}" Width="400">
-                <ListBox.ItemsPanel>
+            <ItemsControl ItemsSource="{Binding PostModels}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" />
+                        <!-- Set the WrapPanel's width to Auto -->
+                        <WrapPanel Orientation="Horizontal" Width="Auto" HorizontalAlignment="Center"/>
                     </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Image Width="100" Height="100" Source="{Binding PostImagePath}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                </ItemsControl.ItemsPanel>
+                
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                        <Button CommandParameter="{Binding}"
+
+                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ShowPostCommand}">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+
+                                </Grid.RowDefinitions>
+                                <Image Width="220" Height="200" Source="{Binding PostImagePath}" Stretch="Fill"/>
+                                <Label Grid.Row="1" Content="{Binding PostCaption}"/>
+
+                            </Grid>
+                        </Button>
+                        </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                
+            </ItemsControl>
+
+
 
         </Grid>
         <Grid Grid.Column="1" Background=" #7877CE">

@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Input;
 using MainProject.MVVM.Model;
+using MainProject.MVVM.View;
+using WpfApp1.Commands;
 using WpfApp1.Services;
 
 namespace MainProject.MVVM.ViewModel;
@@ -8,6 +11,11 @@ namespace MainProject.MVVM.ViewModel;
 public class AccountViewModel:ViewModelBase
 {
     public string UserName { set; get; }
+    
+    public ICommand ShowPostCommand { get; set; }
+    private UserPostViewModel UserPostViewModel { get; set; }
+    
+    
     public ObservableCollection<PostModel> PostModels { get; set; }
     private RetrieveAccountPostService RetrieveAccountPostService;
     private RetrieveUserInformationService _retrieveUserInformationService;
@@ -23,6 +31,8 @@ public class AccountViewModel:ViewModelBase
         _retrieveUserInformationService = new RetrieveUserInformationService(loginModel.ID);
         RetrivePostInformation();
         RetriveUserInformation();
+        
+        ShowPostCommand = new ShowPostCommand(this);
     }
 
     void RetrivePostInformation()
