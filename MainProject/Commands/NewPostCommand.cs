@@ -10,7 +10,7 @@ namespace WpfApp1.Commands;
 public class NewPostCommand : AsyncCommandBase
 {
         
-    PostFeedViewModel PostFeedViewModel;
+   // PostFeedViewModel PostFeedViewModel;
     Window window;
     
     public NewPostService _newPostService; 

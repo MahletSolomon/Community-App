@@ -17,6 +17,7 @@ public class PostModel:INotifyPropertyChanged
     public string UserProfileName { get; set; }
     public string UserProfilePicture { get; set; }
     public bool IsLiked { get; set; }
+    
     private int _totalLike;
 
     public int TotalLike

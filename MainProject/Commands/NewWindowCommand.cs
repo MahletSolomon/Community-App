@@ -7,14 +7,14 @@ namespace WpfApp1.Commands;
 public class NewWindowCommand : CommandBase
 {
     private Window _window { get; set; }
-    ViewModelBase _postFeedViewModel;
-    private Type _windowType;
+    ViewModelBase _viewModel;
+    
     public NewWindowCommand(Window window, ViewModelBase feedViewModel)
     {
         _window = window;
-        _postFeedViewModel = feedViewModel;
-        _window.DataContext = _postFeedViewModel;
-        _windowType = window.GetType();
+        _viewModel = feedViewModel;
+        _window.DataContext = feedViewModel;
+        
     }
     public override void Execute(object parameter)
     {
