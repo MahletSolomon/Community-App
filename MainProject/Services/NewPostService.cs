@@ -13,11 +13,11 @@ public class NewPostService:ConnectionBaseService
 {
     private PostModel _postModel;
     private LoginModel _loginModel;
-    private PostFeedViewModel _postFeedViewModel;
-    public NewPostService(PostFeedViewModel postFeedViewModel,LoginModel loginModel )
+    private CreatePostViewModel _createPostViewModel;
+    public NewPostService(CreatePostViewModel createPostViewModel,LoginModel loginModel )
     {
         _loginModel = loginModel;
-        _postFeedViewModel = postFeedViewModel;
+        _createPostViewModel = createPostViewModel;
      
        
     }
@@ -26,12 +26,13 @@ public class NewPostService:ConnectionBaseService
     {
         _postModel = new PostModel()
         {
-            PostCaption = _postFeedViewModel.Caption,
+            PostCaption = _createPostViewModel.Caption,
             PostBy = _loginModel.ID,
-            PostCommunity = _postFeedViewModel.communityCardModel.ID,
-            PostImagePath = _postFeedViewModel.Picture,
-            UserProfileName = _postFeedViewModel._userInformationModel.FirstName + " " + _postFeedViewModel._userInformationModel.LastName,
-            UserProfilePicture =  _postFeedViewModel._userInformationModel.ProfilePictureUrl,
+            PostCommunity = _createPostViewModel.communityCardModel.ID,
+            PostImagePath = _createPostViewModel.Picture,
+            UserProfileName = _createPostViewModel._userInformationModel.FirstName + " " + _createPostViewModel._userInformationModel.LastName,
+            UserProfilePicture =  _createPostViewModel._userInformationModel.ProfilePictureUrl,
+            PostDate = DateTime.Today
         };
 
         try
@@ -48,10 +49,17 @@ public class NewPostService:ConnectionBaseService
                     command.Parameters.AddWithValue("@postDescription", _postModel.PostCaption);
                     command.Parameters.AddWithValue("@postedBy", _postModel.PostBy);
                     command.Parameters.AddWithValue("@postedCommunity", _postModel.PostCommunity);
+                    SqlParameter outputParam = new SqlParameter("@postID", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputParam);
                     command.ExecuteNonQuery();
+                    _postModel.PostID = Convert.ToInt32(outputParam.Value).ToString();
+
                 }
             }
-            _postFeedViewModel.Posts.Add(_postModel);
+            _createPostViewModel.Posts.Add(_postModel);
         }
         catch (Exception ex)
         {

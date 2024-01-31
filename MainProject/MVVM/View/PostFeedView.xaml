@@ -259,7 +259,7 @@
                 Foreground="White" 
                 Margin="0 10 0 5"
                 Padding="4 4"
-                Command="{Binding OpenWindowCommand}"/> 
+                Command="{Binding OpenPostWindowCommand}"/> 
         <Button Grid.Row="4"
                 Content="Refresh" 
                 FontSize="15"

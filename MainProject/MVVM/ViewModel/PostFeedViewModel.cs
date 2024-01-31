@@ -25,35 +25,20 @@ public class PostFeedViewModel:ViewModelBase
 
 
     public LoginModel _LoginModel;
-    public NewPostWindow NewPostWindow { get; set; }
     private ICommand ShowInfoPanel { get; }
-    public ICommand OpenWindowCommand { get; set; }
-    public ICommand NewPostCommand  {  get; set; }
+    public ICommand OpenPostWindowCommand { get; set; }
     public ICommand LikedCommand { set; get; }
-    public ICommand UploadPictureCommand { set; get; }
     public ICommand LeaveCommunityCommand  {  get; set; }
     public ICommand RefreshCommand  {  get; set; }
-    public CommentWindow CommentWindow;
-    public CommentViewModel CommentViewModel;
     public ICommand OpenCommentWindow { get; set; }
     
     
     public UserInformationModel _userInformationModel;
 
 
-    private string _picture;
-    public string Picture
-    {
-        get => _picture;
-        set
-        {
-            _picture = value;
-            OnPropertyChanged();
-        } 
-    }
+ 
 
     public HomeViewModel HomeViewModel;
-    public string Caption { get; set; }
     public PostFeedViewModel(ObservableCollection<PostModel> posts, LoginModel loginModel,UserInformationModel userInformationModel,HomeViewModel homeViewModel,CommunityCardModel communityCardModel,Dictionary<int, ObservableCollection<PostModel>> PostStorage=null)
     {
         _postStorage = PostStorage;
@@ -68,22 +53,17 @@ public class PostFeedViewModel:ViewModelBase
 
     private void InitializeCommand()
     {
-        OpenWindowCommand = new NewWindowCommand(NewPostWindow, this);
-        NewPostCommand = new NewPostCommand(NewPostWindow, new NewPostService(this,_LoginModel));
         LeaveCommunityCommand = new LeaveCommunityCommand(new LeaveCommunityService(_LoginModel.ID,communityCardModel.ID,HomeViewModel));
         LikedCommand = new LikedCommand(new LikeService(this));
-        UploadPictureCommand = new UploadProfilePictureCommand(this);
         RefreshCommand = new RefreshPostCommand(this);
 
     }
 
     void InitializeWindow()
     {
-        CommentWindow = new CommentWindow();
-        CommentViewModel = new CommentViewModel( this);
-        CommentWindow.DataContext = CommentViewModel;
-        OpenCommentWindow = new OpenCommentCommand(CommentWindow, CommentViewModel);
-        NewPostWindow = new NewPostWindow();
+        OpenCommentWindow = new OpenCommentCommand(_LoginModel,_userInformationModel);
+        OpenPostWindowCommand = new OpenPostCommand(this);
+
 
     }
 

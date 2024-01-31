@@ -10,7 +10,6 @@ namespace WpfApp1.Commands;
 public class NewPostCommand : AsyncCommandBase
 {
         
-   // PostFeedViewModel PostFeedViewModel;
     Window window;
     
     public NewPostService _newPostService; 
@@ -25,10 +24,7 @@ public class NewPostCommand : AsyncCommandBase
 
     protected  override async Task ExecuteAsync(object parameter)
     {
-        
-        //MessageBox.Show(PostFeedViewModel.Caption);
         await _newPostService.Execute();
-        window.Hide();
-        //window.ClosingRequestedsted?.Invoke();
+        window.Close();
     }
 }

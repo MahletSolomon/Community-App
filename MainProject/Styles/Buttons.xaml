@@ -389,5 +389,29 @@
         </Setter>
     </Style>
     <!-- End of BUTTON-FILL -->
-    
+     <Style TargetType="Button" x:Key="Button-None">
+        <Setter Property="Background" Value="Transparent"/> 
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="Transparent"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="Padding" Value="0"/> 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                   <Grid>
+                       <Border Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}">
+                           <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                       </Border>
+                   </Grid>
+                       
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

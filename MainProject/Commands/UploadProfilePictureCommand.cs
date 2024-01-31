@@ -9,11 +9,11 @@ namespace WpfApp1.Commands;
 public class UploadProfilePictureCommand:AsyncCommandBase
 {
     private UploadProfilePictureService _uploadProfilePictureService;
-    private PostFeedViewModel _postFeedViewModel;
-    public UploadProfilePictureCommand(PostFeedViewModel postFeedViewModel)
+    private CreatePostViewModel _createPostView;
+    public UploadProfilePictureCommand(CreatePostViewModel createPostView)
     {
-         _uploadProfilePictureService = new UploadProfilePictureService(postFeedViewModel._LoginModel.ID);
-         _postFeedViewModel = postFeedViewModel;
+         _uploadProfilePictureService = new UploadProfilePictureService(createPostView._LoginModel.ID);
+         _createPostView = createPostView;
     }
 
     protected override async Task ExecuteAsync(object parameter)
@@ -25,8 +25,8 @@ public class UploadProfilePictureCommand:AsyncCommandBase
         {
             filePath = openFileDialog.FileName;
             await _uploadProfilePictureService.Post(filePath);
-            _postFeedViewModel.Picture = filePath;
-            MessageBox.Show(_uploadProfilePictureService.GetUrl());
+            _createPostView.Picture = filePath;
+            _createPostView.DefaultUpload = filePath;
         }
     }
 }

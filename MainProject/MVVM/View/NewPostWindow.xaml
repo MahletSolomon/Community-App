@@ -12,67 +12,40 @@
         Background="Transparent"
         AllowsTransparency="True">
 
-  <Border CornerRadius="20"  Margin="30" BorderThickness="0" Padding="5" Background="White">
+  <Border CornerRadius="15"  Margin="30" BorderThickness="0" Padding="15" Background="White" Width="500">
             <Border.Effect>
-                <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#D1D5FE"/>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#333333" Opacity="0.6"/>
             </Border.Effect>
-        <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+        <StackPanel>
 
-            <Label HorizontalAlignment="Left" 
-                   VerticalAlignment="Center"
-                   Content="Create Post" 
-                   Foreground="#A483EA" 
-                   FontSize="30"
-                   FontWeight="SemiBold"
-                   Padding="25 10"
-                   />
-
-            <StackPanel Grid.Row="1" Margin="25 15 " VerticalAlignment="Center">
                 <Button Name="btnPicture"
-                        Content="+"
                         HorizontalAlignment="Center"
-                        Width="160"
-                        Height="100"
                         FontSize="50" 
+                        Style="{StaticResource Button-None}"
                         VerticalContentAlignment="Center"
-                        Style="{StaticResource Button-Fill}"
-                        Command="{Binding UploadPictureCommand}"
-                        />
-                <TextBox Grid.Row="2" Name="txtCaption"
+                        Command="{Binding UploadPictureCommand}">
+                        <Image Source="{Binding DefaultUpload}"></Image>
+                </Button>
+                <TextBox  Name="txtCaption"
                          TextWrapping="Wrap"
                          Text="{Binding Caption, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
                          FontWeight="Medium"
-                         Width="300"
-                         Height="120"
+                         Margin="0 10 0 0"
                          HorizontalAlignment="Stretch"
-                         BorderThickness="3"
                          Style="{StaticResource TextBoxStyle}"
-                         Padding="15"
-                         Margin="15 18 15 8"/>
-                <!--<Label  Name="dateLabel"
-                        Content="{Binding CurrentDate, StringFormat={}{0:dd/MM/yyyy}}"
-                        FontSize="13"
-                        FontWeight="Medium"
-                        Foreground="Gray"
-                        HorizontalAlignment="Left"
-                        Padding="20 5"
-                        Margin="20 0"/>-->
+                         Padding="15 60"
+                         />
+                
                     <Button Content="Post"
-                            
-                            Height="40"
-                            FontSize="20" 
+                            Padding="10"
+                            FontSize="16" 
                             FontWeight="SemiBold"
-                            Margin="18 20"
                             HorizontalAlignment="Stretch"
                             VerticalContentAlignment="Center"
-                            Style="{StaticResource Button-Fill}"
+                            Margin="0 10 0 0"
+                            Style="{StaticResource Button-Edge}"
                             Command="{Binding NewPostCommand}"/>
                 </StackPanel>
-            </Grid>
         </Border>
 </Window>
