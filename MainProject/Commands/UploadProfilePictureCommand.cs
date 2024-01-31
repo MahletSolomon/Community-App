@@ -25,7 +25,7 @@ public class UploadProfilePictureCommand:AsyncCommandBase
         {
             filePath = openFileDialog.FileName;
             await _uploadProfilePictureService.Post(filePath);
-            _createPostView.Picture = filePath;
+            _createPostView.Picture = _uploadProfilePictureService.GetUrl();
             _createPostView.DefaultUpload = filePath;
         }
     }

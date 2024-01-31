@@ -14,13 +14,13 @@ public class AddPictureCommand:AsyncCommandBase
 {
     private UploadPictureViewModel _UploadPictureViewModel  { set; get; }
     private UserInformationModel _userInformationModel;
-    private UploadProfilePictureService uploadProfilePictureService;
+    private UploadProfilePictureService _uploadProfilePictureService;
 
     public AddPictureCommand(UploadPictureViewModel uploadPictureView,UserInformationModel userInformationModel)
     {
-         uploadProfilePictureService = new UploadProfilePictureService(_userInformationModel.Username);
-        _UploadPictureViewModel = uploadPictureView;
         _userInformationModel = userInformationModel;
+        _uploadProfilePictureService = new UploadProfilePictureService("Register");
+        _UploadPictureViewModel = uploadPictureView;
 
     }
    protected override async Task ExecuteAsync(object parameter)
@@ -31,11 +31,11 @@ public class AddPictureCommand:AsyncCommandBase
        if (response == true)
        {
            filePath = openFileDialog.FileName;
-           
-          await uploadProfilePictureService.Post(filePath);
-          string url=uploadProfilePictureService.GetUrl();
+          await _uploadProfilePictureService.Post(filePath);
+          string url=_uploadProfilePictureService.GetUrl();
           _UploadPictureViewModel.ProfileUrl = url;
           _userInformationModel.ProfilePictureUrl = url;
+
        }
 
    }

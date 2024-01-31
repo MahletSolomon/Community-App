@@ -5,34 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MainProject.MVVM.View" xmlns:viewmodel="clr-namespace:MainProject.MVVM.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:DashBordViewModel}"
         mc:Ignorable="d"
-        Title="NewCommunityWindow" Height="500" Width="500"
+        Title="NewCommunityWindow"
+        SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
-    <Border CornerRadius="20"  Margin="30" BorderBrush="White" Padding="5" Background="White">
+    <Border CornerRadius="20"  Margin="30" BorderBrush="White" Padding="5" Background="White" MouseDown="UIElement_OnMouseDown  " Width="500">
         <Border.Effect>
-            <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#D1D5FE"/>
+            <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#333333" Opacity="0.6"/>
         </Border.Effect>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-                <Label HorizontalAlignment="Left"
-                       
-                       VerticalAlignment="Center"
-                       Content="Create Community" 
-                       Foreground="#A483EA" 
-                       FontSize="30"
-                       FontWeight="SemiBold" Padding="25 10"/>
-                <StackPanel Grid.Row="1" Margin="25 15">
+        <StackPanel>
+                
+            <StackPanel Grid.Row="1" Margin="25 15">
                     <TextBox 
                          Margin="0 "
                          Style="{StaticResource TextBoxStyle}"
                          Height="50"
-                         
+                        
                          Tag="Community Name"
                         Padding="15 16"
                          Text="{Binding CommunityCardModel.Name, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
@@ -63,7 +53,7 @@
                         Command="{Binding CreateCommunity}"/>
                     
                 </StackPanel>
-            </Grid>
+            </StackPanel>
      </Border>
     
 </Window>

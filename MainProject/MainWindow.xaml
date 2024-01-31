@@ -15,6 +15,7 @@
         Background="Transparent"
         AllowsTransparency="True">
    <Grid   MouseDown="UIElement_OnMouseDown" Margin="10">
+       
        <ContentControl Content="{Binding CurrentViewModel}">
            <ContentControl.Resources>
                
@@ -47,6 +48,8 @@
                </DataTemplate >
            </ContentControl.Resources>
        </ContentControl >
-       
+       <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Style="{StaticResource Button-Close}" Click="ButtonBase_OnClick">
+           <Image Source="/Images/Close.png" Width="37"></Image>
+       </Button>
    </Grid>
 </Window>

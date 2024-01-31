@@ -29,7 +29,7 @@ public class UserRegistrationService:ConnectionBaseService
                         command.Parameters.AddWithValue("@UserUserName", _userInformationModel.Username);
                         command.Parameters.AddWithValue("@UserFirstName", _userInformationModel.FirstName);
 
-                        if (_userInformationModel.MiddleName!=""&& _userInformationModel.MiddleName!=null)
+                        if (_userInformationModel.MiddleName!=null)
                         {
                             command.Parameters.AddWithValue("@UserMiddleName", _userInformationModel.MiddleName);
                         }
@@ -39,14 +39,11 @@ public class UserRegistrationService:ConnectionBaseService
                         command.Parameters.AddWithValue("@UserPassword", _userInformationModel.Password);
                         command.Parameters.AddWithValue("@UserGender", _userInformationModel.Gender);
                         command.Parameters.AddWithValue("@UserDOB", _userInformationModel.DateOfBirth);
-                        
-                        if (_userInformationModel.ProfilePictureUrl!="" && _userInformationModel.ProfilePictureUrl!=null)
+                        if (_userInformationModel.ProfilePictureUrl != null)
                         {
+                            MessageBox.Show(_userInformationModel.ProfilePictureUrl);
                             command.Parameters.AddWithValue("@UserProfilePicture", _userInformationModel.ProfilePictureUrl);
-                            MessageBox.Show("Ola");
                         }
-                        
-
                         command.ExecuteNonQuery();
                         result = true;
                     }

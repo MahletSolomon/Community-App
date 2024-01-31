@@ -12,7 +12,7 @@
         Background="Transparent"
         AllowsTransparency="True">
 
-  <Border CornerRadius="15"  Margin="30" BorderThickness="0" Padding="15" Background="White" Width="500">
+  <Border CornerRadius="15"  Margin="30" BorderThickness="0" Padding="15" Background="White" Width="500" MouseDown="UIElement_OnMouseDown">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#333333" Opacity="0.6"/>
             </Border.Effect>
@@ -30,22 +30,41 @@
                          TextWrapping="Wrap"
                          Text="{Binding Caption, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          FontSize="14"
-                         FontWeight="Medium"
+                         TextAlignment="Justify"
+                         Height="150"
+                         VerticalContentAlignment="Top"
+                         Tag="Caption"
                          Margin="0 10 0 0"
                          HorizontalAlignment="Stretch"
-                         Style="{StaticResource TextBoxStyle}"
-                         Padding="15 60"
+                         Style="{StaticResource TextBoxStyleLarge}"
+                         Padding="15 16"
                          />
                 
-                    <Button Content="Post"
-                            Padding="10"
-                            FontSize="16" 
-                            FontWeight="SemiBold"
-                            HorizontalAlignment="Stretch"
-                            VerticalContentAlignment="Center"
-                            Margin="0 10 0 0"
-                            Style="{StaticResource Button-Edge}"
-                            Command="{Binding NewPostCommand}"/>
+                   <Grid>
+                           <Grid.ColumnDefinitions>
+                                   <ColumnDefinition/>
+                                   <ColumnDefinition/>
+                           </Grid.ColumnDefinitions>
+                           <Button Content="Back"
+                                   Padding="10"
+                                   FontSize="16" 
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalContentAlignment="Center"
+                                   Margin="0 10 5 0"
+                                   Style="{StaticResource Button-Edge}"
+                                   Click="ButtonBase_OnClick"
+                                   /> 
+                           <Button Grid.Column="1" Content="Post"
+                                   Padding="10"
+                                   FontSize="16" 
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalContentAlignment="Center"
+                                   Margin="5 10 0 0"
+                                   Style="{StaticResource Button-Fill}"
+                                   Command="{Binding NewPostCommand}"/>
+                   </Grid>
                 </StackPanel>
         </Border>
 </Window>
