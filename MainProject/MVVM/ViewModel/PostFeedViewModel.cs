@@ -31,9 +31,9 @@ public class PostFeedViewModel:ViewModelBase
     public ICommand LeaveCommunityCommand  {  get; set; }
     public ICommand RefreshCommand  {  get; set; }
     public ICommand OpenCommentWindow { get; set; }
-    
-    
+
     public UserInformationModel _userInformationModel;
+    public bool IsPanelOpen { set; get; }
 
 
  
@@ -41,6 +41,7 @@ public class PostFeedViewModel:ViewModelBase
     public HomeViewModel HomeViewModel;
     public PostFeedViewModel(ObservableCollection<PostModel> posts, LoginModel loginModel,UserInformationModel userInformationModel,HomeViewModel homeViewModel,CommunityCardModel communityCardModel,Dictionary<int, ObservableCollection<PostModel>> PostStorage=null)
     {
+        IsPanelOpen = true;
         _postStorage = PostStorage;
         Posts = posts;
         HomeViewModel = homeViewModel;
@@ -69,7 +70,8 @@ public class PostFeedViewModel:ViewModelBase
 
     public PostFeedViewModel()
     {
-      
+        IsPanelOpen = false;
+
     }
 
  
