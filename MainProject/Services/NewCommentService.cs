@@ -16,6 +16,7 @@ public class NewCommentService:ConnectionBaseService
     public NewCommentService(ObservableCollection<CommentModel> comments, CommentViewModel commentViewModel)
     {
         Comments = comments;
+
         _commentViewModel = commentViewModel;
     }
 

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MainProject.MVVM.View"
         mc:Ignorable="d"
         Title="CommentWindow" Height="500" Width="500"
+
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Background="Transparent"
@@ -39,6 +40,7 @@
             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Hidden">
                 <StackPanel Background="White" CanVerticallyScroll="False">
                     <ItemsControl ItemsSource="{Binding CurrentComments}" Name="MyItemsControl">
+=
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Border Margin="10">
@@ -82,7 +84,7 @@
                                             <!--     </Style> -->
                                             <!-- </Label.Style> -->
                                         
-                                      
+             
                                     </Grid>
                                 </Border>
                             </DataTemplate>

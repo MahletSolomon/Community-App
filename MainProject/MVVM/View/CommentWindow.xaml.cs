@@ -16,5 +16,6 @@ public partial class CommentWindow : Window
     private void CloseButton_OnClick(object sender, RoutedEventArgs e)
     {
         this.Hide();
+
     }
 }

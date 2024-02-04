@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P9rDclHhXgzZzckACG91gVbWoUTu1HbWlPrVq2AGKs8DaM3psp4pIKi1Bz/v2H3DG/6BdaObhJ1ZTSW1JZ+7WQ==",
+  "dgSpecHash": "eh2K2h6D6+jeS9De5kdmT2XMpy1lImmGBWS3+Lt0n14hwwfhCUSCIec97i+p7LWeE4rKXAQybYtAYk753AXTgg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\abiym\\RiderProjects\\CommunityApp\\MainProject\\MainProject.csproj",
+  "projectFilePath": "C:\\Users\\abiym\\Documents\\GitHub\\CommunityApp\\MainProject\\MainProject.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abiym\\.nuget\\packages\\expression.interaction\\3.0.40218\\expression.interaction.3.0.40218.nupkg.sha512",
     "C:\\Users\\abiym\\.nuget\\packages\\firebasestorage.net\\1.0.3\\firebasestorage.net.1.0.3.nupkg.sha512",
@@ -94,6 +94,12 @@
     "C:\\Users\\abiym\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\abiym\\Documents\\GitHub\\CommunityApp\\MainProject\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1701",
       "level": "Warning",
