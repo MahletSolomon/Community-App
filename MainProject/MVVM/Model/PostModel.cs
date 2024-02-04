@@ -9,7 +9,13 @@ public class PostModel:INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
     public string PostID { get; set; }
-    public string PostCaption { get; set; }
+    private string _postCaption;
+
+    public string PostCaption
+    {
+        get { return _postCaption;}
+        set { _postCaption = value; OnPropertyChanged(); }
+    }
     public string PostDate { get; set; }
     public string PostBy { get; set; }
     public int PostCommunity { get; set; }
