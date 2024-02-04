@@ -87,8 +87,12 @@ public class HomeViewModel:ViewModelBase
         Posts = new ObservableCollection<PostModel>();
         PostStorage = new Dictionary<int, ObservableCollection<PostModel>>();
         _retrieveCommunityPostService = new RetrieveCommunityPostService(loginModel.ID);
-        RetrieveCommunityPost(CommunityCardModels[0].ID,Posts);
-        PostStorage[CommunityCardModels[0].ID] = Posts;
+        if (CommunityCardModels.Count > 0)
+        {
+            RetrieveCommunityPost(CommunityCardModels[0].ID,Posts);
+            PostStorage[CommunityCardModels[0].ID] = Posts;
+        }
+       
         HomeNavigationStore.CurrentViewModel = CommunityCardModels.Count>0 ? new PostFeedViewModel(Posts, this.loginModel,_userInformationModel,this, CommunityCardModels[0],PostStorage):new PostFeedViewModel() ;
 
     }

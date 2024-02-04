@@ -205,6 +205,108 @@
         </Setter>
     </Style>
     <!-- End -->
-
+ <Style TargetType="TextBox" x:Key="TextBoxStyleLarge">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="BorderBrush" Value="#C4B8E7"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                  <StackPanel>
+                      <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="12" Padding="3 0" Height="{TemplateBinding Height}">
+                          <Grid>
+                              <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" VerticalContentAlignment="Top"/>
+                              <Label x:Name="WaterMarkerLabel" 
+                                     Content="{TemplateBinding Tag}"
+                                     Padding="19 16"
+                                     Foreground="Black "
+                                     Opacity="0.4"
+                                     FontSize="{TemplateBinding FontSize}"
+                                     Visibility="Collapsed"
+                              />
+                          </Grid>
+                      </Border>
+                      <ItemsControl Margin="8 2 0 0" ItemsSource="{TemplateBinding Validation.Errors}">
+                          <ItemsControl.ItemTemplate>
+                              <DataTemplate>
+                                  <Grid>
+                                      <Grid.ColumnDefinitions>
+                                          <ColumnDefinition Width="20"/>
+                                          <ColumnDefinition/>
+                                      </Grid.ColumnDefinitions>
+                                      <Rectangle Width="6" Height="6" Fill="Aquamarine" RadiusX="4" RadiusY="4" Opacity="0.6"/>
+                                      <TextBlock Grid.Column="1" Margin="0 2" Text="{Binding ErrorContent}" Foreground="#898989" FontSize="14"/>
+                                  </Grid>
+                              </DataTemplate>
+                          </ItemsControl.ItemTemplate>
+                      </ItemsControl>
+                  </StackPanel>
+                 
+                    <ControlTemplate.Triggers>
+                     
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <!-- <Setter Property="BorderBrush" Value="Red"/> -->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                            To="#9C58AD" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                                
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                            To="#C4B8E7" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value=""/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" TargetName="WaterMarkerLabel" Value="Visible"/>
+                        </MultiTrigger>
+                        
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="BorderThickness" To="2" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                                
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="BorderThickness" To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
 </ResourceDictionary>

@@ -110,6 +110,54 @@
         </Setter>
     </Style>
     <!-- End of BUTTON-EDGE -->
+    <!-- Start of BUTTON-FILL -->
+    <Style TargetType="Button" x:Key="Button-Close">
+        <Setter Property="Background" Value="#848CB6"/> 
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="White"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="Padding" Value="0"/> 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10" Padding="{TemplateBinding Padding}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#8382A2"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#6871A1" Duration="0:0:0.15" AccelerationRatio="0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                                
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)" To="#848CB6" Duration="0:0:0.1" AccelerationRatio="0.4"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                       
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- End of BUTTON-FILL -->
+    
     
       <!-- Start of BUTTON-ICON -->
        <!-- Start of BUTTON-ICON-META -->
@@ -389,5 +437,29 @@
         </Setter>
     </Style>
     <!-- End of BUTTON-FILL -->
-    
+     <Style TargetType="Button" x:Key="Button-None">
+        <Setter Property="Background" Value="Transparent"/> 
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Foreground" Value="Transparent"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="Padding" Value="0"/> 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                   <Grid>
+                       <Border Background="{TemplateBinding Background}" CornerRadius="12" Padding="{TemplateBinding Padding}">
+                           <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                       </Border>
+                   </Grid>
+                       
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

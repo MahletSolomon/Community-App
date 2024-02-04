@@ -27,11 +27,10 @@ public class UploadProfilePictureService
                     .Child(imagePath)
                     .PutAsync(stream);
 
-                task.Progress.ProgressChanged += (s, e) => Console.WriteLine($"Progress: {e.Percentage} %");
+                task.Progress.ProgressChanged += (s, e) => Debug.WriteLine($"Progress: {e.Percentage} %");
 
                 _imageUrl = await task;
 
-                
             }
         }
         catch (Exception ex)

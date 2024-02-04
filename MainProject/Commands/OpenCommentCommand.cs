@@ -7,53 +7,26 @@ using WpfApp1.Services;
 
 namespace WpfApp1.Commands;
 
-public class OpenCommentCommand:NewWindowCommand
+public class OpenCommentCommand:CommandBase
 {
     private ObservableCollection<CommentModel> currentComments { get; set; }
-    private OpenCommentService _openCommentService;
-    private CommentViewModel _commentViewModel;
-    private CommentWindow _commentWindow;
-
-    public OpenCommentCommand(CommentWindow commentWindow, CommentViewModel commentViewModel):base(commentWindow,commentViewModel)
+    CommentWindow CommentWindow;
+    private LoginModel _loginModel;
+    private UserInformationModel _userInformationModel;
+    public OpenCommentCommand(LoginModel loginModel,UserInformationModel userInformationModel)
     {
-       
-        //_openCommentService = openCommentService;
-        _commentViewModel = commentViewModel;
-        _commentWindow = commentWindow;
-        
+        _loginModel = loginModel;
+        _userInformationModel = userInformationModel;
     }
     public override void Execute(object parameter)
     {
         
         if (parameter is PostModel post)
         {
-            if (!_commentWindow.IsVisible)
-            {
-                _commentViewModel.CurrentComments.Clear();
-                _commentViewModel.PostId = post.PostID;
-                MessageBox.Show(post.PostID);
-                foreach (var c in _commentViewModel.Comments)
-                {
-                    
-                 
-                    if (post.PostID == c.PostedOnId)
-                    {
-                        _commentViewModel.CurrentComments.Add(c);
-                        
-                     
-                    }
+            CommentWindow = new CommentWindow();
+            CommentWindow.DataContext = new CommentViewModel(post,_loginModel,_userInformationModel);
+            CommentWindow.Show();
 
-                    post.TotalComment = _commentViewModel.CurrentComments.Count;
-                }
-                _commentWindow.Show();    
-            }
-            else
-            {
-                _commentWindow.Hide();
-            }
-            
-           
-            
         }
         
     }
