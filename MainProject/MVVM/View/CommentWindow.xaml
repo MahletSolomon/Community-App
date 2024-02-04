@@ -79,17 +79,8 @@
                     </ItemsControl>
                 </StackPanel>
             </ScrollViewer> 
-            <Button  Name="CloseButton"
-                     HorizontalAlignment="Right"
-                     VerticalAlignment="Top"
-                     Margin=" 0"
-                     BorderThickness="0"
-                     Height="40"
-                     Width="40"
-                     Click="CloseButton_OnClick" Content="X" 
-                     Background="Transparent" Foreground="Gray"
-                     FontSize="25">
-                <!-- <Image Source="/Images/Setting.png"></Image> -->
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Style="{StaticResource Button-Close}" Click="CloseButton_OnClick">
+                <Image Source="/Images/Close.png" Width="37"></Image>
             </Button>
             <Grid Grid.Row="2" VerticalAlignment="Bottom" >
                 <Grid.ColumnDefinitions>
