@@ -12,15 +12,15 @@ public class AccountViewModel:ViewModelBase
 {
     public string UserName { set; get; }
     
-    public ICommand ShowPostCommand { get; set; }
+    
     private UserPostViewModel UserPostViewModel { get; set; }
-    
-    
     public ObservableCollection<PostModel> PostModels { get; set; }
     private RetrieveAccountPostService RetrieveAccountPostService;
     private RetrieveUserInformationService _retrieveUserInformationService;
     public UserInformationModel userInformationModel { get; set; }
     public LoginModel loginModel { get; set; }
+    
+    public ICommand ShowPostCommand { get; set; }
     public AccountViewModel(UserInformationModel userInformationModel,LoginModel loginModel)
     {
         UserName = $"@{loginModel.Username}";

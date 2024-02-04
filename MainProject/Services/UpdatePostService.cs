@@ -9,13 +9,13 @@ namespace WpfApp1.Services;
 
 public class UpdatePostService:ConnectionBaseService
 {
-    private PostModel _postModel;
+    
 
     public UserPostViewModel UserPostViewModel;
 
-    public UpdatePostService(PostModel postModel)
+    public UpdatePostService(UserPostViewModel userPostViewModel)
     {
-        _postModel = postModel;
+        UserPostViewModel = userPostViewModel;
     }
     public void Execute()
     {
@@ -26,25 +26,32 @@ public class UpdatePostService:ConnectionBaseService
                 connection.Open();
                 using (SqlCommand command = new SqlCommand("UPDATE Posts SET  postDescription=@Caption WHERE postID=@ID", connection))
                 {
-                    // Set parameters
-                    //command.Parameters.AddWithValue("@ImagePath", _postModel.PostImagePath);
-                    command.Parameters.AddWithValue("@Caption", _postModel.PostCaption);
                     
-                    command.Parameters.AddWithValue("@ID", int.Parse( _postModel.PostID));
-                    MessageBox.Show(_postModel.PostCaption);
-
-                    // Execute the query
+                    command.Parameters.AddWithValue("@Caption", UserPostViewModel.PostModel.PostCaption);
+                    
+                    command.Parameters.AddWithValue("@ID", UserPostViewModel.PostModel.PostID);
                     int rowsAffected = command.ExecuteNonQuery();
-                    MessageBox.Show(_postModel.PostCaption);
-
-                    UserPostViewModel.UserPostWindow.Hide();
+                    
                     // Check if the update was successful
+                    if (rowsAffected > 0)
+                    {
+                        // Update was successful
+                        MessageBox.Show("Post updated successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Post not found or not updated.");
+                    }
+                  
                  
                 }
 
 
                 
             }
+            MessageBox.Show($"New Caption: {UserPostViewModel.PostModel.PostCaption}");
+
+            
         }
         catch (Exception ex)
         {

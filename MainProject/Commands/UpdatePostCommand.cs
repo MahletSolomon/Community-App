@@ -25,7 +25,7 @@ public class UpdatePostCommand : CommandBase
     {
         
         _updatePostService.Execute();
-        window.Hide();
+       window.Hide();
         
     }
 }

@@ -34,7 +34,7 @@
 
                                 </Grid.RowDefinitions>
                                 <Image Width="220" Height="200" Source="{Binding PostImagePath}" Stretch="Fill"/>
-                                <Label Grid.Row="1" Content="{Binding PostCaption}"/>
+                                <TextBlock Grid.Row="1" Text="{Binding PostCaption}" TextWrapping="Wrap" MaxWidth="220"/>
 
                             </Grid>
                         </Button>

@@ -8,13 +8,14 @@ namespace WpfApp1.Commands;
 public class ShowPostCommand:CommandBase
 {
     private CommunityCardModel _communityCardModel;
+    private AccountViewModel _accountViewModel;
     private UserPostViewModel _userPostViewModel;
     private UserPostWindow userPostWindow;
     private RetriveCommunityFromPostService _retriveCommunity;
     //private AccountViewModel AccountViewModel;
-    public ShowPostCommand(UserPostViewModel userPostViewModel)
+    public ShowPostCommand(AccountViewModel accountViewModel)
     {
-        _userPostViewModel = userPostViewModel;
+        _accountViewModel = accountViewModel;
         _communityCardModel = new CommunityCardModel();
     }
     public override void Execute(object parameter)
