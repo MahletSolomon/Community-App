@@ -10,13 +10,7 @@ namespace MainProject.MVVM.ViewModel;
 
 public class UserPostViewModel:ViewModelBase
 {
-    // private string postCaption;
-    //
-    // public string PostCaption
-    // {
-    //     get { return postCaption;}
-    //     set { postCaption = value; OnPropertyChanged(); }
-    // }
+    
     private PostModel postModel;
 
     public PostModel PostModel
@@ -24,7 +18,7 @@ public class UserPostViewModel:ViewModelBase
         get { return postModel;}
         set { postModel = value; OnPropertyChanged(); }
     }
-    public CommunityCardModel CommunityCardModel { get; set; }
+    public CommunityCardModel communityCardModel { get; set; }
     
     
     public ICommand UpdatePostCommand { get; set; }
@@ -33,7 +27,7 @@ public class UserPostViewModel:ViewModelBase
     
     public UserPostViewModel(CommunityCardModel communityCardModel,UserPostWindow userPostWindow, PostModel postModel)
     {
-        CommunityCardModel = communityCardModel;
+        this.communityCardModel = communityCardModel;
         UserPostWindow = userPostWindow;
         PostModel = postModel;
         UpdatePostCommand = new UpdatePostCommand(new UpdatePostService(this), UserPostWindow);

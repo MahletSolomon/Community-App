@@ -5,53 +5,73 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MainProject.MVVM.View"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="Azure">
-        <Grid Background="Azure">
+             d:DesignHeight="720" d:DesignWidth="1240">
+    <Border Background="White" CornerRadius="0 15 15  0">
+            <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="70*"/>
-            <ColumnDefinition Width="30*"/>
+            <ColumnDefinition />
+            <ColumnDefinition Width="260"/>
         </Grid.ColumnDefinitions>
         <Grid>
-            <ItemsControl ItemsSource="{Binding PostModels}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl  
+                ItemsSource="{Binding PostModels}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="5">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <!-- Set the WrapPanel's width to Auto -->
-                        <WrapPanel Orientation="Horizontal" Width="Auto" HorizontalAlignment="Center"/>
+                        <WrapPanel Orientation="Horizontal" Width="Auto" HorizontalAlignment="Left"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                         <Button CommandParameter="{Binding}"
-
-                            Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ShowPostCommand}">
-
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-
-                                </Grid.RowDefinitions>
-                                <Image Width="220" Height="200" Source="{Binding PostImagePath}" Stretch="Fill"/>
-                                <TextBlock Grid.Row="1" Text="{Binding PostCaption}" TextWrapping="Wrap" MaxWidth="220"/>
-
-                            </Grid>
+                                Margin="4"
+                                Width="205" Height="205"
+                                Style="{StaticResource Button-Fill}"
+                                Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}, Path=DataContext.ShowPostCommand}">
+                          <Grid>
+                              <Grid.OpacityMask>
+                                  <VisualBrush Visual="{Binding ElementName=Border1}" />
+                              </Grid.OpacityMask>
+                              <Border x:Name="Border1" CornerRadius="12" Background="#7877CE" /> 
+                              <Image Source="{Binding PostImagePath}" 
+                                     Stretch="UniformToFill"/>
+                             
+                              
+                              <Border >
+                                  <Border.Background>
+                                      <LinearGradientBrush StartPoint="1,0.2" EndPoint="1,1">
+                                          <GradientStop Offset="0" Color="#00000000"/> <!-- Transparent black -->
+                                          <GradientStop Offset="1" Color="#FF000000"/>
+                                      </LinearGradientBrush>
+                                  </Border.Background>
+                                  <!-- Your content here -->
+                              </Border>
+                              <Rectangle Width="30" Height="5" RadiusX="3" RadiusY="3" Fill="White" Opacity="0.6" 
+                                         HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 30"/>
+                          </Grid>
                         </Button>
                         </DataTemplate>
                 </ItemsControl.ItemTemplate>
-                
             </ItemsControl>
 
 
 
         </Grid>
-        <Grid Grid.Column="1" Background=" #7877CE">
-            <StackPanel>
+       <Border Grid.Column="1"  Background="#6572B6"  BorderThickness="0" CornerRadius=" 15" Padding="10 0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Margin=" 0 70 0 0">
                 <Border Width="100" Height="100" CornerRadius="50"
-                        BorderBrush="Black" BorderThickness="0"
-                        HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
-                    <Image Source="{Binding userInformationModel.ProfilePictureUrl}"
+                        BorderThickness="0"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 10 0 4">
+                    <!-- Source="{Binding userInformationModel.ProfilePictureUrl}" -->
+                    <Image 
+                        Source="{Binding userInformationModel.ProfilePictureUrl}"
                            Stretch="UniformToFill">
                         <Image.Clip>
                             <EllipseGeometry Center="50,50" RadiusX="49" RadiusY="49"/>
@@ -59,42 +79,87 @@
                      </Image>
                     
                 </Border>
-                <StackPanel>
-                    
-                    <Label Content="{Binding UserName}"
-                           HorizontalAlignment="Center" FontSize="21" Foreground="White"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label Content="{Binding userInformationModel.FirstName }"
-                               FontSize="20"  Foreground="White"
-                               />
-                        <Label Content="{Binding userInformationModel.LastName}"
-                               FontSize="20" 
-                               FontWeight="Heavy"
-                               Foreground="White"
-                               />
-                    </StackPanel>
-                   
 
-                </StackPanel>
+                <Label Content="{Binding userInformationModel.Username}"
+                       HorizontalAlignment="Center" 
+                       FontWeight="Medium"
+                       FontSize="16" Foreground="White"/>
                 
-                <Grid>
+                <Grid   Margin="10 10">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="20*"></RowDefinition>
-                        <RowDefinition Height="20*"></RowDefinition>
-                        <RowDefinition Height="60*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Label Content="Community In" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White"/>
-                    <Label Grid.Column="1" Content="Community Created" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="White"/>
-                    <Label Grid.Row="1" Content="5" HorizontalAlignment="Center" Foreground="White"/>
-                    <Label Grid.Row="1" Grid.Column="1" Content="5" HorizontalAlignment="Center" Foreground="White"/>
+           
+                    <Label Grid.Column="0" 
+                           Background="Transparent"
+                           HorizontalAlignment="Right"
+                           Margin="20 0"
+                           >
+                        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" LineHeight="26">
+                            <Run Text="{Binding userInformationModel.TotalPost}" Foreground="#FFFFFF"  FontSize="16" FontWeight="SemiBold"/>
+                            <LineBreak />
+                            <Run Text="Posts" Foreground="#E7E7E7"  FontSize="15" />
+                        </TextBlock>
+                    </Label>
+                    <Label Grid.Column="1"
+                           Background="Transparent"
+                           HorizontalAlignment="Left"
+                           Margin="20 0"
+                           >
+                        <TextBlock HorizontalAlignment="Center" TextAlignment="Center" LineHeight="26">
+                            <Run Text="{Binding userInformationModel.TotalLike}" Foreground="#FFFFFF"  FontSize="16" FontWeight="SemiBold"/>
+                            <LineBreak />
+                            <Run Text="Likes" Foreground="#E7E7E7" FontSize="15" />
+                        </TextBlock>
+                    </Label>
                 </Grid>
-
-            </StackPanel>
-        </Grid>
+               <StackPanel Margin="10 0">
+                   <Label Margin="0 4" Grid.Column="1"
+                          Background="Transparent"
+                          Foreground="Black">
+                       <TextBlock LineHeight="23">
+                           <Run Text="Full Name"  Foreground="#E7E7E7"  FontSize="14" />
+                           <LineBreak />
+                           <Run Text="{Binding FullName}"  FontSize="15" Foreground="#FFFFFF" />
+                       </TextBlock>
+                   </Label>
+                   <Label Margin="0 4" Grid.Column="1"
+                          Background="Transparent"
+                          Foreground="Black">
+                       <TextBlock LineHeight="23">
+                           <Run Text="Date of birth"  Foreground="#E7E7E7"  FontSize="14" />
+                           <LineBreak />
+                           <Run Text="{Binding userInformationModel.DateOfBirth,  StringFormat={}{0:MMMM dd yyyy}}"  FontSize="15" Foreground="#FFFFFF" />
+                           
+                       </TextBlock>
+                   </Label>
+                   <Label Margin="0 4" Grid.Column="1"
+                          Background="Transparent"
+                          Foreground="Black">
+                       <TextBlock LineHeight="23">
+                           <Run Text="Gender"  Foreground="#E7E7E7"  FontSize="14" />
+                           <LineBreak />
+                           <Run Text="{Binding userInformationModel.Gender}"  FontSize="15" Foreground="#FFFFFF" />
+                       </TextBlock>
+                   </Label>
+                   <Label Margin="0 4" Grid.Column="1"
+                          Background="Transparent"
+                          Foreground="Black">
+                       <TextBlock LineHeight="23">
+                           <Run Text="Email"  Foreground="#E7E7E7"  FontSize="14" />
+                           <LineBreak />
+                           <Run Text="{Binding userInformationModel.Email}"  FontSize="15" Foreground="#FFFFFF" />
+                       </TextBlock>
+                   </Label>
+               </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Margin="0 10 ">
+                    <Button  VerticalAlignment="Bottom" Style="{StaticResource Button-Fill}" Content="Sign out" FontSize="14" FontWeight="Medium" Padding="10" Margin="0 8"/>
+                    <Button  VerticalAlignment="Bottom" Style="{StaticResource Button-Edge}" Content="Exit" FontSize="14"  FontWeight="Medium" Padding="10" Click="ButtonBase_OnClick"/>
+                </StackPanel>
+            </Grid>
+       </Border>
     </Grid>
-    </Grid>
+    </Border>
 </UserControl>

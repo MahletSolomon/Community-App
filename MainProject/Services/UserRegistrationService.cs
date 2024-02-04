@@ -41,7 +41,6 @@ public class UserRegistrationService:ConnectionBaseService
                         command.Parameters.AddWithValue("@UserDOB", _userInformationModel.DateOfBirth);
                         if (_userInformationModel.ProfilePictureUrl != null)
                         {
-                            MessageBox.Show(_userInformationModel.ProfilePictureUrl);
                             command.Parameters.AddWithValue("@UserProfilePicture", _userInformationModel.ProfilePictureUrl);
                         }
                         command.ExecuteNonQuery();

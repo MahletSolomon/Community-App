@@ -38,7 +38,7 @@ public class SearchCommunityService:ConnectionBaseService
                                 {
                                     MemberTotal = reader["communityMemberTotal"].ToString(),
                                     PictureUrl = reader["communityProfilePictureURL"].ToString(),
-                                    PostTotal = reader["communityPostTotal"].ToString(),
+                                    PostTotal = int.Parse(reader["communityPostTotal"].ToString()),
                                     CreatedDate = DateTime.Parse(reader["communityCreatedDate"].ToString()),
                                     Name = reader["communityName"].ToString(),
                                     ID = int.Parse(reader["communityID"].ToString())

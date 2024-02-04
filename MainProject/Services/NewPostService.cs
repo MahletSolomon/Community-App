@@ -60,6 +60,7 @@ public class NewPostService:ConnectionBaseService
                 }
             }
             _createPostViewModel.Posts.Add(_postModel);
+            _createPostViewModel.communityCardModel.PostTotal += 1;
         }
         catch (Exception ex)
         {

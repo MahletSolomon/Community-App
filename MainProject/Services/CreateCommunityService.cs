@@ -26,7 +26,7 @@ public class CreateCommunityService:ConnectionBaseService
             PictureUrl = _createCommunityViewModel.CommunityCardModel.PictureUrl,
             CreatedDate = DateTime.Today,
             MemberTotal = "1",
-            PostTotal = "0",
+            PostTotal = 0,
             OwnerPictureUrl = _createCommunityViewModel.HomeViewModel._userInformationModel.ProfilePictureUrl,
             OwnerName = _createCommunityViewModel.HomeViewModel._userInformationModel.FirstName + " " +_createCommunityViewModel.HomeViewModel._userInformationModel.LastName
 

@@ -64,7 +64,7 @@ public class RetrieveCommunityInformationService:ConnectionBaseService
                                 OwnerPictureUrl = reader["userProfilePicture"].ToString(),
                                 OwnerName = firstName + " " + lastName,
                                 MemberTotal = reader["communityMemberTotal"].ToString(),
-                                PostTotal = reader["communityPostTotal"].ToString(),
+                                PostTotal = int.Parse(reader["communityPostTotal"].ToString()),
                                 CreatedDate = DateTime.Parse(reader["communityCreatedDate"].ToString())
                             });
                         }

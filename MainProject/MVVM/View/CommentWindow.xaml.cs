@@ -18,4 +18,9 @@ public partial class CommentWindow : Window
         this.Hide();
 
     }
+
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        senderTB.Text = "";
+    }
 }

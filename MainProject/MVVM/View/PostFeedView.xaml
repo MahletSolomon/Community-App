@@ -7,8 +7,11 @@
              xmlns:componets="clr-namespace:MainProject.Componets"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1240">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     
-   <Border Background="#E2E2E2" CornerRadius="0 15 15 0 ">
+    <Border Background="#E2E2E2" CornerRadius="0 15 15 0 ">
         <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -18,6 +21,11 @@
             
             <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden" >
                 <ItemsControl ItemsSource="{Binding Posts}" Background="Transparent" MaxWidth="565">
+                    <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Vertical"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate >
                         <DataTemplate>
                             <Border  CornerRadius="15" Margin="0,10,0,10" Background="White" >
@@ -135,7 +143,7 @@
             Padding="17 54 17 0 "
             Panel.ZIndex="1" 
             Name="InfoPanel" 
-            Visibility="Visible" 
+            Visibility="{Binding IsPanelOpen,Converter={StaticResource BooleanToVisibilityConverter }}" 
             Background="#7877CE" >
        <Grid>
            <Grid.RowDefinitions>

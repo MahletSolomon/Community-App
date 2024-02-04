@@ -128,7 +128,7 @@
                    <TextBox Padding=" 16 15"
                             Margin="23 8 10 8"
                             Style="{StaticResource TextBoxStyle}"
-                            Tag="Date of birth"
+                            Tag="Date of birth ( yyyy-mm-dd)"
                             Text="{Binding DateOfBirth,UpdateSourceTrigger=PropertyChanged}"
                             FontSize="14"/>
                    <TextBox Grid.Column="1" Padding=" 16 15"

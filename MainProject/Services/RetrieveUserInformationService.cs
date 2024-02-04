@@ -37,8 +37,10 @@ public class RetrieveUserInformationService:ConnectionBaseService
                                 LastName = reader["userLastName"].ToString(),
                                 Email = reader["userEmail"].ToString(),
                                 Gender = reader["userGender"].ToString(),
-                                DateOfBirth = reader["userDOB"].ToString(),
+                                DateOfBirth = DateTime.Parse(reader["userDOB"].ToString()),
                                 ProfilePictureUrl = reader["userProfilePicture"].ToString(),
+                                TotalLike = int.Parse(reader["userTotalLikes"].ToString()),
+                                TotalPost = int.Parse(reader["userTotalPosts"].ToString())
                             };
                         }
                     }

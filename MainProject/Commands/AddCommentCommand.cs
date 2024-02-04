@@ -1,38 +1,32 @@
 ﻿using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.ViewModel;
+using MainProject.Services;
 using WpfApp1.Services;
 
 namespace WpfApp1.Commands;
 
-public class AddCommentCommand : CommandBase
+public class AddCommentCommand:CommandBase
 {
-
-    // private NewCommentService _newCommentService;
     private CommentViewModel _commentViewModel;
-
-    private string id;
-
+    private AddCommentService _addCommentService;
+    
     public AddCommentCommand(CommentViewModel commentViewModel)
     {
         _commentViewModel = commentViewModel;
-
-
+        _addCommentService = new AddCommentService(_commentViewModel);
+        
     }
-
     public override void Execute(object parameter)
     {
-        // MessageBox.Show(_commentViewModel.PostId);
-        _commentViewModel.CurrentComments.Add(new CommentModel(_commentViewModel.PostId, _commentViewModel.NewComment));
-        _commentViewModel.Comments.Add(new CommentModel(_commentViewModel.PostId, _commentViewModel.NewComment));
-        // foreach (PostModel p in _commentViewModel.PostFeedViewModel.Posts)
-        // {
-        //     if (p.PostID == _commentViewModel.PostId)
-        //         p.TotalComment++;
-        // }
-
-        _commentViewModel.NewComment = null;
-
-
+        _commentViewModel.Comments.AddLast(new CommentModel(_commentViewModel.PostId,_commentViewModel.NewComment)
+        {
+            PostedOnId = _commentViewModel.PostId,
+            CommentMessage = _commentViewModel.NewComment,
+            UserProfilePicture = _commentViewModel.UserInformationModel.ProfilePictureUrl,
+            Name = _commentViewModel.UserInformationModel.FirstName + " " + _commentViewModel.UserInformationModel.LastName
+        });
+        _addCommentService.Execute();
+        _commentViewModel.Post.TotalComment += 1;
     }
 }

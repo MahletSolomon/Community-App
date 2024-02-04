@@ -314,3 +314,5 @@ C:\Users\abiym\RiderProjects\CommunityAppCheck\MainProject\obj\Debug\net6.0-wind
 C:\Users\abiym\RiderProjects\CommunityAppCheck\MainProject\obj\Debug\net6.0-windows\ref\MainProject.dll
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\CommentWindow.g.cs
 C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\CommentWindow.baml
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\UserPostWindow.g.cs
+C:\Users\abiym\RiderProjects\CommunityApp\MainProject\obj\Debug\net6.0-windows\MVVM\View\UserPostWindow.baml

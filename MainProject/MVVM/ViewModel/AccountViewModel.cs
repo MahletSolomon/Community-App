@@ -17,6 +17,7 @@ public class AccountViewModel:ViewModelBase
     public ObservableCollection<PostModel> PostModels { get; set; }
     private RetrieveAccountPostService RetrieveAccountPostService;
     private RetrieveUserInformationService _retrieveUserInformationService;
+    public string FullName { set; get; }
     public UserInformationModel userInformationModel { get; set; }
     public LoginModel loginModel { get; set; }
     
@@ -31,8 +32,9 @@ public class AccountViewModel:ViewModelBase
         _retrieveUserInformationService = new RetrieveUserInformationService(loginModel.ID);
         RetrivePostInformation();
         RetriveUserInformation();
-        
         ShowPostCommand = new ShowPostCommand(this);
+        FullName = userInformationModel.FirstName + " " + userInformationModel.LastName;
+        
     }
 
     void RetrivePostInformation()

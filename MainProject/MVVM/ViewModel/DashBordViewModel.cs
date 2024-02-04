@@ -64,7 +64,7 @@ public class DashBordViewModel:ViewModelBase
         RetrieveUserInformationService retrieveUserInformationService = new RetrieveUserInformationService(_loginModel.ID);
         _userInformationModel = retrieveUserInformationService.GetInformation();
         ProfilePicture = _userInformationModel.ProfilePictureUrl;
-        ProfileName = _userInformationModel.FirstName + " " + _userInformationModel.LastName;
+        ProfileName = _userInformationModel.Username;
     }
 
     private void DefineViewNavigationIcons()
@@ -86,12 +86,6 @@ public class DashBordViewModel:ViewModelBase
         {
             Name = "Account",
             ImageSource = "/Images/Account.png"
-
-        });
-        PageNavModels.Add(new PageNavModel()
-        {
-            Name = "Setting",
-            ImageSource = "/Images/Setting.png"
 
         });
     }

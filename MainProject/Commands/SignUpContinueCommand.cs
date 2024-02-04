@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.ViewModel;
 using WpfApp1.Services;
@@ -27,7 +28,7 @@ public class SignUpContinueCommand: CommandBase
             MiddleName = _signUpViewModel.MiddleName,
             LastName = _signUpViewModel.LastName,
             Email = _signUpViewModel.Email,
-            DateOfBirth = _signUpViewModel.DateOfBirth,
+            DateOfBirth = DateTime.Parse(_signUpViewModel.DateOfBirth),
             Gender = _signUpViewModel.Gender,
             Password = _signUpViewModel.Password,
 
