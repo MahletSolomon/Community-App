@@ -32,17 +32,18 @@ public class DashBordViewModel:ViewModelBase
     private void Navigate()
     {
         string navigateTo = SelectedItem.Name;
-        DashBordNavigationCommand bordNavigationCommand = new DashBordNavigationCommand(navigateTo, DashNavigationStore,_loginModel,_userInformationModel,this);
+        DashBordNavigationCommand bordNavigationCommand = new DashBordNavigationCommand(navigateTo, DashNavigationStore,_loginModel,_userInformationModel,this,_navigationStore);
         bordNavigationCommand.Execute();
     }
 
     private UserInformationModel _userInformationModel;
     public string ProfilePicture { set; get; }
     public string ProfileName { set; get; }
-
+    private NavigationStore _navigationStore { set; get; }
     public DashBordViewModel(LoginModel loginModel,NavigationStore navigationStore)
     {
             _loginModel = loginModel;
+            _navigationStore = navigationStore;
             RetrieveInformation();
             DefineViewNavigationIcons();
             DashNavigationStore = new NavigationStore();

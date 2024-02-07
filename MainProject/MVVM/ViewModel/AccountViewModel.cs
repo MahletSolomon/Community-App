@@ -5,6 +5,7 @@ using MainProject.MVVM.Model;
 using MainProject.MVVM.View;
 using WpfApp1.Commands;
 using WpfApp1.Services;
+using WpfApp1.Stores;
 
 namespace MainProject.MVVM.ViewModel;
 
@@ -22,7 +23,8 @@ public class AccountViewModel:ViewModelBase
     public LoginModel loginModel { get; set; }
     
     public ICommand ShowPostCommand { get; set; }
-    public AccountViewModel(UserInformationModel userInformationModel,LoginModel loginModel)
+    public ICommand SignOutCommand { get; set; }
+    public AccountViewModel(UserInformationModel userInformationModel,LoginModel loginModel,NavigationStore navigationStore)
     {
         UserName = $"@{loginModel.Username}";
         PostModels = new ObservableCollection<PostModel>();
@@ -34,7 +36,9 @@ public class AccountViewModel:ViewModelBase
         RetriveUserInformation();
         ShowPostCommand = new ShowPostCommand(this);
         FullName = userInformationModel.FirstName + " " + userInformationModel.LastName;
-        
+        SignOutCommand = new NavigateCommand<LoginViewModel>(
+            new NavigationService<LoginViewModel>(navigationStore, () => new LoginViewModel(navigationStore)));
+
     }
 
     void RetrivePostInformation()

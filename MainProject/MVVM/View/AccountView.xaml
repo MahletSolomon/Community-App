@@ -177,7 +177,7 @@
                </StackPanel>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Margin="0 10 ">
-                    <Button  VerticalAlignment="Bottom" Style="{StaticResource Button-Fill}" Content="Sign out" FontSize="14" FontWeight="Medium" Padding="10" Margin="0 8"/>
+                    <Button  VerticalAlignment="Bottom" Style="{StaticResource Button-Fill}" Content="Sign out" FontSize="14" FontWeight="Medium" Padding="10" Margin="0 8" Command="{Binding SignOutCommand}"/>
                     <Button  VerticalAlignment="Bottom" Style="{StaticResource Button-Edge}" Content="Exit" FontSize="14"  FontWeight="Medium" Padding="10" Click="ButtonBase_OnClick"/>
                 </StackPanel>
             </Grid>

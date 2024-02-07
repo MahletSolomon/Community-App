@@ -11,13 +11,16 @@ public class DashBordNavigationCommand
     private LoginModel _loginModel;
     private UserInformationModel _userInformationModel;
     private DashBordViewModel _dashBordViewModel;
-    public DashBordNavigationCommand(string navigateTo,NavigationStore DashNavigationStore,LoginModel loginModel,UserInformationModel userInformationModel,DashBordViewModel dashBordViewModel)
+    private NavigationStore _navigationStore { set; get; }
+
+    public DashBordNavigationCommand(string navigateTo,NavigationStore DashNavigationStore,LoginModel loginModel,UserInformationModel userInformationModel,DashBordViewModel dashBordViewModel,NavigationStore navigationStore)
     {
         _navigateTo = navigateTo;
         _dashNavigationStore = DashNavigationStore;
         _loginModel = loginModel;
         _userInformationModel = userInformationModel;
         _dashBordViewModel = dashBordViewModel;
+        _navigationStore = navigationStore;
     }
 
     public void Execute()
@@ -32,7 +35,7 @@ public class DashBordNavigationCommand
 
                 break;
             case "Account":
-                _dashNavigationStore.CurrentViewModel = new AccountViewModel(_userInformationModel,_loginModel);
+                _dashNavigationStore.CurrentViewModel = new AccountViewModel(_userInformationModel,_loginModel,_navigationStore);
 
                 break;
             case "Setting":
