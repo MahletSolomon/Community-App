@@ -24,7 +24,9 @@
 
            
 
-            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden" 
+                          SizeChanged="FrameworkElement_OnSizeChanged"
+                          Loaded="FrameworkElement_OnLoaded">
                 <StackPanel >
                     <ItemsControl ItemsSource="{Binding Comments}" Name="MyItemsControl">
                         <!--<ItemsControl.ItemsPanel>

@@ -19,7 +19,7 @@ public class AddCommentCommand:CommandBase
     }
     public override void Execute(object parameter)
     {
-        _commentViewModel.Comments.AddLast(new CommentModel(_commentViewModel.PostId,_commentViewModel.NewComment)
+        _commentViewModel.Comments.Add(new CommentModel(_commentViewModel.PostId,_commentViewModel.NewComment)
         {
             PostedOnId = _commentViewModel.PostId,
             CommentMessage = _commentViewModel.NewComment,

@@ -51,5 +51,16 @@
                 string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
                 return Regex.IsMatch(input, pattern);
             }
+            public static bool IsDate(string input)
+            {
+                if (DateTime.TryParseExact(input, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _))
+                {
+                    return true; 
+                }
+                else
+                {
+                    return false; 
+                }
+            }
         }
     }

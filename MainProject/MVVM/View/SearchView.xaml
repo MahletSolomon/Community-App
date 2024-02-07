@@ -18,26 +18,37 @@
                               CommandParameter="{Binding}">
                           <Grid   VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin=" 05">
                               <Grid.ColumnDefinitions>
-                                  <ColumnDefinition Width="40"/>
+                                  <ColumnDefinition Width="auto"/>
                                   <ColumnDefinition />
                                   <ColumnDefinition Width="100"/>
                               </Grid.ColumnDefinitions>
-                              <Image 
-                                  Source="{Binding PictureUrl}"
-                                  Grid.Column="0" 
-                                  Width="40" 
-                                  Height="40" 
-                                  HorizontalAlignment="Right" 
-                                  VerticalAlignment="Center">
-                                  <Image.Clip>
-                                      <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20"/>
-                                  </Image.Clip>
-                              </Image>
+                              
+                              <Grid >
+                                  <Grid.OpacityMask>
+                                      <VisualBrush Visual="{Binding ElementName=Border2}" />
+                                  </Grid.OpacityMask>
+                                  <Border 
+                                      Width="40"
+                                      Height="40"
+
+                                      x:Name="Border2"
+                                      HorizontalAlignment="Right" 
+                                      CornerRadius="20"
+                                      Background="#D7DADB"
+                                      VerticalAlignment="Center"/>
+                                  <Image 
+                                      Width="40"
+                                      Height="40"
+                                      Source="{Binding PictureUrl}"
+                                      Stretch="UniformToFill">
+                                               
+                                  </Image>
+                              </Grid>
                               <StackPanel Grid.Column="1" VerticalAlignment="Center">
                                   <TextBlock Text="{Binding Name}" Margin="15 0 0 0" FontSize="14" Foreground="#252878" Opacity="0.8"  FontWeight="SemiBold"/>
                                   <TextBlock Text="{Binding MemberTotal,StringFormat={}{0} Members }" Margin="15 5 0 0" FontSize="12" Foreground="#748493" Opacity="0.8"/>
                               </StackPanel>
-                              <TextBlock Grid.Column="2" Text="January 2 2022" HorizontalAlignment="Center" VerticalAlignment="Bottom" Opacity="0.6"/>
+                              <TextBlock Grid.Column="2" Text="{Binding CreatedDate,  StringFormat={}{0:MMMM dd yyyy}}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Opacity="0.6"/>
                           </Grid>
                       </Button>
                    </DataTemplate>

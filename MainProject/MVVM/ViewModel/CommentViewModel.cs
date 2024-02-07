@@ -10,9 +10,9 @@ namespace MainProject.MVVM.ViewModel;
 
 public class CommentViewModel:ViewModelBase
 {
-    private LinkedListObservableCollection<CommentModel> comments;
+    private ObservableCollection<CommentModel> comments;
 
-    public LinkedListObservableCollection<CommentModel> Comments
+    public ObservableCollection<CommentModel> Comments
     {
         get { return comments;}
         set { comments = value; OnPropertyChanged(); }
@@ -44,7 +44,7 @@ public class CommentViewModel:ViewModelBase
 
         Post = postModel;
         LoginModel = loginModel;
-        Comments = new LinkedListObservableCollection<CommentModel>();
+        Comments = new ObservableCollection<CommentModel>();
         _retrieveCommentService = new RetrieveCommentService(Comments, this);
         _retrieveCommentService.Execute();
         AddCommentCommand = new AddCommentCommand(this);

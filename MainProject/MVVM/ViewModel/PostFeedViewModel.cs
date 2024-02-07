@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.View;
+using MainProject.Utilities;
 using WpfApp1.Commands;
 using WpfApp1.Services;
 
@@ -11,9 +12,9 @@ namespace MainProject.MVVM.ViewModel;
 
 public class PostFeedViewModel:ViewModelBase
 {
-    public Dictionary<int, ObservableCollection<PostModel>> _postStorage { set; get; }
-    private ObservableCollection<PostModel> _posts;
-    public ObservableCollection<PostModel> Posts
+    public Dictionary<int, StackObservableCollection<PostModel>> _postStorage { set; get; }
+    private StackObservableCollection<PostModel> _posts;
+    public StackObservableCollection<PostModel> Posts
     {
         get => _posts;
         set
@@ -39,7 +40,7 @@ public class PostFeedViewModel:ViewModelBase
  
 
     public HomeViewModel HomeViewModel;
-    public PostFeedViewModel(ObservableCollection<PostModel> posts, LoginModel loginModel,UserInformationModel userInformationModel,HomeViewModel homeViewModel,CommunityCardModel communityCardModel,Dictionary<int, ObservableCollection<PostModel>> PostStorage=null)
+    public PostFeedViewModel(StackObservableCollection<PostModel> posts, LoginModel loginModel,UserInformationModel userInformationModel,HomeViewModel homeViewModel,CommunityCardModel communityCardModel,Dictionary<int, StackObservableCollection<PostModel>> PostStorage=null)
     {
         IsPanelOpen = true;
         _postStorage = PostStorage;

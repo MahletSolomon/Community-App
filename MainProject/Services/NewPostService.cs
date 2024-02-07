@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.ViewModel;
+using MainProject.Utilities;
 
 namespace WpfApp1.Services;
 
@@ -59,7 +60,15 @@ public class NewPostService:ConnectionBaseService
 
                 }
             }
-            _createPostViewModel.Posts.Add(_postModel);
+
+            StackObservableCollection<PostModel> newPost = new StackObservableCollection<PostModel>();
+            foreach (var v in _createPostViewModel.PostFeedViewModel.Posts)
+            {
+                newPost.Push(v);
+            }
+            newPost.Push(_postModel);
+            _createPostViewModel.PostFeedViewModel.Posts=newPost;
+            _createPostViewModel.PostFeedViewModel.HomeViewModel.PostStorage[_createPostViewModel.communityCardModel.ID] = newPost;
             _createPostViewModel.communityCardModel.PostTotal += 1;
         }
         catch (Exception ex)

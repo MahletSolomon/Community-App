@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.ViewModel;
+using MainProject.Utilities;
 
 namespace WpfApp1.Services;
 
 public class RetrieveCommunityPostService:ConnectionBaseService
 {
-     private ObservableCollection<PostModel> _post;
+     private StackObservableCollection<PostModel> _post;
      public int _communityID;
      public string _userID;
     private HomeViewModel _homeViewModel;
@@ -19,7 +20,7 @@ public class RetrieveCommunityPostService:ConnectionBaseService
         _userID = UserID;
     }
     
-    public async void Execute(int CommunityID,ObservableCollection<PostModel> postModels)
+    public async void Execute(int CommunityID,StackObservableCollection<PostModel> postModels)
     {
         _communityID = CommunityID;
         _post = postModels;
@@ -60,7 +61,7 @@ public class RetrieveCommunityPostService:ConnectionBaseService
                             int IsLikedInt = int.Parse(reader["IsLiked"].ToString());
                             bool IsLiked = IsLikedInt == 1 ? true:false;
 
-                            _post.Add(new PostModel()
+                            _post.Push(new PostModel()
                             {
                                 PostCaption =  reader["postDescription"].ToString(),
                                 PostID =  reader["postID"].ToString(),

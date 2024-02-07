@@ -93,6 +93,11 @@ public class SignUpViewModel:ViewModelValidationBase
         set
         {
             _dateOfBirth = value;
+            ClearErrors(nameof(DateOfBirth));
+            if (!IsDate(_dateOfBirth) && _dateOfBirth!="")
+            {
+                AddError(nameof(DateOfBirth),"Format yyyy-mm-dd");
+            }
             OnPropertyChanged();
         }
     }
@@ -104,7 +109,11 @@ public class SignUpViewModel:ViewModelValidationBase
         set
         {
             _gender = value;
-            // Validation logic for Gender if needed
+            ClearErrors(nameof(Gender));
+            if (_gender.ToUpper()!="MALE" && _gender.ToUpper()!="FEMALE" && _gender!="")
+            {
+                AddError(nameof(Gender),"Must be either male or female");
+            }
             OnPropertyChanged();
         }
     }

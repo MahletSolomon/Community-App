@@ -11,46 +11,70 @@
         WindowStyle="None"
         Background="Transparent"
         AllowsTransparency="True">
-    <Border CornerRadius="20"  Margin="30" BorderBrush="White" Padding="5" Background="White" MouseDown="UIElement_OnMouseDown  " Width="500">
+    <Border CornerRadius="20"  Margin="30" BorderBrush="White"  Background="White" MouseDown="UIElement_OnMouseDown  " Width="500">
         <Border.Effect>
             <DropShadowEffect ShadowDepth="0" BlurRadius="23" Color="#333333" Opacity="0.6"/>
         </Border.Effect>
         <StackPanel>
                 
-            <StackPanel Grid.Row="1" Margin="25 15">
-                    <TextBox 
-                         Margin="0 "
-                         Style="{StaticResource TextBoxStyle}"
-                         Height="50"
-                        
-                         Tag="Community Name"
-                        Padding="15 16"
-                         Text="{Binding CommunityCardModel.Name, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
-                         FontSize="12"/>
-                    <Label Content="Description:" FontSize="12" Padding="0 10"/>
-                <TextBox Padding=" 16 15"
-                        Style="{StaticResource TextBoxStyle}"
-                        Height="100"
-                        Text="{Binding CommunityCardModel.Description, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
-                        FontSize="12"/>
+            <StackPanel Grid.Row="1" Margin=" 10">
                 <Button Content="+"
                         Height="80"
-                        Width="120"
                         FontSize="20" 
-                        Margin="10"
+                        Margin="0 0 0 10"
                         VerticalContentAlignment="Center"
                         Style="{StaticResource Button-Fill}"
                         HorizontalAlignment="Stretch"
-                        Command="{Binding UploadPictureCommand}"/>
-                <Button Content="Create"
-                        Height="35"
-                        
-                        FontSize="20" 
-                        Margin="0 10 "
-                        VerticalContentAlignment="Center"
-                        Style="{StaticResource Button-Fill}"
-                        HorizontalAlignment="Stretch"
-                        Command="{Binding CreateCommunity}"/>
+                        Command="{Binding UploadPictureCommand}">
+                    
+                </Button>
+                <TextBox 
+                         Style="{StaticResource TextBoxStyle}"
+                         Tag="Community Name"
+                         Padding="15 16"
+                         Text="{Binding CommunityCardModel.Name, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="14"/>
+                    <TextBox  Name="txtCaption"
+                              TextWrapping="Wrap"
+                              Text="{Binding CommunityCardModel.Description, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                              FontSize="14"
+                              TextAlignment="Justify"
+                              Height="150"
+                              VerticalContentAlignment="Top"
+                              Tag="Description"
+                              Margin="0 10 0 0"
+                              HorizontalAlignment="Stretch"
+                              Style="{StaticResource TextBoxStyleLarge}"
+                              Padding="15 16"
+                    />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button 
+                        Content="Back"
+                            Padding="10"
+                            FontSize="14" 
+                            FontWeight="SemiBold"
+                            HorizontalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="0 10 5 0"
+                        Click="ButtonBase_OnClick"
+                            Style="{StaticResource Button-Edge}"
+                    /> 
+                    <Button Grid.Column="1" 
+                            Content="Create"
+                            Padding="10"
+                            FontSize="14" 
+                            FontWeight="SemiBold"
+                            HorizontalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            Margin="5 10 0 0"
+                            Style="{StaticResource Button-Fill}"
+                            Command="{Binding CreateCommunity}"/>
+                </Grid>
+               
                     
                 </StackPanel>
             </StackPanel>

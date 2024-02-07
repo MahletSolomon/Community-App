@@ -27,4 +27,12 @@ public partial class PostFeedView : UserControl
         }
         
     }
+
+    private void FrameworkElement_OnLoaded(object sender, RoutedEventArgs e)
+    {
+        if (sender is ScrollViewer scrollViewer)
+        {
+            scrollViewer.ScrollToTop();
+        }
+    }
 }

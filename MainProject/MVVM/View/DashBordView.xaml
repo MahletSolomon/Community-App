@@ -59,11 +59,11 @@
                <!-- Start Logged User -->
                <Grid Grid.Row="1" VerticalAlignment="Bottom" Margin="0 11">
                    <Grid.ColumnDefinitions>
-                       <ColumnDefinition Width="50"></ColumnDefinition>
+                       <ColumnDefinition Width="Auto"></ColumnDefinition>
                        <ColumnDefinition></ColumnDefinition>
                    </Grid.ColumnDefinitions>
                            
-                   <Image 
+                   <!--<Image 
                        Margin="0 0 5 0" 
                        Source="{Binding ProfilePicture}"
                        Grid.Column="0" 
@@ -74,7 +74,30 @@
                        <Image.Clip>
                            <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                        </Image.Clip>
-                   </Image>
+                   </Image>-->
+                   
+                   <Grid 
+                       Margin="10  0 0 0 " >
+                       <Grid.OpacityMask>
+                           <VisualBrush Visual="{Binding ElementName=Border1}" />
+                       </Grid.OpacityMask>
+                       <Border 
+                           Width="34"
+                           Height="34"
+
+                           x:Name="Border1"
+                           HorizontalAlignment="Right" 
+                           CornerRadius="17"
+                           Background="#D7DADB"
+                           VerticalAlignment="Center"/>
+                       <Image 
+                           Width="34"
+                           Height="34"
+                           Source="{Binding ProfilePicture}"
+                           Stretch="UniformToFill">
+                                               
+                       </Image>
+                   </Grid>
                    <Label  Content="{Binding ProfileName}" 
                            Foreground="#727EA8" FontSize="14" 
                            FontWeight="Medium"

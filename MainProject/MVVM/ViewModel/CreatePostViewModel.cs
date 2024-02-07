@@ -26,7 +26,7 @@ public class CreatePostViewModel:ViewModelBase
     public CommunityCardModel communityCardModel;
     public UserInformationModel _userInformationModel;
     public LoginModel _LoginModel;
-    public ObservableCollection<PostModel> Posts;
+    public PostFeedViewModel PostFeedViewModel;
     private string _defaultUpload = "/Images/Upload.png";
     public string DefaultUpload
     {
@@ -37,12 +37,12 @@ public class CreatePostViewModel:ViewModelBase
             OnPropertyChanged();
         } 
     }
-    public CreatePostViewModel(LoginModel loginModel,UserInformationModel userInformationModel,CommunityCardModel communityCardModel,ObservableCollection<PostModel> posts,NewPostWindow newPostWindow)
+    public CreatePostViewModel(LoginModel loginModel,UserInformationModel userInformationModel,CommunityCardModel communityCardModel,PostFeedViewModel postFeedViewModel,NewPostWindow newPostWindow)
     {
         this.communityCardModel = communityCardModel;
         _userInformationModel = userInformationModel;
         _LoginModel = loginModel;
-        Posts = posts;
+        PostFeedViewModel = postFeedViewModel;
         NewPostCommand = new NewPostCommand(newPostWindow, new NewPostService(this,_LoginModel));
         UploadPictureCommand = new UploadProfilePictureCommand(this);
     }

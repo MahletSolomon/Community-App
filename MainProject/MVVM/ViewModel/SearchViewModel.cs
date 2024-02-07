@@ -41,6 +41,7 @@ public class SearchViewModel:ViewModelBase
     private LoginModel _loginModel;
     public SearchViewModel(NavigationStore dashNavigationStore,LoginModel loginModel,UserInformationModel userInformationModel)
     {
+        
         CommunityCardModels = new ObservableCollection<CommunityCardModel>();
         _searchCommunityService = new SearchCommunityService(CommunityCardModels);
         this.dashNavigationStore = dashNavigationStore;

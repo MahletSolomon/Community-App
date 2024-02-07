@@ -16,25 +16,32 @@
         </Border.Effect>
         <Grid   VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin=" 05">
             <Grid.RowDefinitions>
-                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
            <DockPanel Margin="0 5">
                <TextBlock Text="{Binding CommunityCardModel.Name}" DockPanel.Dock="Bottom"  Margin="0 4 0 0" FontSize="16" Foreground="#252878" Opacity="0.8"  FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
-
-               <Image 
-                   DockPanel.Dock="Bottom"
-                   Source="{Binding CommunityCardModel.PictureUrl}"
-                   Grid.Column="0" 
-                   Width="80" 
-                   Height="80" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Bottom">
-                   <Image.Clip>
-                       <EllipseGeometry Center="40,40" RadiusX="40" RadiusY="40"/>
-                   </Image.Clip>
-               </Image>
+               <Grid DockPanel.Dock="Bottom">
+                   <Grid.OpacityMask>
+                       <VisualBrush Visual="{Binding ElementName=Border2}" />
+                   </Grid.OpacityMask>
+                   <Border 
+                       Width="100"
+                       Height="100"
+                       x:Name="Border2"
+                       HorizontalAlignment="Center" 
+                       CornerRadius="50"
+                       Background="#D7DADB"
+                       />
+                   <Image 
+                       Width="100"
+                       Height="100"
+                       Source="{Binding CommunityCardModel.PictureUrl}"
+                       Stretch="UniformToFill">
+                                               
+                   </Image>
+               </Grid>
 
            </DockPanel>
             <Grid Grid.Row="1" VerticalAlignment="Center" >

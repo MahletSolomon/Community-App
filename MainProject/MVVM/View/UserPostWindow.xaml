@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="NewCommunityWindow" 
         MinWidth="500"
+        MaxWidth="600"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -15,39 +16,69 @@
 
   <Border CornerRadius="10"  Margin="30" BorderThickness="0" Padding="5" Background="White" >
             <Border.Effect>
-                <DropShadowEffect ShadowDepth="0" BlurRadius="3" Color="#444444" Opacity="0.4"/>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="15" Color="#444444" Opacity="0.4"/>
             </Border.Effect>
           <Grid>
               <Grid.RowDefinitions>
                   <RowDefinition Height="Auto"/>
                   <RowDefinition Height="Auto"/>
                   <RowDefinition Height="Auto"/>
+                  <RowDefinition Height="Auto"/>
  
               </Grid.RowDefinitions>
-              <StackPanel Grid.Row="0" Orientation="Horizontal" Margin=" 0 10">
+             <Grid Grid.Row="0">
+                 <Grid.ColumnDefinitions>
+                     <ColumnDefinition/>
+                     <ColumnDefinition/>
+                 </Grid.ColumnDefinitions>
+                 <StackPanel Grid.Column="0"  Orientation="Horizontal" Margin=" 0 10">
                   
-                  <Image 
-                      Source="{Binding communityCardModel.PictureUrl}" 
-                      Grid.Column="0" 
-                      Width="34" 
-                      Height="34" 
-                      HorizontalAlignment="Right" 
-                      VerticalAlignment="Center">
-                      <Image.Clip>
-                          <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
-                      </Image.Clip>
-                  </Image>
-                  <Label  Content="{Binding communityCardModel.Name}" 
-                          Foreground="#727EA8" FontSize="14" 
-                          FontWeight="Medium"
-                          Grid.Column="1" 
-                          HorizontalAlignment="Left" 
-                          VerticalAlignment="Center"/>
-              </StackPanel>
-              
-                    
+                     <Image 
+                         Source="{Binding communityCardModel.PictureUrl}" 
+                         Grid.Column="0" 
+                         Width="34" 
+                         Height="34" 
+                         HorizontalAlignment="Right" 
+                         VerticalAlignment="Center">
+                         <Image.Clip>
+                             <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
+                         </Image.Clip>
+                     </Image>
+                     <Label  Content="{Binding communityCardModel.Name}" 
+                             Foreground="#727EA8" FontSize="14" 
+                             FontWeight="Medium"
+                             Grid.Column="1" 
+                             HorizontalAlignment="Left" 
+                             VerticalAlignment="Center"/>
+                 </StackPanel>
                  
-              <Grid Grid.Row="2" Height="50">
+                 <Button Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top"
+                         Style="{StaticResource Button-Close}" Click="ButtonBase_OnClick">
+                     <Image Source="/Images/Close.png" Width="37"></Image>
+                 </Button>
+             </Grid>
+              
+              <Image Grid.Row="1" 
+                     Source="{Binding PostModel.PostImagePath}" 
+                     HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Stretch" 
+                     Stretch="Fill"/>
+                        
+                          
+              <TextBox Grid.Row="2"  Name="txtCaption"
+                       TextWrapping="Wrap"
+                       Text="{Binding PostModel.PostCaption, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                       FontSize="14"
+                       TextAlignment="Justify"
+                       Height="150"
+                       VerticalContentAlignment="Top"
+                       Margin="0 10 0 0"
+                       HorizontalAlignment="Stretch"
+                       Style="{StaticResource TextBoxStyleLarge}"
+                       Padding="15 16"
+              />
+              
+              <Grid Grid.Row="3" Height="50">
                   <Grid.ColumnDefinitions>
                       <ColumnDefinition></ColumnDefinition>
                       <ColumnDefinition></ColumnDefinition>
@@ -55,13 +86,13 @@
                   </Grid.ColumnDefinitions>
                   
                   <Button Grid.Row="0"
-                                Name="ToggleBtn"
-                                Content="Update"
-                                VerticalAlignment="Bottom"
-                                Command="{Binding UpdatePostCommand}"
-                                Margin="0 0 5 0"
-                                Padding="10"
-                                Style="{StaticResource Button-Edge}"
+                          Name="ToggleBtn"
+                          Content="Update"
+                          VerticalAlignment="Bottom"
+                          Command="{Binding UpdatePostCommand}"
+                          Margin="0 0 5 0"
+                          Padding="10"
+                          Style="{StaticResource Button-Edge}"
                   />
                   <Button Grid.Column="1" 
                           VerticalAlignment="Bottom"
@@ -72,21 +103,7 @@
                           Command="{Binding DeletePostCommand}"
                   />
               </Grid>
-              
-                  
-                    
 
-                      
-                        <TextBox Grid.Row="1" Name="txtCaption"
-                                 TextWrapping="Wrap"
-                                 Text="{Binding PostModel.PostCaption, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 FontSize="14"
-                                 Padding="10"
-                                 Margin="0"
-                                 HorizontalAlignment="Stretch"
-                                 Style="{StaticResource TextBoxStyle}"/>
-                        
-                       
                
           </Grid>
         </Border>

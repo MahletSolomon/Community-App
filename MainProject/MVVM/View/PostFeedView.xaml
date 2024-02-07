@@ -5,10 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:MainProject.MVVM.View"
              xmlns:componets="clr-namespace:MainProject.Componets"
+             xmlns:converters="clr-namespace:TestingWPF.Converters"
              mc:Ignorable="d"
              d:DesignHeight="720" d:DesignWidth="1240">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:HalfConverter x:Key="HalfConverter"/>
     </UserControl.Resources>
     
     <Border Background="#E2E2E2" CornerRadius="0 15 15 0 ">
@@ -19,7 +21,10 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             
-            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden" >
+            <ScrollViewer Grid.Column="0" 
+                          Loaded="FrameworkElement_OnLoaded"
+                          SizeChanged="FrameworkElement_OnLoaded"
+                          VerticalScrollBarVisibility="Hidden" >
                 <ItemsControl ItemsSource="{Binding Posts}" Background="Transparent" MaxWidth="565">
                     <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -37,17 +42,43 @@
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                            
-                                        <Image 
+                                        <!--<Image 
                                             Source="{Binding UserProfilePicture}" 
                                             Grid.Column="0" 
                                             Width="34" 
                                             Height="34" 
                                             HorizontalAlignment="Right" 
                                             VerticalAlignment="Center">
-                                            <Image.Clip>
+                                            ~1~<Image.Clip>
                                                 <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
+                                            </Image.Clip>@1@
+                                            <Image.Clip>
+                                                <EllipseGeometry Center="17,17" RadiusX="{Binding Path=ActualWidth, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfConverter}}" RadiusY="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}, Converter={StaticResource HalfConverter}}"/>
                                             </Image.Clip>
-                                        </Image>
+                                        </Image>-->
+                                        
+                                        <Grid>
+                                            <Grid.OpacityMask>
+                                                <VisualBrush Visual="{Binding ElementName=Border1}" />
+                                            </Grid.OpacityMask>
+                                            <Border 
+                                                Width="34"
+                                                Height="34"
+                                                x:Name="Border1"
+                                                HorizontalAlignment="Right" 
+                                                CornerRadius="17"
+                                                Background="#D7DADB"
+                                                VerticalAlignment="Center"/>
+                                            <Image 
+                                                Width="34"
+                                                Height="34"
+                                                Source="{Binding UserProfilePicture}" 
+                                                Stretch="UniformToFill">
+                                               
+                                            </Image>
+                                        </Grid>
+                                        
+                                        
                                         <Label  Content="{Binding UserProfileName}" 
                                                 Foreground="#727EA8" FontSize="14" 
                                                 FontWeight="Medium"
@@ -156,10 +187,11 @@
         
             <Grid Grid.Row="0" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
+                <!--
                 <Image 
                     Margin="0 0 5 0" 
                     Source="{Binding communityCardModel.PictureUrl}"
@@ -172,6 +204,30 @@
                         <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                     </Image.Clip>
                 </Image>
+                -->
+                
+                <Grid 
+                    Margin="10  0 0 0 " >
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=Border1}" />
+                    </Grid.OpacityMask>
+                    <Border 
+                        Width="34"
+                        Height="34"
+
+                        x:Name="Border1"
+                        HorizontalAlignment="Right" 
+                        CornerRadius="17"
+                        Background="#D7DADB"
+                        VerticalAlignment="Center"/>
+                    <Image 
+                        Width="34"
+                        Height="34"
+                        Source="{Binding communityCardModel.PictureUrl}"
+                        Stretch="UniformToFill">
+                                               
+                    </Image>
+                </Grid>
                 <Label  Content="{Binding communityCardModel.Name}" 
                     Foreground="white" 
                     FontWeight="Medium"
@@ -223,10 +279,10 @@
                Padding="10"/>
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Image 
+                <!--<Image 
                     Margin="0 0 5 0" 
                     Source="{Binding communityCardModel.OwnerPictureUrl }"
                     Grid.Column="0" 
@@ -237,7 +293,31 @@
                     <Image.Clip>
                         <EllipseGeometry Center="17,17" RadiusX="17" RadiusY="17"/>
                     </Image.Clip>
-                </Image>
+                </Image>-->
+                
+                <Grid 
+                    Margin="10  0 0 0 "
+                    >
+                    <Grid.OpacityMask>
+                        <VisualBrush Visual="{Binding ElementName=Border2}" />
+                    </Grid.OpacityMask>
+                    <Border 
+                        Width="34"
+                        Height="34"
+
+                        x:Name="Border2"
+                        HorizontalAlignment="Right" 
+                        CornerRadius="17"
+                        Background="#D7DADB"
+                        VerticalAlignment="Center"/>
+                    <Image 
+                        Width="34"
+                        Height="34"
+                        Source="{Binding communityCardModel.OwnerPictureUrl }"
+                        Stretch="UniformToFill">
+                                               
+                    </Image>
+                </Grid>
                 <Label  Content="{Binding communityCardModel.OwnerName}" 
                         FontWeight="Medium"
                         Foreground="#F7FFEE"

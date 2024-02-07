@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.ViewModel;
+using MainProject.Utilities;
 using WpfApp1.Services;
 
 namespace WpfApp1.Commands;
@@ -23,7 +24,7 @@ public class RefreshPostCommand:AsyncCommandBase
     {
         try
         {
-            ObservableCollection<PostModel> Post=new ObservableCollection<PostModel>();
+            StackObservableCollection<PostModel> Post=new StackObservableCollection<PostModel>();
             _retrieveCommunityPostService.Execute(_postFeedViewModel.communityCardModel.ID,Post);
             _postFeedViewModel.Posts = Post;
             _postFeedViewModel._postStorage[_postFeedViewModel.communityCardModel.ID] = Post;

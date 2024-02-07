@@ -21,5 +21,15 @@
         <property name="Trust Server Certificate" value="true" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="@mssql-162881-0.cloudclusters.net" uuid="8349924b-4fea-4d5f-a7b0-924913117488">
+      <driver-ref>sqlserver.jb</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.jetbrains.jdbc.sqlserver.SqlServerDriver</jdbc-driver>
+      <jdbc-url>Server=mssql-162881-0.cloudclusters.net,15342</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <driver-properties>
+        <property name="Trust Server Certificate" value="true" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

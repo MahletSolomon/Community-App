@@ -10,6 +10,8 @@ public partial class UserPostWindow : Window
     }
 
 
-
-
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
 }

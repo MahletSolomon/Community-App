@@ -15,7 +15,7 @@ public class OpenPostCommand:CommandBase
     public override void Execute(object parameter)
     {
         NewPostWindow = new NewPostWindow();
-        NewPostWindow.DataContext = new CreatePostViewModel(_postFeedViewModel._LoginModel,_postFeedViewModel._userInformationModel,_postFeedViewModel.communityCardModel,_postFeedViewModel.Posts,NewPostWindow);
+        NewPostWindow.DataContext = new CreatePostViewModel(_postFeedViewModel._LoginModel,_postFeedViewModel._userInformationModel,_postFeedViewModel.communityCardModel,_postFeedViewModel,NewPostWindow);
         NewPostWindow.Show();
     }
 }

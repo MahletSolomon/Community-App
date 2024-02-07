@@ -13,10 +13,10 @@ public class RetrieveCommentService:ConnectionBaseService
 {
     private CommentViewModel _commentViewModel;
     
-    private LinkedListObservableCollection<CommentModel> Comments { get; set; }
+    private ObservableCollection<CommentModel> Comments { get; set; }
     
 
-    public RetrieveCommentService(LinkedListObservableCollection<CommentModel> comments, CommentViewModel commentViewModel)
+    public RetrieveCommentService(ObservableCollection<CommentModel> comments, CommentViewModel commentViewModel)
     {
         Comments = comments;
         _commentViewModel = commentViewModel;
@@ -40,7 +40,7 @@ public class RetrieveCommentService:ConnectionBaseService
                         {
                             string firsName=reader["userFirstName"].ToString();
                             string lastName=reader["userLastName"].ToString();
-                            Comments.AddFirst(new CommentModel()
+                            Comments.Add(new CommentModel()
                             {
                                 CommentMessage = reader["commentMessage"].ToString(),
                                 UserProfilePicture = reader["userProfilePicture"].ToString(),

@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using MainProject.MVVM.Model;
 using MainProject.MVVM.View;
+using MainProject.Utilities;
 using WpfApp1.Commands;
 using WpfApp1.Services;
 using WpfApp1.Stores;
@@ -16,7 +17,7 @@ public class HomeViewModel:ViewModelBase
     public NavigationStore HomeNavigationStore { get; set; }
     public bool IsLoading { get; set; }
     
-    public ObservableCollection<PostModel> Posts { get; set; }
+    public StackObservableCollection<PostModel> Posts { get; set; }
 
     public ViewModelBase PostViewModel => HomeNavigationStore.CurrentViewModel;
     private bool _noCommunity;
@@ -84,8 +85,8 @@ public class HomeViewModel:ViewModelBase
 
     private void InitializePostFeed()
     {
-        Posts = new ObservableCollection<PostModel>();
-        PostStorage = new Dictionary<int, ObservableCollection<PostModel>>();
+        Posts = new StackObservableCollection<PostModel>();
+        PostStorage = new Dictionary<int, StackObservableCollection<PostModel>>();
         _retrieveCommunityPostService = new RetrieveCommunityPostService(loginModel.ID);
         if (CommunityCardModels.Count > 0)
         {
@@ -97,11 +98,11 @@ public class HomeViewModel:ViewModelBase
 
     }
 
-    private Dictionary<int, ObservableCollection<PostModel>> PostStorage;
+    public Dictionary<int, StackObservableCollection<PostModel>> PostStorage;
     void OnChange(int communityId)
     {
 
-        ObservableCollection<PostModel> Post=new ObservableCollection<PostModel>();
+        StackObservableCollection<PostModel> Post=new StackObservableCollection<PostModel>();
         CommunityCardModel communityCardModel = CommunityCardModels.FirstOrDefault(CommunityCardModel => CommunityCardModel.ID == communityId);
         if (PostStorage.ContainsKey(communityCardModel.ID))
         {
@@ -137,7 +138,7 @@ public class HomeViewModel:ViewModelBase
         });
 
     }
-    void RetrieveCommunityPost(int CommunityID,ObservableCollection<PostModel> post)
+    void RetrieveCommunityPost(int CommunityID,StackObservableCollection<PostModel> post)
     {
         _retrieveCommunityPostService.Execute(CommunityID,post);
     }
